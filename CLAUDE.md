@@ -223,7 +223,6 @@ price = token_price(token_address)
 
 This is an **experimental, educational project** demonstrating AI agent patterns through algorithmic trading:
 - No guarantees of profitability (substantial risk of loss)
-- Open source and free for learning
 - YouTube-driven development with weekly updates
 - Community-supported via Discord
 - No token associated with project (avoid scams)
