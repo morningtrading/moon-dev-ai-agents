@@ -48,9 +48,9 @@ import json
 from termcolor import colored, cprint
 from dotenv import load_dotenv
 import openai
-from src import config
-from src import nice_funcs as n
-from src.data.ohlcv_collector import collect_all_tokens
+from .. import config
+from .. import nice_funcs as n
+from ..data.ohlcv_collector import collect_all_tokens
 from datetime import datetime, timedelta
 import time
 from src.config import *
@@ -117,44 +117,51 @@ class RiskAgent(BaseAgent):
         
     def get_portfolio_value(self):
         """Calculate total portfolio value in USD"""
-        total_value = 0.0
-        
         try:
             print("\n🔍 Moon Dev's Portfolio Value Calculator Starting... 🚀")
             
-            # Get USDC balance first
-            print("💵 Getting USDC balance...")
-            try:
-                print(f"🔍 Checking USDC balance for address: {config.USDC_ADDRESS}")
-                usdc_value = n.get_token_balance_usd(config.USDC_ADDRESS)
-                print(f"✅ USDC Value: ${usdc_value:.2f}")
-                total_value += usdc_value
-            except Exception as e:
-                print(f"❌ Error getting USDC balance: {str(e)}")
-                print(f"🔍 Debug info - USDC Address: {config.USDC_ADDRESS}")
-                traceback.print_exc()
+            # Route to correct exchange
+            if config.EXCHANGE.lower() == 'hyperliquid':
+                print("🔄 Using HyperLiquid exchange...")
+                total_value = n.get_hyperliquid_portfolio_value()
+            else:
+                print("🔄 Using Solana exchange...")
+                total_value = 0.0
+                
+                # Get USDC balance first
+                print("💵 Getting USDC balance...")
+                try:
+                    print(f"🔍 Checking USDC balance for address: {config.USDC_ADDRESS}")
+                    usdc_value = n.get_token_balance_usd(config.USDC_ADDRESS)
+                    print(f"✅ USDC Value: ${usdc_value:.2f}")
+                    total_value += usdc_value
+                except Exception as e:
+                    print(f"❌ Error getting USDC balance: {str(e)}")
+                    print(f"🔍 Debug info - USDC Address: {config.USDC_ADDRESS}")
+                    traceback.print_exc()
+                
+                # Get balance of each monitored token
+                print("\n📊 Getting monitored token balances...")
+                print(f"🎯 Total tokens to check: {len(config.MONITORED_TOKENS)}")
+                print(f"📝 Token list: {config.MONITORED_TOKENS}")
+                
+                for token in config.MONITORED_TOKENS:
+                    if token != config.USDC_ADDRESS:  # Skip USDC as we already counted it
+                        try:
+                            print(f"\n🪙 Checking token: {token[:8]}...")
+                            token_value = n.get_token_balance_usd(token)
+                            if token_value > 0:
+                                print(f"💰 Found position worth: ${token_value:.2f}")
+                                total_value += token_value
+                            else:
+                                print("ℹ️ No balance found for this token")
+                        except Exception as e:
+                            print(f"❌ Error getting balance for {token[:8]}: {str(e)}")
+                            print("🔍 Full error trace:")
+                            traceback.print_exc()
+                
+                print(f"\n💎 Moon Dev's Total Portfolio Value: ${total_value:.2f} 🌙")
             
-            # Get balance of each monitored token
-            print("\n📊 Getting monitored token balances...")
-            print(f"🎯 Total tokens to check: {len(config.MONITORED_TOKENS)}")
-            print(f"📝 Token list: {config.MONITORED_TOKENS}")
-            
-            for token in config.MONITORED_TOKENS:
-                if token != config.USDC_ADDRESS:  # Skip USDC as we already counted it
-                    try:
-                        print(f"\n🪙 Checking token: {token[:8]}...")
-                        token_value = n.get_token_balance_usd(token)
-                        if token_value > 0:
-                            print(f"💰 Found position worth: ${token_value:.2f}")
-                            total_value += token_value
-                        else:
-                            print("ℹ️ No balance found for this token")
-                    except Exception as e:
-                        print(f"❌ Error getting balance for {token[:8]}: {str(e)}")
-                        print("🔍 Full error trace:")
-                        traceback.print_exc()
-            
-            print(f"\n💎 Moon Dev's Total Portfolio Value: ${total_value:.2f} 🌙")
             return total_value
             
         except Exception as e:
@@ -378,41 +385,67 @@ class RiskAgent(BaseAgent):
         try:
             cprint("\n🔄 Closing monitored positions...", "white", "on_cyan")
             
-            # Get all positions
-            positions = n.fetch_wallet_holdings_og(address)
-            
-            # Debug print to see what we're working with
-            cprint("\n📊 Current positions:", "cyan")
-            print(positions)
-            cprint("\n🎯 Monitored tokens:", "cyan")
-            print(MONITORED_TOKENS)
-            
-            # Filter for tokens that are both in MONITORED_TOKENS and not in EXCLUDED_TOKENS
-            positions = positions[
-                positions['Mint Address'].isin(MONITORED_TOKENS) & 
-                ~positions['Mint Address'].isin(EXCLUDED_TOKENS)
-            ]
-            
-            if positions.empty:
-                cprint("📝 No monitored positions to close", "white", "on_blue")
-                return
+            if config.EXCHANGE.lower() == 'hyperliquid':
+                # HyperLiquid: close perpetual positions
+                cprint("🔄 Closing HyperLiquid positions...", "white", "on_cyan")
+                positions = n.get_hyperliquid_positions()
                 
-            # Close each monitored position
-            for _, row in positions.iterrows():
-                token = row['Mint Address']
-                value = row['USD Value']
+                if not positions:
+                    cprint("📝 No HyperLiquid positions to close", "white", "on_blue")
+                    return
                 
-                cprint(f"\n💰 Closing position: {token} (${value:.2f})", "white", "on_cyan")
-                try:
-                    n.chunk_kill(token, max_usd_order_size, slippage)
-                    cprint(f"✅ Successfully closed position for {token}", "white", "on_green")
-                except Exception as e:
-                    cprint(f"❌ Error closing position for {token}: {str(e)}", "white", "on_red")
+                for position in positions:
+                    symbol = position['symbol']
+                    size = position['size']
+                    pnl = position['pnl_percent']
                     
-            cprint("\n✨ All monitored positions closed", "white", "on_green")
+                    cprint(f"\n💰 Closing HyperLiquid {symbol}: {size} (PnL: {pnl:.2f}%)", "white", "on_cyan")
+                    try:
+                        n.close_hyperliquid_position(symbol)
+                        cprint(f"✅ Successfully closed {symbol}", "white", "on_green")
+                    except Exception as e:
+                        cprint(f"❌ Error closing {symbol}: {str(e)}", "white", "on_red")
+                        traceback.print_exc()
+                
+                cprint("\n✨ All HyperLiquid positions closed", "white", "on_green")
+            else:
+                # Solana: close token positions
+                cprint("🔄 Closing Solana positions...", "white", "on_cyan")
+                positions = n.fetch_wallet_holdings_og(address)
+                
+                # Debug print to see what we're working with
+                cprint("\n📊 Current positions:", "cyan")
+                print(positions)
+                cprint("\n🎯 Monitored tokens:", "cyan")
+                print(MONITORED_TOKENS)
+                
+                # Filter for tokens that are both in MONITORED_TOKENS and not in EXCLUDED_TOKENS
+                positions = positions[
+                    positions['Mint Address'].isin(MONITORED_TOKENS) & 
+                    ~positions['Mint Address'].isin(EXCLUDED_TOKENS)
+                ]
+                
+                if positions.empty:
+                    cprint("📝 No Solana positions to close", "white", "on_blue")
+                    return
+                    
+                # Close each monitored position
+                for _, row in positions.iterrows():
+                    token = row['Mint Address']
+                    value = row['USD Value']
+                    
+                    cprint(f"\n💰 Closing position: {token} (${value:.2f})", "white", "on_cyan")
+                    try:
+                        n.chunk_kill(token, max_usd_order_size, slippage)
+                        cprint(f"✅ Successfully closed position for {token}", "white", "on_green")
+                    except Exception as e:
+                        cprint(f"❌ Error closing position for {token}: {str(e)}", "white", "on_red")
+                        
+                cprint("\n✨ All Solana positions closed", "white", "on_green")
             
         except Exception as e:
             cprint(f"❌ Error in close_all_positions: {str(e)}", "white", "on_red")
+            traceback.print_exc()
 
     def check_risk_limits(self):
         """Check if any risk limits have been breached"""
@@ -459,9 +492,19 @@ class RiskAgent(BaseAgent):
                 print(f"💡 (AI confirmation disabled in config)")
                 self.close_all_positions()
                 return
-                
-            # Get all current positions using fetch_wallet_holdings_og
-            positions_df = n.fetch_wallet_holdings_og(address)
+            
+            # Get positions from correct exchange
+            if config.EXCHANGE.lower() == 'hyperliquid':
+                positions_list = n.get_hyperliquid_positions()
+                positions_str = "\nCurrent HyperLiquid Positions:\n"
+                for position in positions_list:
+                    positions_str += f"- {position['symbol']}: {position['size']} (PnL: {position['pnl_percent']:.2f}%)\n"
+            else:
+                positions_df = n.fetch_wallet_holdings_og(address)
+                positions_str = "\nCurrent Positions:\n"
+                for _, row in positions_df.iterrows():
+                    if row['USD Value'] > 0:
+                        positions_str += f"- {row['Mint Address']}: {row['Amount']} (${row['USD Value']:.2f})\n"
             
             # Prepare breach context
             if breach_type == "MINIMUM_BALANCE":
@@ -470,12 +513,6 @@ class RiskAgent(BaseAgent):
                 context = f"Current PnL (${current_value:.2f}) has exceeded USD limit (${MAX_LOSS_USD:.2f})"
             else:
                 context = f"Current PnL ({current_value}%) has exceeded percentage limit ({MAX_LOSS_PERCENT}%)"
-            
-            # Format positions for AI
-            positions_str = "\nCurrent Positions:\n"
-            for _, row in positions_df.iterrows():
-                if row['USD Value'] > 0:
-                    positions_str += f"- {row['Mint Address']}: {row['Amount']} (${row['USD Value']:.2f})\n"
                     
             # Get AI recommendation
             prompt = f"""

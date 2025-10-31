@@ -25,21 +25,13 @@ from src.agents.copybot_agent import CopyBotAgent
 # Load environment variables
 load_dotenv()
 
-# 🤖 AI Models Configuration
-# Available APIs (4 configured): deepseek, gemini, xai, openrouter, ollama (local)
-# Model assignments:
-#   • Risk Agent → gemini-2.5-flash (fast monitoring, runs every 15 min)
-#   • Strategy Agent → deepseek-chat (signal analysis)
-#   • Trading Agent → grok-4-fast-reasoning (critical trade decisions)
-#   • Copybot Agent → gemini-2.5-flash (simple mirroring decisions)
-
 # Agent Configuration
 ACTIVE_AGENTS = {
-    'risk': True,       # ✅ Risk management agent (safe - monitoring only)
-    'trading': False,   # ❌ LLM trading agent (test strategy first)
-    'strategy': False,  # ❌ Strategy-based trading agent (needs token list)
-    'copybot': False,   # ❌ CopyBot agent (requires additional setup)
-    'sentiment': False, # ❌ Sentiment agent (disabled - dependencies)
+    'risk': False,      # Risk management agent
+    'trading': False,   # LLM trading agent
+    'strategy': False,  # Strategy-based trading agent
+    'copybot': False,   # CopyBot agent
+    'sentiment': False, # Run sentiment_agent.py directly instead
     # whale_agent is run from whale_agent.py
     # Add more agents here as we build them:
     # 'portfolio': False,  # Future portfolio optimization agent
@@ -104,12 +96,6 @@ def run_agents():
 
 if __name__ == "__main__":
     cprint("\n🌙 Moon Dev AI Agent Trading System Starting...", "white", "on_blue")
-    cprint("\n🤖 AI Models Available:", "white", "on_blue")
-    cprint("  • deepseek-chat (analysis)", "white", "on_blue")
-    cprint("  • gemini-2.5-flash (fast monitoring)", "white", "on_blue")
-    cprint("  • grok-4-fast-reasoning (critical decisions)", "white", "on_blue")
-    cprint("  • openrouter (200+ models via routing)", "white", "on_blue")
-    cprint("  • ollama (local/free - llama2)", "white", "on_blue")
     cprint("\n📊 Active Agents:", "white", "on_blue")
     for agent, active in ACTIVE_AGENTS.items():
         status = "✅ ON" if active else "❌ OFF"

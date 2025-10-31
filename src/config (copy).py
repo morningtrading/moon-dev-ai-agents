@@ -4,7 +4,7 @@ Built with love by Moon Dev 🚀
 """
 
 # 🔄 Exchange Selection
-EXCHANGE = 'hyperliquid'  # Options: 'solana', 'hyperliquid'
+EXCHANGE = 'solana'  # Options: 'solana', 'hyperliquid'
 
 # 💰 Trading Configuration
 USDC_ADDRESS = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"  # Never trade or close

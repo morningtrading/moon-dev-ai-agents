@@ -33,27 +33,39 @@ if aster_bots_path not in sys.path:
 try:
     from aster_api import AsterAPI  # type: ignore
     from aster_funcs import AsterFuncs  # type: ignore
+    ASTER_AVAILABLE = True
 except ImportError as e:
-    cprint(f"❌ Failed to import Aster modules: {e}", "red")
-    cprint(f"Make sure Aster-Dex-Trading-Bots exists at: {aster_bots_path}", "yellow")
-    sys.exit(1)
+    cprint(f"⚠️  Aster modules not found: {e}", "yellow")
+    cprint(f"To enable Aster trading, install: pip install aster-dex-trading-bots", "yellow")
+    cprint(f"Or clone: git clone https://github.com/[repo]/Aster-Dex-Trading-Bots {aster_bots_path}", "yellow")
+    ASTER_AVAILABLE = False
+    AsterAPI = None
+    AsterFuncs = None
 
 # Load environment variables
 load_dotenv()
 
-# Get API keys
-ASTER_API_KEY = os.getenv('ASTER_API_KEY')
-ASTER_API_SECRET = os.getenv('ASTER_API_SECRET')
+# Initialize API (global instance) - only if Aster is available
+api = None
+funcs = None
 
-# Verify API keys
-if not ASTER_API_KEY or not ASTER_API_SECRET:
-    cprint("❌ ASTER API keys not found in .env file!", "red")
-    cprint("Please add ASTER_API_KEY and ASTER_API_SECRET to your .env file", "yellow")
-    sys.exit(1)
-
-# Initialize API (global instance)
-api = AsterAPI(ASTER_API_KEY, ASTER_API_SECRET)
-funcs = AsterFuncs(api)
+if ASTER_AVAILABLE:
+    # Get API keys
+    ASTER_API_KEY = os.getenv('ASTER_API_KEY')
+    ASTER_API_SECRET = os.getenv('ASTER_API_SECRET')
+    
+    # Verify API keys
+    if not ASTER_API_KEY or not ASTER_API_SECRET:
+        cprint("⚠️  ASTER API keys not found in .env file (Aster trading disabled)", "yellow")
+        cprint("Please add ASTER_API_KEY and ASTER_API_SECRET to your .env file to enable Aster trading", "yellow")
+        ASTER_AVAILABLE = False
+    else:
+        try:
+            api = AsterAPI(ASTER_API_KEY, ASTER_API_SECRET)
+            funcs = AsterFuncs(api)
+        except Exception as e:
+            cprint(f"⚠️  Failed to initialize Aster API: {e}", "yellow")
+            ASTER_AVAILABLE = False
 
 # ============================================================================
 # CONFIGURATION

@@ -14,7 +14,7 @@ import time
 import json
 import numpy as np
 import datetime
-import pandas_ta as ta
+import talib as ta  # Using TA-Lib instead of pandas_ta (which requires Python 3.12+)
 from datetime import datetime, timedelta
 from termcolor import colored, cprint
 import solders
@@ -393,10 +393,12 @@ def get_data(address, days_back_4_data, timeframe):
         df.to_csv(temp_file)
         print(f"🔄 Moon Dev cached data for {address[:4]}")
 
-        # Calculate indicators
-        df['MA20'] = ta.sma(df['Close'], length=20)
-        df['RSI'] = ta.rsi(df['Close'], length=14)
-        df['MA40'] = ta.sma(df['Close'], length=40)
+        # Calculate indicators using TA-Lib
+        close_prices = df['Close'].values.astype(float)
+        
+        df['MA20'] = ta.SMA(close_prices, timeperiod=20)
+        df['RSI'] = ta.RSI(close_prices, timeperiod=14)
+        df['MA40'] = ta.SMA(close_prices, timeperiod=40)
 
         df['Price_above_MA20'] = df['Close'] > df['MA20']
         df['Price_above_MA40'] = df['Close'] > df['MA40']
@@ -1166,19 +1168,107 @@ def ai_entry(symbol, amount):
     cprint("✨ AI Agent completed position entry", "white", "on_blue")
 
 def get_token_balance_usd(token_mint_address):
-    """Get the USD value of a token position for Moon Dev's wallet 🌙"""
+    """Get the USD value of a token position - routes to correct exchange"""
     try:
-        # Get the position data using existing function
-        df = fetch_wallet_token_single(address, token_mint_address)  # Using address from config
-        
-        if df.empty:
-            print(f"🔍 No position found for {token_mint_address[:8]}")
-            return 0.0
+        # Route to correct exchange based on config
+        if EXCHANGE.lower() == 'hyperliquid':
+            return get_hyperliquid_position_value_usd(token_mint_address)
+        else:
+            # Solana: Get the position data using existing function
+            df = fetch_wallet_token_single(address, token_mint_address)  # Using address from config
             
-        # Get the USD Value from the dataframe
-        usd_value = df['USD Value'].iloc[0]
-        return float(usd_value)
+            if df.empty:
+                print(f"🔍 No position found for {token_mint_address[:8]}")
+                return 0.0
+                
+            # Get the USD Value from the dataframe
+            usd_value = df['USD Value'].iloc[0]
+            return float(usd_value)
         
     except Exception as e:
         print(f"❌ Error getting token balance: {str(e)}")
         return 0.0
+
+# ============================================================================
+# HYPERLIQUID PORTFOLIO FUNCTIONS
+# ============================================================================
+
+def get_hyperliquid_account():
+    """Initialize and return HyperLiquid account from environment"""
+    try:
+        import eth_account
+        private_key = os.getenv('HYPER_LIQUID_ETH_PRIVATE_KEY')
+        if not private_key:
+            raise ValueError("🚨 HYPER_LIQUID_ETH_PRIVATE_KEY not found in .env file!")
+        return eth_account.Account.from_key(private_key)
+    except Exception as e:
+        cprint(f"❌ Error initializing HyperLiquid account: {str(e)}", "white", "on_red")
+        raise
+
+def get_hyperliquid_portfolio_value():
+    """Calculate total HyperLiquid portfolio value in USD"""
+    try:
+        from src.nice_funcs_hyperliquid import get_account_value, get_all_positions
+        from hyperliquid.info import Info
+        from hyperliquid.utils import constants
+        
+        account = get_hyperliquid_account()
+        
+        # Get total account value
+        total_value = get_account_value(account)
+        
+        cprint(f"💎 HyperLiquid Portfolio Value: ${total_value:,.2f} 🌙", "white", "on_green")
+        return total_value
+        
+    except Exception as e:
+        cprint(f"❌ Error calculating HyperLiquid portfolio: {str(e)}", "white", "on_red")
+        import traceback
+        traceback.print_exc()
+        return 0.0
+
+def get_hyperliquid_positions():
+    """Get all open HyperLiquid positions"""
+    try:
+        from src.nice_funcs_hyperliquid import get_all_positions
+        account = get_hyperliquid_account()
+        positions = get_all_positions(account)
+        return positions
+    except Exception as e:
+        cprint(f"❌ Error getting HyperLiquid positions: {str(e)}", "white", "on_red")
+        return []
+
+def get_hyperliquid_position_value_usd(symbol):
+    """Get USD value of a specific HyperLiquid position"""
+    try:
+        from src.nice_funcs_hyperliquid import get_position, ask_bid
+        account = get_hyperliquid_account()
+        
+        positions, im_in_pos, pos_size, pos_sym, entry_px, pnl_perc, is_long = get_position(symbol, account)
+        
+        if not im_in_pos:
+            print(f"🔍 No position found for {symbol}")
+            return 0.0
+        
+        # Get current price
+        ask, bid, _ = ask_bid(symbol)
+        mid_price = (ask + bid) / 2
+        
+        # Calculate position value
+        position_value = abs(float(pos_size)) * mid_price
+        return position_value
+        
+    except Exception as e:
+        print(f"❌ Error getting {symbol} position value: {str(e)}")
+        return 0.0
+
+def close_hyperliquid_position(symbol):
+    """Close a HyperLiquid position"""
+    try:
+        from src.nice_funcs_hyperliquid import kill_switch
+        account = get_hyperliquid_account()
+        result = kill_switch(symbol, account)
+        cprint(f"✅ Closed HyperLiquid {symbol} position", "white", "on_green")
+        return result
+    except Exception as e:
+        cprint(f"❌ Error closing HyperLiquid position {symbol}: {str(e)}", "white", "on_red")
+        return None

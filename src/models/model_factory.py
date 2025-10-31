@@ -83,6 +83,11 @@ class ModelFactory:
             cprint(f"  ├─ Looking for {key_name}...", "cyan")
             
             if api_key := os.getenv(key_name):
+                # Skip placeholder API keys (not configured)
+                if api_key.startswith('your_') or '_here' in api_key:
+                    cprint(f"  └─ ℹ️  {key_name} not configured (skipped)", "blue")
+                    continue
+                
                 try:
                     cprint(f"  ├─ Found {key_name} ({len(api_key)} chars)", "green")
                     cprint(f"  ├─ Getting model class for {model_type}...", "cyan")
@@ -139,13 +144,13 @@ class ModelFactory:
                 initialized = True
                 cprint("✨ Successfully initialized Ollama", "green")
             else:
-                cprint("⚠️ Ollama server not available - make sure 'ollama serve' is running", "yellow")
+                cprint("ℹ️ Ollama server not running (optional - can be started with 'ollama serve')", "blue")
         except Exception as e:
-            cprint(f"❌ Failed to initialize Ollama: {str(e)}", "red")
+            cprint(f"ℹ️ Ollama not available: {type(e).__name__}", "blue")
+            cprint(f"💡 To use Ollama, start it with: ollama serve", "blue")
         
         cprint("\n" + "═" * 50, "cyan")
         cprint(f"📊 Initialization Summary:", "cyan")
-        cprint(f"  ├─ Models attempted: {len(self._get_api_key_mapping()) + 1}", "cyan")  # +1 for Ollama
         cprint(f"  ├─ Models initialized: {len(self._models)}", "cyan")
         cprint(f"  └─ Available models: {list(self._models.keys())}", "cyan")
         

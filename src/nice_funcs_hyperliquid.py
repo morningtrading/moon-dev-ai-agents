@@ -17,7 +17,7 @@ import time
 import requests
 import pandas as pd
 import numpy as np
-import pandas_ta as ta
+import talib as ta  # Using TA-Lib instead of pandas_ta (which requires Python 3.12+)
 import datetime
 from datetime import timedelta
 from termcolor import colored, cprint
@@ -114,12 +114,14 @@ def get_sz_px_decimals(symbol):
     print(f'{symbol} price: {ask} | sz decimals: {sz_decimals} | px decimals: {px_decimals}')
     return sz_decimals, px_decimals
 
-def get_position(symbol, account):
+def get_position(symbol, account, user_address=None):
     """Get current position for a symbol"""
     print(f'{colored("Getting position for", "cyan")} {colored(symbol, "yellow")}')
 
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
-    user_state = info.user_state(account.address)
+    # Use main account address if provided, otherwise use API wallet address
+    query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
+    user_state = info.user_state(query_address)
 
     positions = []
     for position in user_state["assetPositions"]:
@@ -308,10 +310,12 @@ def get_current_price(symbol):
     mid_price = (ask + bid) / 2
     return mid_price
 
-def get_account_value(account):
+def get_account_value(account, user_address=None):
     """Get total account value"""
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
-    user_state = info.user_state(account.address)
+    # Use main account address if provided, otherwise use API wallet address
+    query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
+    user_state = info.user_state(query_address)
     account_value = float(user_state["marginSummary"]["accountValue"])
     print(f'Account value: ${account_value:,.2f}')
     return account_value
@@ -408,20 +412,24 @@ def close_position(symbol, account):
     return kill_switch(symbol, account)
 
 # Additional helper functions for agents
-def get_balance(account):
+def get_balance(account, user_address=None):
     """Get USDC balance"""
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
-    user_state = info.user_state(account.address)
+    # Use main account address if provided, otherwise use API wallet address
+    query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
+    user_state = info.user_state(query_address)
 
     # Get withdrawable balance (free balance)
     balance = float(user_state["withdrawable"])
     print(f'Available balance: ${balance:,.2f}')
     return balance
 
-def get_all_positions(account):
+def get_all_positions(account, user_address=None):
     """Get all open positions"""
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
-    user_state = info.user_state(account.address)
+    # Use main account address if provided, otherwise use API wallet address
+    query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
+    user_state = info.user_state(query_address)
 
     positions = []
     for position in user_state["assetPositions"]:

@@ -37,10 +37,13 @@ class OllamaModel(BaseModel):
         
     def initialize_client(self):
         """Initialize the Ollama client connection"""
+        self.client_available = False
         try:
-            response = requests.get(f"{self.base_url}/tags")
+            # Try to connect with a short timeout
+            response = requests.get(f"{self.base_url}/tags", timeout=2)
             if response.status_code == 200:
                 cprint(f"✨ Successfully connected to Ollama API", "green")
+                self.client_available = True
                 # Print available models
                 models = response.json().get("models", [])
                 if models:
@@ -54,15 +57,21 @@ class OllamaModel(BaseModel):
                     cprint(f"   ollama pull {self.model_name}", "yellow")
             else:
                 cprint(f"⚠️ Ollama API returned status code: {response.status_code}", "yellow")
-                raise ConnectionError(f"Ollama API returned status code: {response.status_code}")
+                cprint("💡 Ollama server is not responding. Start with: ollama serve", "yellow")
+                self.client_available = False
         except requests.exceptions.ConnectionError:
-            cprint("❌ Could not connect to Ollama API - is the server running?", "red")
+            cprint("❌ Could not connect to Ollama API - is the server running?", "yellow")
             cprint("💡 Start the server with: ollama serve", "yellow")
-            raise
+            cprint("📖 Install Ollama: https://ollama.ai", "yellow")
+            self.client_available = False
+        except requests.exceptions.Timeout:
+            cprint("❌ Ollama connection timeout - server may not be running", "yellow")
+            cprint("💡 Start the server with: ollama serve", "yellow")
+            self.client_available = False
         except Exception as e:
-            cprint(f"❌ Could not connect to Ollama API: {str(e)}", "red")
+            cprint(f"❌ Could not connect to Ollama API: {str(e)}", "yellow")
             cprint("💡 Make sure Ollama is running locally (ollama serve)", "yellow")
-            raise
+            self.client_available = False
 
     @property
     def model_type(self):
@@ -71,11 +80,7 @@ class OllamaModel(BaseModel):
     
     def is_available(self):
         """Check if the model is available"""
-        try:
-            response = requests.get(f"{self.base_url}/tags")
-            return response.status_code == 200
-        except:
-            return False
+        return getattr(self, 'client_available', False)
     
     def generate_response(self, system_prompt, user_content, temperature=0.7, max_tokens=None, **kwargs):
         """Generate a response using the Ollama model
