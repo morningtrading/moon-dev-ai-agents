@@ -398,4 +398,4 @@ The agent handles this by queuing jobs and processing them as workers become ava
 
 **🌙 Built with love by Moon Dev - Democratizing AI agent development**
 
-*Part of the Moon Dev AI Agents for Trading ecosystem - 48+ specialized agents, all open source.*
+*Part of the Moon Dev AI Agents for Trading ecosystem - 48+ specialized agents.*
