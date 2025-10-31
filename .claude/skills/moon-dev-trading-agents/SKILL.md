@@ -317,7 +317,6 @@ nf.close_position("BTC")
 
 This is an **experimental, educational project**:
 - No guarantees of profitability
-- Open source and free
 - YouTube-driven development
 - Community-supported via Discord
 - No official token (avoid scams)
