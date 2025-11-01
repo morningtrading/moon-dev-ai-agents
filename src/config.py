@@ -25,8 +25,8 @@ MONITORED_TOKENS = [
 tokens_to_trade = MONITORED_TOKENS  # Using the same list for trading
 
 # ⚡ HyperLiquid Configuration
-HYPERLIQUID_SYMBOLS = ['BTC', 'ETH', 'SOL']  # Symbols to trade on HyperLiquid perps
-HYPERLIQUID_LEVERAGE = 5  # Default leverage for HyperLiquid trades (1-50)
+HYPERLIQUID_SYMBOLS = ['BTC', 'ETH', 'SOL','BNB']  # Symbols to trade on HyperLiquid perps
+HYPERLIQUID_LEVERAGE = 3  # Default leverage for HyperLiquid trades (1-50)
 
 # 🔄 Exchange-Specific Token Lists
 # Use this to determine which tokens/symbols to trade based on active exchange
@@ -70,8 +70,8 @@ SLEEP_BETWEEN_RUNS_MINUTES = 15  # How long to sleep between agent runs 🕒
 USE_PERCENTAGE = False  # If True, use percentage-based limits. If False, use USD-based limits
 
 # USD-based limits (used if USE_PERCENTAGE is False)
-MAX_LOSS_USD = 25  # Maximum loss in USD before stopping trading
-MAX_GAIN_USD = 25 # Maximum gain in USD before stopping trading
+MAX_LOSS_USD = 40  # Maximum loss in USD before stopping trading
+MAX_GAIN_USD = 250 # Maximum gain in USD before stopping trading
 
 # USD MINIMUM BALANCE RISK CONTROL
 MINIMUM_BALANCE_USD = 50  # If balance falls below this, risk agent will consider closing all positions
@@ -97,16 +97,16 @@ SAVE_OHLCV_DATA = False  # 🌙 Set to True to save data permanently, False will
 
 # AI Model Settings 🤖
 # Available APIs: deepseek, gemini, xai, openrouter, ollama (local)
-AI_MODEL = "deepseek-chat"  # Default model for general analysis
-AI_MODEL_FALLBACK = "gemini-2.5-flash"  # Fast fallback if deepseek unavailable
-AI_MODEL_CRITICAL = "grok-4-fast-reasoning"  # For critical trading decisions
+AI_MODEL = "claude-haiku-4-5-20251001"  # Default model for general analysis
+AI_MODEL_FALLBACK = "claude-haiku-4-5-20251001"  # Fast fallback if deepseek unavailable
+AI_MODEL_CRITICAL = "claude-haiku-4-5-20251001"  # For critical trading decisions
 
 # Per-agent model selection (optional overrides)
 AI_MODELS_BY_AGENT = {
-    "risk": "gemini-2.5-flash",  # Fast monitoring (runs every 15 min)
+    "risk": "claude-haiku-4-5-20251001",  # Fast monitoring (runs every 15 min)
     "strategy": "deepseek-chat",  # Signal analysis
     "trading": "grok-4-fast-reasoning",  # Critical decisions (xAI's best)
-    "copybot": "gemini-2.5-flash",  # Simple mirroring
+    "copybot": "claude-haiku-4-5-20251001",  # Simple mirroring
 }
 
 AI_MAX_TOKENS = 1024  # Max tokens for response

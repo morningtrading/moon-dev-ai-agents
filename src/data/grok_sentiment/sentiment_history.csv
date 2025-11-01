@@ -1,0 +1,12 @@
+timestamp,token,sentiment_score,reasoning,confidence,market_mood,volume
+2025-11-01 22:58:11.405327,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-01 22:58:14.352756,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-01 22:58:17.405007,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-01 23:13:13.140333,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-01 23:13:16.122479,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-01 23:13:19.090502,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-01 23:13:22.145770,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-01 23:13:25.125826,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-01 23:13:28.134711,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-01 23:13:31.368466,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-01 23:13:34.340689,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,greed,medium

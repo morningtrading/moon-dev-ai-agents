@@ -1,0 +1,7 @@
+notes.txt
+
+
+python3 -m src.agents.risk_agent
+
+python3 src/agents/trading_agent.py
+

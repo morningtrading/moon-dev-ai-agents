@@ -17,7 +17,7 @@ import time
 import requests
 import pandas as pd
 import numpy as np
-import talib as ta  # Using TA-Lib instead of pandas_ta (which requires Python 3.12+)
+import ta  # Technical analysis indicators
 import datetime
 from datetime import timedelta
 from termcolor import colored, cprint
@@ -116,8 +116,6 @@ def get_sz_px_decimals(symbol):
 
 def get_position(symbol, account, user_address=None):
     """Get current position for a symbol"""
-    print(f'{colored("Getting position for", "cyan")} {colored(symbol, "yellow")}')
-
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
     # Use main account address if provided, otherwise use API wallet address
     query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
@@ -127,16 +125,10 @@ def get_position(symbol, account, user_address=None):
     for position in user_state["assetPositions"]:
         if position["position"]["coin"] == symbol and float(position["position"]["szi"]) != 0:
             positions.append(position["position"])
-            coin = position["position"]["coin"]
-            pos_size = float(position["position"]["szi"])
-            entry_px = float(position["position"]["entryPx"])
-            pnl_perc = float(position["position"]["returnOnEquity"]) * 100
-            print(f'{colored(f"{coin} position:", "green")} Size: {pos_size} | Entry: ${entry_px} | PnL: {pnl_perc:.2f}%')
 
     im_in_pos = len(positions) > 0
 
     if not im_in_pos:
-        print(f'{colored("No position in", "yellow")} {symbol}')
         return positions, im_in_pos, 0, symbol, 0, 0, True
 
     # Return position details
@@ -145,11 +137,6 @@ def get_position(symbol, account, user_address=None):
     entry_px = float(positions[0]["entryPx"])
     pnl_perc = float(positions[0]["returnOnEquity"]) * 100
     is_long = float(pos_size) > 0
-
-    if is_long:
-        print(f'{colored("LONG", "green")} position')
-    else:
-        print(f'{colored("SHORT", "red")} position')
 
     return positions, im_in_pos, pos_size, pos_sym, entry_px, pnl_perc, is_long
 
@@ -311,13 +298,22 @@ def get_current_price(symbol):
     return mid_price
 
 def get_account_value(account, user_address=None):
-    """Get total account value"""
+    """Get total account value from HyperLiquid"""
     info = Info(constants.MAINNET_API_URL, skip_ws=True)
     # Use main account address if provided, otherwise use API wallet address
     query_address = user_address or os.getenv('HYPER_LIQUID_PUBLIC_ADDRESS') or account.address
     user_state = info.user_state(query_address)
-    account_value = float(user_state["marginSummary"]["accountValue"])
-    print(f'Account value: ${account_value:,.2f}')
+    
+    # Get account value from marginSummary
+    margin_summary = user_state.get("marginSummary", {})
+    account_value = float(margin_summary.get("accountValue", 0))
+    
+    # Debug: show what we're getting
+    print(f'\n💰 HyperLiquid Account Details:')
+    print(f'  Account Value: ${account_value:,.2f}')
+    print(f'  Total Margin Used: ${float(margin_summary.get("totalMarginUsed", 0)):,.2f}')
+    print(f'  Total Leverage: {float(margin_summary.get("totalNtlPos", 0)) / float(margin_summary.get("totalMarginUsed", 1)):,.2f}x' if float(margin_summary.get("totalMarginUsed", 0)) > 0 else "  Total Leverage: 0x")
+    
     return account_value
 
 def market_buy(symbol, usd_size, account):
@@ -474,11 +470,7 @@ def _get_account_from_env():
 def _get_ohlcv(symbol, interval, start_time, end_time, batch_size=BATCH_SIZE):
     """Internal function to fetch OHLCV data from Hyperliquid"""
     global timestamp_offset
-    print(f'\n🔍 Requesting data for {symbol}:')
-    print(f'📊 Batch Size: {batch_size}')
-    print(f'⏰ Interval: {interval}')
-    print(f'🚀 Start: {start_time.strftime("%Y-%m-%d %H:%M:%S")} UTC')
-    print(f'🎯 End: {end_time.strftime("%Y-%m-%d %H:%M:%S")} UTC')
+    print(f'\n📊 Fetching {symbol} data: {interval} | {start_time.strftime("%Y-%m-%d")} to {end_time.strftime("%Y-%m-%d")}')
 
     start_ts = int(start_time.timestamp() * 1000)
     end_ts = int(end_time.timestamp() * 1000)
@@ -495,10 +487,6 @@ def _get_ohlcv(symbol, interval, start_time, end_time, batch_size=BATCH_SIZE):
         }
     }
 
-    print(f'\n📤 API Request Payload:')
-    print(f'   URL: {BASE_URL}')
-    print(f'   Payload: {request_payload}')
-
     for attempt in range(MAX_RETRIES):
         try:
             response = requests.post(
@@ -507,10 +495,6 @@ def _get_ohlcv(symbol, interval, start_time, end_time, batch_size=BATCH_SIZE):
                 json=request_payload,
                 timeout=10
             )
-
-            print(f'\n📥 API Response:')
-            print(f'   Status Code: {response.status_code}')
-            print(f'   Response Text: {response.text[:500]}...' if len(response.text) > 500 else f'   Response Text: {response.text}')
 
             if response.status_code == 200:
                 snapshot_data = response.json()
@@ -521,7 +505,6 @@ def _get_ohlcv(symbol, interval, start_time, end_time, batch_size=BATCH_SIZE):
                         system_current_date = datetime.datetime.utcnow()
                         expected_latest_timestamp = system_current_date
                         timestamp_offset = latest_api_timestamp - expected_latest_timestamp
-                        print(f"⏱️ Calculated timestamp offset: {timestamp_offset}")
 
                     # Adjust timestamps
                     for candle in snapshot_data:
@@ -531,9 +514,7 @@ def _get_ohlcv(symbol, interval, start_time, end_time, batch_size=BATCH_SIZE):
 
                     first_time = datetime.datetime.utcfromtimestamp(snapshot_data[0]['t'] / 1000)
                     last_time = datetime.datetime.utcfromtimestamp(snapshot_data[-1]['t'] / 1000)
-                    print(f'✨ Received {len(snapshot_data)} candles')
-                    print(f'📈 First: {first_time}')
-                    print(f'📉 Last: {last_time}')
+                    print(f'✨ {len(snapshot_data)} candles | {first_time.strftime("%Y-%m-%d")} to {last_time.strftime("%Y-%m-%d")}')
                     return snapshot_data
                 print('❌ No data returned by API')
                 return None
@@ -583,13 +564,6 @@ def _process_data_to_df(snapshot_data):
         # Ensure numeric columns are float64
         numeric_cols = ['open', 'high', 'low', 'close', 'volume']
         df[numeric_cols] = df[numeric_cols].astype('float64')
-
-        print("\n📊 OHLCV Data Types:")
-        print(df.dtypes)
-
-        print("\n📈 First 5 rows of data:")
-        print(df.head())
-
         return df
     return pd.DataFrame()
 
@@ -599,26 +573,32 @@ def add_technical_indicators(df):
         return df
 
     try:
-        print("\n🔧 Adding technical indicators...")
-
         # Ensure numeric columns are float64
         numeric_cols = ['open', 'high', 'low', 'close', 'volume']
         df[numeric_cols] = df[numeric_cols].astype('float64')
 
-        # Add basic indicators
-        df['sma_20'] = ta.sma(df['close'], length=20)
-        df['sma_50'] = ta.sma(df['close'], length=50)
-        df['rsi'] = ta.rsi(df['close'], length=14)
+        # Add basic indicators using ta package
+        from ta.trend import SMAIndicator, MACD
+        from ta.momentum import RSIIndicator
+        from ta.volatility import BollingerBands
+        
+        df['sma_20'] = SMAIndicator(close=df['close'], window=20).sma_indicator()
+        df['sma_50'] = SMAIndicator(close=df['close'], window=50).sma_indicator()
+        df['rsi'] = RSIIndicator(close=df['close'], window=14).rsi()
 
         # Add MACD
-        macd = ta.macd(df['close'])
-        df = pd.concat([df, macd], axis=1)
+        macd_indicator = MACD(close=df['close'])
+        df['macd'] = macd_indicator.macd()
+        df['macd_signal'] = macd_indicator.macd_signal()
+        df['macd_hist'] = macd_indicator.macd_diff()
 
         # Add Bollinger Bands
-        bbands = ta.bbands(df['close'])
-        df = pd.concat([df, bbands], axis=1)
+        bb_indicator = BollingerBands(close=df['close'], window=20, window_dev=2)
+        df['bb_upper'] = bb_indicator.bollinger_hband()
+        df['bb_middle'] = bb_indicator.bollinger_mavg()
+        df['bb_lower'] = bb_indicator.bollinger_lband()
 
-        print("✅ Technical indicators added successfully")
+        print("✅ Indicators added (SMA, RSI, MACD, BB)")
         return df
 
     except Exception as e:

@@ -81,10 +81,10 @@ Built with love by Moon Dev 🚀
 # ============================================================================
 
 # 🏦 EXCHANGE SELECTION
-EXCHANGE = "ASTER"  # Options: "ASTER", "HYPERLIQUID", "SOLANA"
-                     # - "ASTER" = Aster DEX futures (supports long/short)
-                     # - "HYPERLIQUID" = HyperLiquid perpetuals (supports long/short)
-                     # - "SOLANA" = Solana on-chain DEX (long only)
+EXCHANGE = "HYPERLIQUID"  # Options: "ASTER", "HYPERLIQUID", "SOLANA"
+                           # - "ASTER" = Aster DEX futures (supports long/short)
+                           # - "HYPERLIQUID" = HyperLiquid perpetuals (supports long/short)
+                           # - "SOLANA" = Solana on-chain DEX (long only)
 
 # 🌊 AI MODE SELECTION
 USE_SWARM_MODE = True  # True = 6-model swarm consensus (~45-60s per token)
@@ -107,8 +107,8 @@ LONG_ONLY = True  # True = Long positions only (works on all exchanges)
                   # Note: Solana is always LONG_ONLY (exchange limitation)
 
 # 🤖 SINGLE MODEL SETTINGS (only used when USE_SWARM_MODE = False)
-AI_MODEL_TYPE = 'xai'  # Options: 'groq', 'openai', 'claude', 'deepseek', 'xai', 'ollama'
-AI_MODEL_NAME = None   # None = use default, or specify: 'grok-4-fast-reasoning', 'claude-3-5-sonnet-latest', etc.
+AI_MODEL_TYPE = 'claude'  # Options: 'groq', 'openai', 'claude', 'deepseek', 'xai', 'ollama'
+AI_MODEL_NAME = 'claude-haiku-4-5-20251001'   # None = use default, or specify: 'grok-4-fast-reasoning', 'claude-3-5-sonnet-latest', etc.
 AI_TEMPERATURE = 0.7   # Creativity vs precision (0-1)
 AI_MAX_TOKENS = 1024   # Max tokens for AI response
 
@@ -172,8 +172,10 @@ MONITORED_TOKENS = [
 # Add symbols you want to trade (e.g., BTC, ETH, SOL, etc.)
 SYMBOLS = [
     'BTC',      # Bitcoin
-    #'ETH',     # Ethereum
-    #'SOL',     # Solana
+    'ETH',      # Ethereum
+    'SOL',      # Solana
+    'BNB',      # Binance Coin
+    'HYPE',     # Hyperliquid
 ]
 
 # Example: To trade multiple tokens, uncomment the ones you want:
@@ -323,7 +325,7 @@ def monitor_position_pnl(token, check_interval=PNL_CHECK_INTERVAL):
             if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
                 position = n.get_position(token)
             else:
-                position_usd = n.get_token_balance_usd(token)
+                position_usd = n.get_token_balance_usd(token)  # Solana version takes only token
                 if position_usd == 0:
                     cprint(f"✅ Position closed for {token}", "green")
                     return True
@@ -404,7 +406,7 @@ def get_account_balance():
             return balance
         else:
             # SOLANA - get USDC balance
-            balance = n.get_token_balance_usd(USDC_ADDRESS)
+            balance = n.get_token_balance_usd(USDC_ADDRESS)  # Solana version takes only token
             cprint(f"💰 SOLANA USDC Balance: ${balance:,.2f}", "cyan")
             return balance
     except Exception as e:
@@ -511,6 +513,10 @@ class TradingAgent:
     def chat_with_ai(self, system_prompt, user_content):
         """Send prompt to AI model via model factory"""
         try:
+            # Log which model is being used
+            model_name = getattr(self.model, 'model_name', 'Unknown')
+            cprint(f"\n🤖 Querying AI: {model_name} ({AI_MODEL_TYPE})", "cyan")
+            
             response = self.model.generate_response(
                 system_prompt=system_prompt,
                 user_content=user_content,
@@ -651,6 +657,13 @@ FULL DATASET:
             # ============= SWARM MODE =============
             if USE_SWARM_MODE:
                 cprint(f"\n🌊 Analyzing {token[:8]}... with SWARM (6 AI models voting)", "cyan", attrs=['bold'])
+                
+                # Show which models are in the swarm
+                if hasattr(self.swarm, '_models'):
+                    cprint("\n🤖 Active Swarm Models:", "yellow")
+                    for provider, model in self.swarm._models.items():
+                        model_name = getattr(model, 'model_name', 'Unknown')
+                        cprint(f"   - {provider}: {model_name}", "cyan")
 
                 # Format market data for swarm
                 formatted_data = self._format_market_data_for_swarm(token, market_data)
@@ -831,7 +844,11 @@ Example format:
                 
                 try:
                     # Get current position value
-                    current_position = n.get_token_balance_usd(token)
+                    if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
+                        account = n._get_account_from_env()
+                        current_position = n.get_token_balance_usd(token, account)
+                    else:
+                        current_position = n.get_token_balance_usd(token)  # Solana version takes only token
                     target_allocation = amount
                     
                     print(f"🎯 Target allocation: ${target_allocation:.2f} USD")
@@ -872,13 +889,13 @@ Example format:
             action = row['action']
 
             # Check if we have a position
-            current_position = n.get_token_balance_usd(token)
+            if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
+                account = n._get_account_from_env()
+                current_position = n.get_token_balance_usd(token, account)
+            else:
+                current_position = n.get_token_balance_usd(token)  # Solana version takes only token
 
-            cprint(f"\n{'='*60}", "cyan")
-            cprint(f"🎯 Token: {token_short}", "cyan", attrs=['bold'])
-            cprint(f"🤖 Swarm Signal: {action} ({row['confidence']}% confidence)", "yellow", attrs=['bold'])
-            cprint(f"💼 Current Position: ${current_position:.2f}", "white")
-            cprint(f"{'='*60}", "cyan")
+            cprint(f"\n🎯 {token_short} | {action} ({row['confidence']}% conf) | Pos: ${current_position:.2f}", "cyan", attrs=['bold'])
 
             if current_position > 0:
                 # We have a position - take action based on signal
@@ -891,8 +908,7 @@ Example format:
                     except Exception as e:
                         cprint(f"❌ Error closing position: {str(e)}", "white", "on_red")
                 elif action == "NOTHING":
-                    cprint(f"⏸️  DO NOTHING signal - HOLDING POSITION", "white", "on_blue")
-                    cprint(f"💎 Maintaining ${current_position:.2f} position", "cyan")
+                    cprint(f"   💎 Holding ${current_position:.2f} position", "cyan")
                 else:  # BUY
                     cprint(f"✅ BUY signal - KEEPING POSITION", "white", "on_green")
                     cprint(f"💎 Maintaining ${current_position:.2f} position", "cyan")
@@ -923,8 +939,7 @@ Example format:
                         except Exception as e:
                             cprint(f"❌ Error opening short position: {str(e)}", "white", "on_red")
                 elif action == "NOTHING":
-                    cprint(f"⏸️  DO NOTHING signal with no position", "white", "on_blue")
-                    cprint(f"⏭️  Staying out of market", "cyan")
+                    cprint(f"   ⏸️  Staying out (no position)", "cyan")
                 else:  # BUY
                     cprint(f"📈 BUY signal with no position", "white", "on_green")
 
@@ -956,7 +971,7 @@ Example format:
                                     else:
                                         cprint(f"⚠️  Warning: Position verification failed - no position found!", "yellow")
                                 else:
-                                    position_usd = n.get_token_balance_usd(token)
+                                    position_usd = n.get_token_balance_usd(token)  # Solana version takes only token
                                     if position_usd > 0:
                                         cprint(f"📊 Confirmed: ${position_usd:,.2f} position", "green", attrs=['bold'])
                                     else:
@@ -1160,8 +1175,9 @@ def main():
 
             for token in SYMBOLS if EXCHANGE in ["ASTER", "HYPERLIQUID"] else MONITORED_TOKENS:
                 if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
-                    position = n.get_position(token)
-                    if position and position.get('position_amount', 0) != 0:
+                    account = n._get_account_from_env()
+                    position_usd = n.get_token_balance_usd(token, account)
+                    if position_usd > 0:
                         has_position = True
                         monitored_token = token
                         break

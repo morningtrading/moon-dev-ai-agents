@@ -1175,15 +1175,19 @@ def get_token_balance_usd(token_mint_address):
             return get_hyperliquid_position_value_usd(token_mint_address)
         else:
             # Solana: Get the position data using existing function
-            df = fetch_wallet_token_single(address, token_mint_address)  # Using address from config
-            
-            if df.empty:
-                print(f"🔍 No position found for {token_mint_address[:8]}")
-                return 0.0
+            try:
+                df = fetch_wallet_token_single(address, token_mint_address)  # Using address from config
                 
-            # Get the USD Value from the dataframe
-            usd_value = df['USD Value'].iloc[0]
-            return float(usd_value)
+                if df.empty:
+                    print(f"🔍 No position found for {token_mint_address[:8]}")
+                    return 0.0
+                    
+                # Get the USD Value from the dataframe
+                usd_value = df['USD Value'].iloc[0]
+                return float(usd_value)
+            except NameError:
+                # address not defined - return 0
+                return 0.0
         
     except Exception as e:
         print(f"❌ Error getting token balance: {str(e)}")

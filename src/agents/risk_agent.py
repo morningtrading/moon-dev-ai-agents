@@ -48,9 +48,17 @@ import json
 from termcolor import colored, cprint
 from dotenv import load_dotenv
 import openai
-from .. import config
-from .. import nice_funcs as n
-from ..data.ohlcv_collector import collect_all_tokens
+import sys
+from pathlib import Path
+
+# Add project root to path if not already there
+project_root = Path(__file__).parent.parent.parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+from src import config
+from src import nice_funcs as n
+from src.data.ohlcv_collector import collect_all_tokens
 from datetime import datetime, timedelta
 import time
 from src.config import *
@@ -108,12 +116,48 @@ class RiskAgent(BaseAgent):
         self.override_active = False
         self.last_override_check = None
         
-        # Initialize start balance using portfolio value
-        self.start_balance = self.get_portfolio_value()
-        print(f"🏦 Initial Portfolio Balance: ${self.start_balance:.2f}")
+        # Initialize start balance - use saved start balance or current if first run
+        self.start_balance = self.get_or_set_start_balance()
+        print(f"🏦 Start Balance (Session): ${self.start_balance:.2f}")
         
-        self.current_value = self.start_balance
+        self.current_value = self.get_portfolio_value()
+        print(f"💰 Current Balance: ${self.current_value:.2f}")
+        
+        pnl = self.current_value - self.start_balance
+        print(f"📈 Session PnL: ${pnl:.2f} ({(pnl/self.start_balance*100):+.2f}% from start)")
+        
         cprint("🛡️ Risk Agent initialized!", "white", "on_blue")
+    
+    def get_or_set_start_balance(self):
+        """
+        Get saved start balance or set new one if first run.
+        This ensures PnL tracking persists across agent restarts.
+        Delete src/data/risk_agent_start_balance.txt to reset.
+        """
+        try:
+            os.makedirs('src/data', exist_ok=True)
+            start_balance_file = 'src/data/risk_agent_start_balance.txt'
+            
+            if os.path.exists(start_balance_file):
+                # Read existing start balance
+                with open(start_balance_file, 'r') as f:
+                    start_balance = float(f.read().strip())
+                print(f"💾 Loaded saved start balance: ${start_balance:.2f}")
+                print(f"📌 To reset PnL tracking, delete: {start_balance_file}")
+                return start_balance
+            else:
+                # First run - save current portfolio value as start balance
+                current_value = self.get_portfolio_value()
+                with open(start_balance_file, 'w') as f:
+                    f.write(str(current_value))
+                print(f"🎆 First run! Saved start balance: ${current_value:.2f}")
+                print(f"💾 Start balance saved to: {start_balance_file}")
+                return current_value
+                
+        except Exception as e:
+            print(f"⚠️ Error handling start balance: {e}")
+            # Fallback to current value
+            return self.get_portfolio_value()
         
     def get_portfolio_value(self):
         """Calculate total portfolio value in USD"""
@@ -345,10 +389,58 @@ class RiskAgent(BaseAgent):
         """Check if PnL limits have been hit"""
         try:
             self.current_value = self.get_portfolio_value()
+            current_pnl = self.current_value - self.start_balance
+            pnl_percent = ((self.current_value - self.start_balance) / self.start_balance * 100) if self.start_balance > 0 else 0
+            
+            # Display current status with criteria
+            print("\n" + "="*70)
+            print("🛡️ RISK AGENT STATUS CHECK")
+            print("="*70)
+            
+            print("\n📊 PORTFOLIO METRICS:")
+            print(f"  💵 Start Balance (Account Value):  ${self.start_balance:>12,.2f}")
+            print(f"  💰 Current Balance (Account Value): ${self.current_value:>12,.2f}")
+            print(f"  📈 Current PnL:                    ${current_pnl:>12,.2f} ({pnl_percent:+.2f}%)")
+            print(f"\n  📌 Note: Shows account collateral balance, not notional position value")
+            
+            print("\n🎯 RISK LIMITS & STATUS:")
+            
+            # Minimum Balance Check
+            balance_status = "✅ SAFE" if self.current_value >= MINIMUM_BALANCE_USD else "⛔ BREACH"
+            balance_percent = (self.current_value / MINIMUM_BALANCE_USD * 100) if MINIMUM_BALANCE_USD > 0 else 0
+            print(f"  🏦 Minimum Balance Limit:")
+            print(f"     Limit: ${MINIMUM_BALANCE_USD:>12,.2f}")
+            print(f"     Status: {balance_status} ({balance_percent:.1f}% of limit)")
+            
+            # PnL Limits Check
+            if USE_PERCENTAGE:
+                loss_status = "✅ SAFE" if abs(current_pnl) < MAX_LOSS_PERCENT else "⛔ BREACH"
+                gain_status = "✅ SAFE" if abs(current_pnl) < MAX_GAIN_PERCENT else "🎯 TARGET HIT"
+                print(f"  📉 Max Loss Limit (Percent):")
+                print(f"     Limit: {MAX_LOSS_PERCENT:.2f}%")
+                print(f"     Current: {current_pnl:.2f}%")
+                print(f"     Status: {loss_status}")
+                print(f"  📈 Max Gain Limit (Percent):")
+                print(f"     Limit: {MAX_GAIN_PERCENT:.2f}%")
+                print(f"     Current: {pnl_percent:.2f}%")
+                print(f"     Status: {gain_status}")
+            else:
+                loss_status = "✅ SAFE" if current_pnl > -MAX_LOSS_USD else "⛔ BREACH"
+                gain_status = "✅ SAFE" if current_pnl < MAX_GAIN_USD else "🎯 TARGET HIT"
+                print(f"  📉 Max Loss Limit (USD):")
+                print(f"     Limit: -${MAX_LOSS_USD:>11,.2f} (stop at this loss)")
+                print(f"     Current: ${current_pnl:>12,.2f}")
+                print(f"     Status: {loss_status}")
+                print(f"  📈 Max Gain Limit (USD):")
+                print(f"     Limit: ${MAX_GAIN_USD:>12,.2f} (take profit at this gain)")
+                print(f"     Current: ${current_pnl:>12,.2f}")
+                print(f"     Status: {gain_status}")
+            
+            print("\n" + "="*70)
             
             if USE_PERCENTAGE:
                 # Calculate percentage change
-                percent_change = ((self.current_value - self.start_balance) / self.start_balance) * 100
+                percent_change = pnl_percent
                 
                 if percent_change <= -MAX_LOSS_PERCENT:
                     cprint("\n🛑 MAXIMUM LOSS PERCENTAGE REACHED", "white", "on_red")
@@ -362,7 +454,7 @@ class RiskAgent(BaseAgent):
                     
             else:
                 # Calculate USD change
-                usd_change = self.current_value - self.start_balance
+                usd_change = current_pnl
                 
                 if usd_change <= -MAX_LOSS_USD:
                     cprint("\n🛑 MAXIMUM LOSS USD REACHED", "white", "on_red")
@@ -374,6 +466,7 @@ class RiskAgent(BaseAgent):
                     cprint(f"📈 Gain: ${usd_change:.2f} (Limit: ${MAX_GAIN_USD:.2f})", "green")
                     return True
             
+            print("✅ All risk limits OK")
             return False
             
         except Exception as e:
@@ -608,10 +701,52 @@ Then explain your reasoning.
             # Get current PnL
             current_pnl = self.get_current_pnl()
             current_balance = self.get_portfolio_value()
+            pnl_percent = ((current_balance - self.start_balance) / self.start_balance * 100) if self.start_balance > 0 else 0
             
-            print(f"\n💰 Current PnL: ${current_pnl:.2f}")
-            print(f"💼 Current Balance: ${current_balance:.2f}")
-            print(f"📉 Minimum Balance Limit: ${MINIMUM_BALANCE_USD:.2f}")
+            # Display current status with criteria
+            print("\n" + "="*70)
+            print("🛡️ RISK AGENT STATUS CHECK")
+            print("="*70)
+            
+            print("\n📊 PORTFOLIO METRICS:")
+            print(f"  💵 Start Balance:      ${self.start_balance:>12,.2f}")
+            print(f"  💰 Current Balance:    ${current_balance:>12,.2f}")
+            print(f"  📈 Current PnL:        ${current_pnl:>12,.2f} ({pnl_percent:+.2f}%)")
+            
+            print("\n🎯 RISK LIMITS & STATUS:")
+            
+            # Minimum Balance Check
+            balance_status = "✅ SAFE" if current_balance >= MINIMUM_BALANCE_USD else "⛔ BREACH"
+            balance_percent = (current_balance / MINIMUM_BALANCE_USD * 100) if MINIMUM_BALANCE_USD > 0 else 0
+            print(f"  🏦 Minimum Balance Limit:")
+            print(f"     Limit: ${MINIMUM_BALANCE_USD:>12,.2f}")
+            print(f"     Status: {balance_status} ({balance_percent:.1f}% of limit)")
+            
+            # PnL Limits Check
+            if USE_PERCENTAGE:
+                loss_status = "✅ SAFE" if abs(current_pnl) < MAX_LOSS_PERCENT else "⛔ BREACH"
+                gain_status = "✅ SAFE" if abs(current_pnl) < MAX_GAIN_PERCENT else "🎯 TARGET HIT"
+                print(f"  📉 Max Loss Limit (Percent):")
+                print(f"     Limit: {MAX_LOSS_PERCENT:.2f}%")
+                print(f"     Current: {current_pnl:.2f}%")
+                print(f"     Status: {loss_status}")
+                print(f"  📈 Max Gain Limit (Percent):")
+                print(f"     Limit: {MAX_GAIN_PERCENT:.2f}%")
+                print(f"     Current: {pnl_percent:.2f}%")
+                print(f"     Status: {gain_status}")
+            else:
+                loss_status = "✅ SAFE" if abs(current_pnl) < MAX_LOSS_USD else "⛔ BREACH"
+                gain_status = "✅ SAFE" if abs(current_pnl) < MAX_GAIN_USD else "🎯 TARGET HIT"
+                print(f"  📉 Max Loss Limit (USD):")
+                print(f"     Limit: ${MAX_LOSS_USD:>12,.2f}")
+                print(f"     Current: ${current_pnl:>12,.2f}")
+                print(f"     Status: {loss_status}")
+                print(f"  📈 Max Gain Limit (USD):")
+                print(f"     Limit: ${MAX_GAIN_USD:>12,.2f}")
+                print(f"     Current: ${current_pnl:>12,.2f}")
+                print(f"     Status: {gain_status}")
+            
+            print("\n" + "="*70)
             
             # Check minimum balance limit
             if current_balance < MINIMUM_BALANCE_USD:
@@ -638,11 +773,33 @@ Then explain your reasoning.
             print(f"❌ Error checking risk limits: {str(e)}")
             return False
 
+def print_countdown_timer(seconds, interval=5):
+    """Print a countdown timer with progress bar"""
+    import sys
+    bar_length = 40
+    
+    for remaining in range(seconds, 0, -1):
+        percent = (seconds - remaining) / seconds
+        filled = int(bar_length * percent)
+        bar = '█' * filled + '░' * (bar_length - filled)
+        
+        mins = remaining // 60
+        secs = remaining % 60
+        time_str = f"{mins:02d}:{secs:02d}"
+        
+        sys.stdout.write(f"\r⏱️  Next check in: [{bar}] {time_str}")
+        sys.stdout.flush()
+        
+        time.sleep(1)
+    
+    print()  # New line after timer completes
+
 def main():
     """Main function to run the risk agent"""
     cprint("🛡🛡🛡️ Risk Agent Starting...", "white", "on_blue")
     
     agent = RiskAgent()
+    check_interval = 30  # 5 minutes in seconds
     
     while True:
         try:
@@ -652,8 +809,10 @@ def main():
             # Always check PnL limits
             agent.check_pnl_limits()
             
-            # Sleep for 5 minutes before next check
-            time.sleep(300)
+            # Print countdown timer with progress bar
+            print("\n" + "="*70)
+            print_countdown_timer(check_interval)
+            print("="*70)
                 
         except KeyboardInterrupt:
             print("\n👋 Risk Agent shutting down gracefully...")

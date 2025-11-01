@@ -153,7 +153,11 @@ class OpenRouterModel(BaseModel):
             # OpenRouter uses OpenAI-compatible API
             self.client = OpenAI(
                 api_key=self.api_key,
-                base_url="https://openrouter.ai/api/v1"
+                base_url="https://openrouter.ai/api/v1",
+                default_headers={
+                    "HTTP-Referer": "https://github.com/moon-dev-ai/trading",  # Optional - for rankings
+                    "X-Title": "Moon Dev AI Trading Agent"  # Optional - for rankings
+                }
             )
             cprint(f"  ├─ ✅ OpenRouter client created", "green")
 

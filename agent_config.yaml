@@ -1,0 +1,98 @@
+agents:
+  liquidation_agent:
+    enabled: true
+    description: Monitors liquidation events and provides AI analysis
+    script: src/agents/liquidation_agent.py
+    check_interval_minutes: 10
+  whale_agent:
+    enabled: true
+    description: Tracks whale wallet activity (Open Interest)
+    script: src/agents/whale_agent.py
+    check_interval_minutes: 5
+  sentiment_agent:
+    enabled: false
+    description: Analyzes Twitter sentiment with voice alerts (DEPRECATED - use grok_sentiment)
+    script: src/agents/sentiment_agent.py
+    check_interval_minutes: 15
+  grok_sentiment_agent:
+    enabled: true
+    description: Grok-powered sentiment using real-time X access (MODERN)
+    script: src/agents/grok_sentiment_agent.py
+    check_interval_minutes: 15
+  funding_agent:
+    enabled: true
+    description: Monitors funding rates across exchanges
+    script: src/agents/funding_agent.py
+    check_interval_minutes: 10
+  chartanalysis_agent:
+    enabled: false
+    description: AI-powered chart analysis
+    script: src/agents/chartanalysis_agent.py
+  trading_agent:
+    enabled: true
+    description: 'DUAL-MODE: Single model or 6-model swarm consensus trading'
+    script: src/agents/trading_agent.py
+    check_interval_minutes: 5
+    warning: LIVE TRADING - Only enable after extensive backtesting!
+  risk_agent:
+    enabled: true
+    description: Monitors and manages portfolio risk
+    script: src/agents/risk_agent.py
+    check_interval_minutes: 1
+    warning: LIVE TRADING - Requires trading_agent to be active
+  strategy_agent:
+    enabled: false
+    description: Executes trading strategies from strategies folder
+    script: src/agents/strategy_agent.py
+    warning: LIVE TRADING - Only enable after extensive backtesting!
+  research_agent:
+    enabled: false
+    description: Fills ideas.txt for RBI agent
+    script: src/agents/research_agent.py
+  websearch_agent:
+    enabled: false
+    description: Searches web for trading strategy resources
+    script: src/agents/websearch_agent.py
+  chat_agent:
+    enabled: false
+    description: Monitors YouTube live stream chat
+    script: src/agents/chat_agent.py
+  tweet_agent:
+    enabled: false
+    description: Creates tweets using AI models
+    script: src/agents/tweet_agent.py
+  sniper_agent:
+    enabled: false
+    description: Watches for new Solana token launches
+    script: src/agents/sniper_agent.py
+    warning: High-risk trading agent
+  tx_agent:
+    enabled: false
+    description: Monitors transactions from copy list
+    script: src/agents/tx_agent.py
+  solana_agent:
+    enabled: false
+    description: Analyzes Solana meme tokens
+    script: src/agents/solana_agent.py
+  polymarket_agent:
+    enabled: false
+    description: Analyzes Polymarket prediction markets
+    script: src/agents/polymarket_agent.py
+  housecoin_agent:
+    enabled: false
+    description: DCA agent with AI confirmation (1 House = 1 Housecoin)
+    script: src/agents/housecoin_agent.py
+  focus_agent:
+    enabled: false
+    description: Productivity monitoring with audio sampling
+    script: src/agents/focus_agent.py
+  phone_agent:
+    enabled: false
+    description: AI agent that takes phone calls
+    script: src/agents/phone_agent.py
+settings:
+  log_directory: logs
+  pid_directory: .agent_pids
+  python_path: /home/titus/moon-dev-ai-agents
+  auto_restart: false
+  max_restarts: 3
