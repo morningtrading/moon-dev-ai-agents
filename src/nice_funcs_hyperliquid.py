@@ -396,6 +396,105 @@ def market_sell(symbol, usd_size, account):
     print(colored(f'✅ Market sell executed: {pos_size} {symbol} at ${sell_price}', 'red'))
     return order_result
 
+def chunk_kill(symbol, max_usd_order_size, account, slippage=0):
+    """Close entire position in chunks
+    
+    Args:
+        symbol: Trading symbol (e.g., 'BTC', 'ETH')
+        max_usd_order_size: Maximum USD value per chunk
+        account: HyperLiquid account object
+        slippage: Slippage tolerance (unused, kept for compatibility)
+    
+    Returns:
+        bool: True if successful
+    """
+    try:
+        # Get current position
+        positions, im_in_pos, pos_size, _, entry_px, pnl_perc, is_long = get_position(symbol, account)
+        
+        if not im_in_pos:
+            cprint(f"⚠️  No position to close for {symbol}", "yellow")
+            return True
+        
+        pos_size_float = float(pos_size)
+        cprint(f"🔄 Closing position: {pos_size_float} {symbol} ({'LONG' if is_long else 'SHORT'}) | PnL: {pnl_perc:.2f}%", "cyan")
+        
+        # Get current price for value calculation
+        ask, bid, _ = ask_bid(symbol)
+        current_price = (ask + bid) / 2
+        
+        # Calculate total position value
+        total_value = abs(pos_size_float * current_price)
+        
+        # Calculate number of chunks needed
+        num_chunks = max(1, int(total_value / max_usd_order_size) + 1)
+        chunk_size_tokens = abs(pos_size_float) / num_chunks
+        
+        # Get decimals for rounding
+        sz_decimals, _ = get_sz_px_decimals(symbol)
+        chunk_size_tokens = round(chunk_size_tokens, sz_decimals)
+        
+        cprint(f"📊 Closing in {num_chunks} chunks of ~{chunk_size_tokens} tokens (~${total_value/num_chunks:.2f} each)", "yellow")
+        
+        exchange = Exchange(account, constants.MAINNET_API_URL)
+        
+        for i in range(num_chunks):
+            # Check remaining position
+            positions, im_in_pos, pos_size, _, _, _, is_long = get_position(symbol, account)
+            
+            if not im_in_pos or abs(float(pos_size)) < 0.0001:
+                cprint(f"✅ Position fully closed after {i} chunks!", "green")
+                return True
+            
+            # Calculate chunk size (use remaining position for last chunk)
+            remaining = abs(float(pos_size))
+            chunk = min(chunk_size_tokens, remaining)
+            chunk = round(chunk, sz_decimals)
+            
+            cprint(f"🔄 Chunk {i+1}/{num_chunks}: Closing {chunk} {symbol}", "cyan")
+            
+            # Get fresh prices
+            ask, bid, _ = ask_bid(symbol)
+            
+            # For closing positions with IOC orders:
+            # - Closing long: Sell below bid (undersell)
+            # - Closing short: Buy above ask (overbid)
+            side = not is_long  # Opposite side to close
+            
+            if is_long:
+                close_price = bid * 0.999  # Undersell to close long
+            else:
+                close_price = ask * 1.001  # Overbid to close short
+            
+            # Round price appropriately
+            if symbol == 'BTC':
+                close_price = round(close_price)
+            else:
+                close_price = round(close_price, 1)
+            
+            print(f'   Placing IOC at ${close_price} to close {chunk} {symbol}')
+            
+            # Place reduce-only IOC order to close chunk
+            order_result = exchange.order(symbol, side, chunk, close_price, {"limit": {"tif": "Ioc"}}, reduce_only=True)
+            
+            cprint(f"✅ Chunk order placed!", "green")
+            time.sleep(1)  # Small delay between chunks
+        
+        # Verify position closed
+        positions, im_in_pos, pos_size, _, _, _, _ = get_position(symbol, account)
+        
+        if not im_in_pos or abs(float(pos_size)) < 0.0001:
+            cprint(f"✅ Position closed successfully!", "green", attrs=['bold'])
+            return True
+        else:
+            cprint(f"⚠️  Position still has {pos_size} remaining", "yellow")
+            return False
+    
+    except Exception as e:
+        cprint(f"❌ Error in chunk_kill: {e}", "red")
+        traceback.print_exc()
+        return False
+
 def close_position(symbol, account):
     """Close any open position for a symbol"""
     positions, im_in_pos, pos_size, _, _, pnl_perc, is_long = get_position(symbol, account)

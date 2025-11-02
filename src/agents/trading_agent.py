@@ -903,7 +903,12 @@ Example format:
                     cprint(f"🚨 SELL signal with position - CLOSING POSITION", "white", "on_red")
                     try:
                         cprint(f"📉 Executing chunk_kill (${max_usd_order_size} chunks)...", "yellow")
-                        n.chunk_kill(token, max_usd_order_size, slippage)
+                        # For HyperLiquid/Aster, pass account; for Solana, just pass token and size
+                        if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
+                            account = n._get_account_from_env()
+                            n.chunk_kill(token, max_usd_order_size, account, slippage)
+                        else:
+                            n.chunk_kill(token, max_usd_order_size, slippage)
                         cprint(f"✅ Position closed successfully!", "white", "on_green")
                     except Exception as e:
                         cprint(f"❌ Error closing position: {str(e)}", "white", "on_red")
