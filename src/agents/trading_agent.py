@@ -116,25 +116,32 @@ AI_MAX_TOKENS = 1024   # Max tokens for AI response
 USE_PORTFOLIO_ALLOCATION = False # True = Use AI for portfolio allocation across multiple tokens
                                  # False = Simple mode - trade single token at MAX_POSITION_PERCENTAGE
 
-MAX_POSITION_PERCENTAGE = 90     # % of account balance to use as MARGIN per position (0-100)
+MAX_POSITION_PERCENTAGE = 10     # % of account balance to use as MARGIN per position (0-100)
+                                 # REDUCED from 90% to 10% to prevent overtrading
                                  # How it works per exchange:
                                  # - ASTER/HYPERLIQUID: % of balance used as MARGIN (then multiplied by leverage)
-                                 #   Example: $100 balance, 90% = $90 margin
-                                 #            At 90x leverage = $90 × 90 = $8,100 notional position
+                                 #   Example: $100 balance, 10% = $10 margin
+                                 #            At 3x leverage = $10 × 3 = $30 notional position
                                  # - SOLANA: Uses % of USDC balance directly (no leverage)
-                                 #   Example: 100 USDC, 90% = 90 USDC position
+                                 #   Example: 100 USDC, 10% = 10 USDC position
 
-LEVERAGE = 9                    # Leverage multiplier (1-125x on Aster/HyperLiquid)
+LEVERAGE = 3                    # Leverage multiplier (1-125x on Aster/HyperLiquid)
+                                 # REDUCED from 9x to 3x for safer trading
                                  # Higher leverage = bigger position with same margin, higher liquidation risk
                                  # Examples with $100 margin:
+                                 #           3x = $100 margin → $300 notional position
                                  #           5x = $100 margin → $500 notional position
                                  #          10x = $100 margin → $1,000 notional position
-                                 #          90x = $100 margin → $9,000 notional position
                                  # Note: Only applies to Aster and HyperLiquid (ignored on Solana)
 
+# 🎯 SWARM CONFIDENCE THRESHOLD
+MIN_SWARM_CONFIDENCE = 80       # Only trade when 80%+ of AI models agree (4+ out of 6 models)
+                                 # This filters out low-conviction trades
+                                 # Higher = fewer but higher quality trades
+
 # Stop Loss & Take Profit
-STOP_LOSS_PERCENTAGE = 5.0       # % loss to trigger stop loss exit (e.g., 5.0 = -5%)
-TAKE_PROFIT_PERCENTAGE = 5.0     # % gain to trigger take profit exit (e.g., 5.0 = +5%)
+STOP_LOSS_PERCENTAGE = 2.0       # % loss to trigger stop loss exit (TIGHTENED from 5% to 2%)
+TAKE_PROFIT_PERCENTAGE = 4.0     # % gain to trigger take profit exit (IMPROVED from 5% to 4%)
 PNL_CHECK_INTERVAL = 5           # Seconds between P&L checks when position is open
 
 # Legacy settings (kept for compatibility, not used in new logic)
@@ -887,6 +894,12 @@ Example format:
                 continue
 
             action = row['action']
+            confidence = row['confidence']
+            
+            # 🎯 CONFIDENCE FILTER: Skip low-conviction trades
+            if USE_SWARM_MODE and confidence < MIN_SWARM_CONFIDENCE:
+                cprint(f"\n⏭️  {token_short} | {action} ({confidence}% conf) - SKIPPING (below {MIN_SWARM_CONFIDENCE}% threshold)", "yellow")
+                continue
 
             # Check if we have a position
             if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
