@@ -281,19 +281,40 @@ class ChartAnalysisAgent(BaseAgent):
             
     def _announce(self, message):
         """Announce message using OpenAI TTS"""
-        if not message:
-            return
-            
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+        print(f"\n📢 {message}")
+        
+        # Play MP3 notification sound
         try:
-            print(f"\n📢 Announcing: {message}")
+            from src import config
+            import subprocess
+            from pathlib import Path
             
-            # Generate speech
-            response = self.openai_client.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                input=message,
-                speed=VOICE_SPEED
-            )
+            if not config.PLAY_MP3_AGENT_SOUNDS:
+                return
+            
+            notification_file = Path("src/audio/notifications/alert.mp3")
+            if notification_file.exists():
+                for i in range(config.MP3_REPEAT_COUNT):
+                    subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                 check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except:
+            pass
+        return
+        
+        # if not message:
+        #     return
+        #     
+        # try:
+        #     print(f"\n📢 Announcing: {message}")
+        #     
+        #     # Generate speech
+        #     response = self.openai_client.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         input=message,
+        #         speed=VOICE_SPEED
+        #     )
             
             # Save audio file
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

@@ -14,6 +14,7 @@ agents:
     description: Analyzes Twitter sentiment with voice alerts (DEPRECATED - use grok_sentiment)
     script: src/agents/sentiment_agent.py
     check_interval_minutes: 15
+    show_in_dashboard: false
   grok_sentiment_agent:
     enabled: true
     description: Grok-powered sentiment using real-time X access (MODERN)
@@ -41,7 +42,7 @@ agents:
     check_interval_minutes: 1
     warning: LIVE TRADING - Requires trading_agent to be active
   strategy_agent:
-    enabled: false
+    enabled: true
     description: Executes trading strategies from strategies folder
     script: src/agents/strategy_agent.py
     warning: LIVE TRADING - Only enable after extensive backtesting!
@@ -57,15 +58,18 @@ agents:
     enabled: false
     description: Monitors YouTube live stream chat
     script: src/agents/chat_agent.py
+    show_in_dashboard: false
   tweet_agent:
     enabled: false
     description: Creates tweets using AI models
     script: src/agents/tweet_agent.py
+    show_in_dashboard: false
   sniper_agent:
     enabled: false
     description: Watches for new Solana token launches
     script: src/agents/sniper_agent.py
     warning: High-risk trading agent
+    show_in_dashboard: false
   tx_agent:
     enabled: false
     description: Monitors transactions from copy list
@@ -74,6 +78,7 @@ agents:
     enabled: false
     description: Analyzes Solana meme tokens
     script: src/agents/solana_agent.py
+    show_in_dashboard: false
   polymarket_agent:
     enabled: false
     description: Analyzes Polymarket prediction markets
@@ -82,14 +87,17 @@ agents:
     enabled: false
     description: DCA agent with AI confirmation (1 House = 1 Housecoin)
     script: src/agents/housecoin_agent.py
+    show_in_dashboard: false
   focus_agent:
     enabled: false
     description: Productivity monitoring with audio sampling
     script: src/agents/focus_agent.py
+    show_in_dashboard: false
   phone_agent:
     enabled: false
     description: AI agent that takes phone calls
     script: src/agents/phone_agent.py
+    show_in_dashboard: false
 settings:
   log_directory: logs
   pid_directory: .agent_pids

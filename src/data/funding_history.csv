@@ -1,4 +1,2 @@
-event_time,BNB_funding_rate,BNB_annual_rate,BTC_funding_rate,BTC_annual_rate,ETH_funding_rate,ETH_annual_rate,FARTCOIN_funding_rate,FARTCOIN_annual_rate,SOL_funding_rate,SOL_annual_rate,WIF_funding_rate,WIF_annual_rate
-00:08:54,0.0,0.0,7.188e-05,7.870859999999999,5.662e-05,6.199889999999999,5e-05,5.4750000000000005,3.901e-05,4.2715950000000005,5e-05,5.4750000000000005
-23:38:54,0.0,0.0,7.462e-05,8.17089,5.911e-05,6.472545,5e-05,5.4750000000000005,3.764e-05,4.12158,4.974e-05,5.44653
-23:53:54,0.0,0.0,7.231e-05,7.917945,5.658e-05,6.19551,5e-05,5.4750000000000005,3.904e-05,4.27488,5e-05,5.4750000000000005
+event_time,BNB_funding_rate,BNB_annual_rate,BTC_funding_rate,BTC_annual_rate,ETH_funding_rate,ETH_annual_rate,SOL_funding_rate,SOL_annual_rate
+23:38:21,0.0,0.0,5.254e-05,5.75313,8.481e-05,9.286694999999998,-3.912e-05,-4.28364

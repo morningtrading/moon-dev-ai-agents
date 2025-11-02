@@ -176,14 +176,10 @@ MONITORED_TOKENS = [
 
 # For ASTER/HYPERLIQUID exchanges: Use trading symbols
 # ⚠️ IMPORTANT: Only used when EXCHANGE = "ASTER" or "HYPERLIQUID"
-# Add symbols you want to trade (e.g., BTC, ETH, SOL, etc.)
-SYMBOLS = [
-    'BTC',      # Bitcoin
-    'ETH',      # Ethereum
-    'SOL',      # Solana
-    'BNB',      # Binance Coin
-    'HYPE',     # Hyperliquid
-]
+# 🌙 Using centralized coin list from config.py - imported at top of file
+# This ensures all agents track the same coins (BTC, ETH, SOL, BNB, XLM)
+# To modify the coin list, edit HYPERLIQUID_SYMBOLS in src/config.py
+SYMBOLS = []  # Will be populated from config.HYPERLIQUID_SYMBOLS at runtime
 
 # Example: To trade multiple tokens, uncomment the ones you want:
 # MONITORED_TOKENS = [
@@ -305,9 +301,15 @@ else:
 from src.data.ohlcv_collector import collect_all_tokens
 from src.models.model_factory import model_factory
 from src.agents.swarm_agent import SwarmAgent
+from src.config import HYPERLIQUID_SYMBOLS
 
 # Load environment variables
 load_dotenv()
+
+# Initialize SYMBOLS from centralized config if not already set
+if not SYMBOLS or len(SYMBOLS) == 0:
+    SYMBOLS = HYPERLIQUID_SYMBOLS
+    cprint(f"🌙 Loaded symbols from central config: {SYMBOLS}", "cyan")
 
 # ============================================================================
 # HELPER FUNCTIONS
@@ -330,7 +332,8 @@ def monitor_position_pnl(token, check_interval=PNL_CHECK_INTERVAL):
         while True:
             # Get current position
             if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
-                position = n.get_position(token)
+                account = n._get_account_from_env()
+                position = n.get_position(token, account)
             else:
                 position_usd = n.get_token_balance_usd(token)  # Solana version takes only token
                 if position_usd == 0:
@@ -981,7 +984,8 @@ Example format:
                                 # Verify position was actually opened
                                 time.sleep(2)  # Brief delay for order to settle
                                 if EXCHANGE in ["ASTER", "HYPERLIQUID"]:
-                                    position = n.get_position(token)
+                                    account = n._get_account_from_env()
+                                    position = n.get_position(token, account)
                                     if position and position.get('position_amount', 0) != 0:
                                         pnl_pct = position.get('pnl_percentage', 0)
                                         position_usd = abs(position.get('position_amount', 0)) * position.get('mark_price', 0)

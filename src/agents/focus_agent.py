@@ -287,19 +287,41 @@ class FocusAgent:
 
     def _announce(self, message, force_voice=False):
         """Announce message with optional voice"""
-        try:
-            cprint(f"\n🗣️ {message}", "cyan")
-            
-            if not force_voice:
-                return
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+        cprint(f"\n🗣️ {message}", "cyan")
+        
+        # Play MP3 notification sound if forced
+        if force_voice:
+            try:
+                from src import config
+                import subprocess
+                from pathlib import Path
                 
-            # Generate speech directly to memory and play
-            response = self.openai_client.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                speed=VOICE_SPEED,
-                input=message
-            )
+                if not config.PLAY_MP3_AGENT_SOUNDS:
+                    return
+                
+                notification_file = Path("src/audio/notifications/success.mp3")
+                if notification_file.exists():
+                    for i in range(config.MP3_REPEAT_COUNT):
+                        subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                     check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except:
+                pass
+        return
+        
+        # try:
+        #     cprint(f"\n🗣️ {message}", "cyan")
+        #     
+        #     if not force_voice:
+        #         return
+        #         
+        #     # Generate speech directly to memory and play
+        #     response = self.openai_client.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         speed=VOICE_SPEED,
+        #         input=message
+        #     )
             
             # Create temporary file in system temp directory
             with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as temp_file:

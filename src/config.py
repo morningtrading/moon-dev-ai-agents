@@ -25,8 +25,19 @@ MONITORED_TOKENS = [
 tokens_to_trade = MONITORED_TOKENS  # Using the same list for trading
 
 # ⚡ HyperLiquid Configuration
-HYPERLIQUID_SYMBOLS = ['BTC', 'ETH', 'SOL','BNB']  # Symbols to trade on HyperLiquid perps
+# 🌙 MASTER COIN LIST - Used by ALL agents (trading, sentiment, funding, whale, liquidation)
+# This is the single source of truth for which coins to monitor across the entire system
+HYPERLIQUID_SYMBOLS = ['BTC', 'ETH', 'SOL', 'BNB', 'XLM']  # Symbols to trade on HyperLiquid perps
 HYPERLIQUID_LEVERAGE = 3  # Default leverage for HyperLiquid trades (1-50)
+
+# Token name mapping for display and analysis
+TOKEN_NAMES = {
+    'BTC': 'Bitcoin',
+    'ETH': 'Ethereum',
+    'SOL': 'Solana',
+    'BNB': 'Binance Coin',
+    'XLM': 'Stellar'
+}
 
 # 🔄 Exchange-Specific Token Lists
 # Use this to determine which tokens/symbols to trade based on active exchange
@@ -50,7 +61,7 @@ symbol = '9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump'
 address = '4wgfCBf2WwLSRKLef9iW7JXZ2AfkxUxGM4XcKpHm3Sin' # YOUR WALLET ADDRESS HERE
 
 # Position sizing 🎯
-usd_size = 25  # Size of position to hold
+usd_size = 10  # Size of position to hold
 max_usd_order_size = 3  # Max order size
 tx_sleep = 30  # Sleep between transactions
 slippage = 199  # Slippage settings
@@ -74,7 +85,7 @@ MAX_LOSS_USD = 40  # Maximum loss in USD before stopping trading
 MAX_GAIN_USD = 250 # Maximum gain in USD before stopping trading
 
 # USD MINIMUM BALANCE RISK CONTROL
-MINIMUM_BALANCE_USD = 50  # If balance falls below this, risk agent will consider closing all positions
+MINIMUM_BALANCE_USD = 25  # If balance falls below this, risk agent will consider closing all positions
 USE_AI_CONFIRMATION = True  # If True, consult AI before closing positions. If False, close immediately on breach
 
 # Percentage-based limits (used if USE_PERCENTAGE is True)
@@ -122,6 +133,10 @@ SLEEP_BETWEEN_RUNS_MINUTES = 15  # How long to sleep between agent runs 🕒
 # in our nice_funcs in token over view we look for minimum trades last hour
 MIN_TRADES_LAST_HOUR = 2
 
+
+# 🔊 Agent Notification Sounds Settings
+PLAY_MP3_AGENT_SOUNDS = True  # Enable/disable MP3 notification sounds for all agents
+MP3_REPEAT_COUNT = 3  # How many times to repeat notification sounds
 
 # Real-Time Clips Agent Settings 🎬
 REALTIME_CLIPS_ENABLED = True

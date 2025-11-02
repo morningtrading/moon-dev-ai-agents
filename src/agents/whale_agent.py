@@ -99,12 +99,15 @@ class WhaleAgent(BaseAgent):
         openai_key = os.getenv("OPENAI_KEY")
         anthropic_key = os.getenv("ANTHROPIC_KEY")
         
-        if not openai_key:
-            raise ValueError("🚨 OPENAI_KEY not found in environment variables!")
+        # OpenAI key is optional (only needed for voice announcements)
+        if openai_key and openai_key != "your_openai_key_here":
+            openai.api_key = openai_key
+            print("✅ OpenAI voice announcements enabled")
+        else:
+            print("⚠️ OpenAI voice disabled (OPENAI_KEY not configured)")
+        
         if not anthropic_key:
             raise ValueError("🚨 ANTHROPIC_KEY not found in environment variables!")
-            
-        openai.api_key = openai_key
         self.client = anthropic.Anthropic(api_key=anthropic_key)
 
         # Initialize DeepSeek client if needed
@@ -553,30 +556,46 @@ class WhaleAgent(BaseAgent):
             time.sleep(60)  # Sleep for 1 minute on error
             
     def _announce(self, message, is_whale=False):
-        """Announce a message, only use voice for whale alerts"""
+        """Announce a message with notification sound for whale alerts"""
         try:
             print(f"\n🗣️ {message}")
             
-            # Only use voice for whale alerts
+            # Only play sound for whale alerts
             if not is_whale:
                 return
+            
+            # Check if sounds are enabled
+            if not config.PLAY_MP3_AGENT_SOUNDS:
+                print("🔇 Notification sounds disabled in config")
+                return
+            
+            # Play notification sound multiple times
+            notification_file = self.audio_dir / "notifications" / "cool4sec.mp3"
+            
+            if notification_file.exists():
+                import subprocess
+                repeat_count = config.MP3_REPEAT_COUNT
+                print(f"🔊 Playing whale alert sound {repeat_count} times...")
                 
-            # Generate speech using OpenAI
-            response = openai.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                speed=VOICE_SPEED,
-                input=message
-            )
-            
-            # Save and play the audio
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            audio_file = self.audio_dir / f"whale_alert_{timestamp}.mp3"
-            
-            response.stream_to_file(audio_file)
-            
-            # Play audio using system command
-            os.system(f"afplay {audio_file}")
+                for i in range(repeat_count):
+                    try:
+                        # Try mpg123 first (most common on Linux)
+                        subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                     check=False, 
+                                     stdout=subprocess.DEVNULL, 
+                                     stderr=subprocess.DEVNULL)
+                    except FileNotFoundError:
+                        try:
+                            # Fallback to ffplay
+                            subprocess.run(['ffplay', '-nodisp', '-autoexit', '-loglevel', 'quiet', str(notification_file)],
+                                         check=False,
+                                         stdout=subprocess.DEVNULL,
+                                         stderr=subprocess.DEVNULL)
+                        except FileNotFoundError:
+                            print("⚠️ Audio player not found. Install mpg123: sudo apt-get install mpg123")
+                            break
+            else:
+                print(f"⚠️ Notification sound not found: {notification_file}")
             
         except Exception as e:
             print(f"❌ Error in announcement: {str(e)}")

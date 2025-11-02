@@ -10,3 +10,609 @@ timestamp,token,sentiment_score,reasoning,confidence,market_mood,volume
 2025-11-01 23:13:28.134711,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
 2025-11-01 23:13:31.368466,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
 2025-11-01 23:13:34.340689,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-01 23:28:37.510563,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-01 23:28:40.478017,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,greed,medium
+2025-11-01 23:28:43.402698,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-01 23:28:46.352395,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-01 23:28:49.492895,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-01 23:28:52.664771,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-01 23:28:55.842730,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-01 23:28:58.784149,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",75,greed,medium
+2025-11-01 23:44:01.791446,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-01 23:44:04.756236,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-01 23:44:07.767300,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-01 23:44:10.899170,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-01 23:44:14.039338,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-01 23:44:17.147372,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-01 23:44:20.128438,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussion, with some users expressing mild FOMO.",75,greed,medium
+2025-11-01 23:44:23.191797,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal progress and some neutral discussions on its market performance.,85,neutral,medium
+2025-11-01 23:59:26.372420,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-01 23:59:29.278149,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-01 23:59:32.250085,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-01 23:59:35.338403,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-01 23:59:38.305774,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-01 23:59:41.304254,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-01 23:59:44.244259,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-01 23:59:47.210325,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 00:14:50.462234,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 00:14:53.792806,ETH,0.3,Recent X posts show a mix of optimism about upcoming upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 00:14:56.956333,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 00:15:00.248936,DOGE,0.3,"Recent X posts show a mix of optimism and cautious enthusiasm about Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 00:15:03.225297,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 00:15:06.513140,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 00:15:09.684963,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 00:15:12.647905,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",75,greed,medium
+2025-11-02 00:30:16.041945,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 00:30:19.522042,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 00:30:22.412221,SOL,0.3,Recent X posts show a mix of optimism about Solana's upcoming projects and some concerns about market volatility.,85,neutral,medium
+2025-11-02 00:30:25.346784,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 00:30:28.317321,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 00:30:31.501209,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 00:30:34.817303,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 00:30:37.975355,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",85,greed,medium
+2025-11-02 00:45:41.175180,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but balanced by neutral analysis.",75,neutral,medium
+2025-11-02 00:45:44.117449,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 00:45:47.054124,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 00:45:49.960729,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 00:45:52.947034,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 00:45:55.938080,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 00:45:58.877803,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 00:46:01.840040,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 01:01:04.897480,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but balanced by neutral analysis.",85,greed,medium
+2025-11-02 01:01:07.871067,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 01:01:11.117343,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 01:01:14.105587,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and speculative interest, with some users expressing hope for future price increases.",75,greed,medium
+2025-11-02 01:01:17.083076,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 01:01:20.035328,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 01:01:23.036528,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:01:26.094257,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,neutral,medium
+2025-11-02 01:16:29.133107,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 01:16:32.050473,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 01:16:35.076777,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 01:16:38.097950,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:16:41.077324,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:16:44.217952,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 01:16:47.214661,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:16:50.169230,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal progress and some neutral discussions on its market performance.,85,greed,medium
+2025-11-02 01:31:53.426672,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 01:31:56.360449,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 01:31:59.325367,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 01:32:02.306179,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 01:32:05.274325,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 01:32:08.280357,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:32:11.241708,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 01:32:14.169271,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 01:47:17.329869,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 01:47:20.259848,ETH,0.3,Recent X posts show a mix of optimism about upcoming Ethereum upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 01:47:23.227884,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral technical analysis.",75,greed,medium
+2025-11-02 01:47:26.130649,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 01:47:29.096291,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 01:47:32.227776,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:47:35.178899,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 01:47:38.313399,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and cautious discussions about market conditions.,75,neutral,medium
+2025-11-02 02:02:41.366360,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 02:02:44.511044,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 02:02:47.466008,SOL,0.3,"Recent X posts show a mix of optimism and cautious discussions about Solana's future, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 02:02:50.447627,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:02:53.401558,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:02:56.402750,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and neutral discussions, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 02:02:59.352380,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 02:03:02.321585,XRP,0.2,"Recent posts show a mix of optimism about Ripple's legal developments and some skepticism, leaning slightly positive.",75,neutral,medium
+2025-11-02 02:18:05.329061,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 02:18:08.488331,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 02:18:11.425295,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 02:18:14.400039,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 02:18:17.359130,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 02:18:20.496094,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 02:18:23.462360,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 02:18:26.945061,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,greed,medium
+2025-11-02 02:33:30.179539,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but balanced by neutral analysis.",85,greed,medium
+2025-11-02 02:33:33.233052,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 02:33:36.202177,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 02:33:39.325532,DOGE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Dogecoin, with some FOMO but no overwhelming euphoria.",85,greed,medium
+2025-11-02 02:33:42.297637,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:33:45.245372,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:33:48.565825,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 02:33:51.619808,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 02:48:54.886632,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 02:48:57.845208,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,greed,medium
+2025-11-02 02:49:00.985888,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 02:49:04.018997,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and speculative interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:49:07.084873,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:49:10.262926,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:49:13.629894,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and speculative interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 02:49:17.032558,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 03:04:20.057363,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but no widespread euphoria.",85,greed,medium
+2025-11-02 03:04:23.106389,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 03:04:26.149912,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions about market volatility.",75,neutral,medium
+2025-11-02 03:04:29.154204,DOGE,0.3,"Recent X posts show a mix of optimism and speculative discussions about Dogecoin's future, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 03:04:32.144243,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:04:35.180638,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:04:38.415305,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 03:04:41.397856,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 03:19:44.426058,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 03:19:47.394962,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 03:19:50.411811,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 03:19:53.370951,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 03:19:56.644917,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:19:59.666672,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:20:02.651986,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 03:20:05.602805,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments being discussed.",75,greed,medium
+2025-11-02 03:35:08.794978,BTC,0.3,"Recent X posts show a mix of optimism with some users expressing FOMO and positive price predictions, though tempered by neutral discussions.",75,greed,medium
+2025-11-02 03:35:11.774325,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 03:35:15.034821,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 03:35:17.988289,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with more positive mentions of potential price increases.",75,neutral,medium
+2025-11-02 03:35:21.074896,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:35:24.151090,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 03:35:27.646387,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and speculative interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:35:30.833236,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal progress and some concerns about market volatility.,85,neutral,medium
+2025-11-02 03:50:34.012906,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 03:50:37.280173,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 03:50:40.805280,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions on market volatility.",75,neutral,medium
+2025-11-02 03:50:43.710657,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 03:50:46.685040,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 03:50:49.700380,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and neutral discussions, with some FOMO but no significant FUD.",75,greed,medium
+2025-11-02 03:50:52.792099,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 03:50:55.871112,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships and legal developments.",75,greed,medium
+2025-11-02 04:05:58.931910,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 04:06:01.945812,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future updates and some concerns about market volatility.,85,neutral,medium
+2025-11-02 04:06:05.041832,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 04:06:08.089438,DOGE,0.2,"Recent X posts about Dogecoin show a mix of optimism and skepticism, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 04:06:11.035560,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:06:14.050931,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 04:06:17.060941,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:06:20.110037,XRP,0.3,Recent posts show a mix of optimism about Ripple's legal progress and some concerns about market volatility.,85,neutral,medium
+2025-11-02 04:21:23.355867,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 04:21:26.552827,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 04:21:29.688615,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions on market volatility.",75,neutral,medium
+2025-11-02 04:21:32.875304,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 04:21:35.874220,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 04:21:38.864538,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 04:21:41.914416,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and speculative interest, with some users expressing hope for price increases.",75,greed,medium
+2025-11-02 04:21:45.336114,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 04:36:48.315124,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",75,greed,medium
+2025-11-02 04:36:51.315225,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 04:36:54.371692,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 04:36:57.306466,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 04:37:00.276696,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 04:37:03.263733,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,neutral,medium
+2025-11-02 04:37:06.254734,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:37:09.169580,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 04:52:12.556255,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 04:52:15.444561,ETH,0.3,Recent X posts show a mix of optimism about upcoming upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 04:52:18.361376,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,greed,medium
+2025-11-02 04:52:21.598668,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:52:24.776142,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:52:27.775210,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 04:52:30.723118,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 04:52:33.915747,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships and legal developments.",75,neutral,medium
+2025-11-02 05:07:36.991028,BTC,0.3,"Recent X posts show a mix of optimism with some users expressing hope for price increases, though tempered with cautious discussions.",75,neutral,medium
+2025-11-02 05:07:40.066085,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,greed,medium
+2025-11-02 05:07:43.181943,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 05:07:46.158913,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:07:49.120081,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 05:07:52.168164,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:07:55.275492,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 05:07:58.312574,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 05:23:01.889486,BTC,0.3,Recent X posts show a mix of optimism about Bitcoin's future and some concerns about market volatility.,85,greed,medium
+2025-11-02 05:23:04.946375,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 05:23:07.971703,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 05:23:10.952955,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and neutral discussions, with some users expressing hope for future price increases.",75,greed,medium
+2025-11-02 05:23:14.032681,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 05:23:17.083076,WIF,0.4,"Recent X posts about Dogwifhat show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 05:23:20.238535,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 05:23:23.314868,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 05:38:26.463933,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 05:38:29.641212,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-02 05:38:32.668453,SOL,0.3,"Recent X posts show a mix of optimism and cautious discussions about Solana's future, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 05:38:35.699481,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:38:38.627871,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:38:41.663102,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:38:44.623069,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 05:38:47.567832,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 05:53:50.560081,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 05:53:53.482377,ETH,0.3,Recent X posts show a mix of optimism about upcoming upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 05:53:56.461835,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 05:53:59.438598,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 05:54:02.512402,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 05:54:05.966210,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 05:54:08.903474,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 05:54:11.924973,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 06:09:15.439824,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 06:09:18.436314,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 06:09:21.636213,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral technical analysis.",75,greed,medium
+2025-11-02 06:09:24.712285,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:09:27.847164,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:09:31.219365,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:09:34.600021,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:09:37.742966,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 06:24:40.815878,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 06:24:43.784945,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also neutral technical analysis.",75,greed,medium
+2025-11-02 06:24:46.772261,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 06:24:49.845879,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:24:52.782552,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:24:55.968591,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:24:59.140501,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:25:02.056324,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 06:40:05.539318,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 06:40:08.577289,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 06:40:11.563706,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 06:40:14.616266,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:40:17.822813,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:40:20.977320,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 06:40:24.143500,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:40:27.204955,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and cautious discussions about market conditions.,75,neutral,medium
+2025-11-02 06:55:30.390457,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 06:55:33.669775,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 06:55:36.688064,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 06:55:40.128597,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 06:55:43.184234,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:55:46.184035,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:55:49.245583,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 06:55:52.558454,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 07:10:55.588438,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 07:10:58.600410,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 07:11:01.582406,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 07:11:04.535554,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 07:11:07.511508,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 07:11:10.701415,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 07:11:13.712446,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 07:11:16.671683,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",75,greed,medium
+2025-11-02 07:26:19.739068,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 07:26:22.620570,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 07:26:25.649998,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,neutral,medium
+2025-11-02 07:26:28.669465,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 07:26:31.657970,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 07:26:34.724994,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 07:26:37.666439,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 07:26:40.740897,XRP,0.2,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,neutral,medium
+2025-11-02 07:41:43.876341,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 07:41:46.808329,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 07:41:49.720877,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 07:41:52.820452,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",85,greed,medium
+2025-11-02 07:41:55.796112,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 07:41:58.788993,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 07:42:01.853908,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,neutral,medium
+2025-11-02 07:42:04.801101,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 07:57:07.812017,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",75,greed,medium
+2025-11-02 07:57:10.740884,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 07:57:13.746111,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,neutral,medium
+2025-11-02 07:57:16.804530,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 07:57:19.878310,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 07:57:23.042126,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 07:57:26.046869,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 07:57:29.066166,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and some neutral discussions on its market performance.,85,greed,medium
+2025-11-02 08:12:32.070787,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 08:12:35.339265,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",85,greed,medium
+2025-11-02 08:12:38.324946,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 08:12:41.406989,DOGE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Dogecoin, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 08:12:44.375516,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious discussions, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:12:47.330472,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:12:50.835151,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:12:53.744490,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments discussed.",75,greed,medium
+2025-11-02 08:27:56.989059,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, indicating mild greed.",85,greed,medium
+2025-11-02 08:28:00.119758,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 08:28:03.113018,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,greed,medium
+2025-11-02 08:28:06.087234,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:28:09.084250,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:28:12.087558,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 08:28:15.109831,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and speculative interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:28:18.186391,XRP,0.2,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,neutral,medium
+2025-11-02 08:43:21.197768,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but balanced by neutral analysis.",85,greed,medium
+2025-11-02 08:43:24.190977,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 08:43:27.347039,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 08:43:30.376071,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 08:43:33.614581,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:43:36.621394,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 08:43:39.956647,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:43:42.883601,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 08:58:46.093848,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 08:58:49.258940,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 08:58:52.275641,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 08:58:55.228717,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:58:58.191632,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 08:59:01.184902,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:59:04.300289,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 08:59:07.640491,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 09:06:03.623786,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:06:06.613164,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 09:06:09.636156,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 09:06:12.698938,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:06:16.336345,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:06:20.064896,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:06:23.270668,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 09:06:26.415870,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 09:15:54.546552,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,neutral,medium
+2025-11-02 09:15:57.566822,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 09:16:00.802693,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:16:04.224096,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 09:16:07.701173,PEPE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Pepe, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 09:16:11.083379,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:16:14.056863,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing hope for future gains.",75,greed,medium
+2025-11-02 09:16:16.991685,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 09:31:22.304496,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 09:31:27.145570,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 09:31:31.530810,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 09:31:35.161241,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 09:31:39.390984,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:31:43.559038,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:31:46.753906,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:31:50.566719,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,greed,medium
+2025-11-02 09:46:56.580351,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",75,greed,medium
+2025-11-02 09:47:00.397245,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 09:47:04.515170,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 09:47:08.203493,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and neutral discussions, with some FOMO but no widespread euphoria.",85,greed,medium
+2025-11-02 09:47:15.557507,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:47:18.698584,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 09:47:21.996865,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 09:47:25.285430,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 10:02:29.774991,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 10:02:32.873072,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 10:02:36.178382,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 10:02:39.494244,DOGE,0.1,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 10:02:42.675212,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious discussions, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:02:45.842026,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:02:48.997283,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:02:52.373475,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 10:17:57.935416,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 10:18:01.473496,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 10:18:05.122112,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive price predictions and project updates.",75,greed,medium
+2025-11-02 10:18:08.367409,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 10:18:12.292105,PEPE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Pepe, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 10:18:15.762154,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:18:19.211639,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 10:18:23.070464,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 10:33:27.096622,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 10:33:30.149200,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 10:33:33.323983,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,neutral,medium
+2025-11-02 10:33:36.756385,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 10:33:39.866560,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 10:33:43.052662,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 10:33:46.224882,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some FOMO but no significant FUD.",75,greed,medium
+2025-11-02 10:33:49.360201,XRP,0.2,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,neutral,medium
+2025-11-02 10:48:52.572116,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 10:48:55.679420,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 10:48:58.722389,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 10:49:01.781552,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:49:04.843276,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 10:49:07.919713,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:49:10.956184,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 10:49:14.164105,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,greed,medium
+2025-11-02 11:04:17.155026,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also neutral analysis.",85,greed,medium
+2025-11-02 11:04:20.123974,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 11:04:23.171785,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral technical analysis.",75,greed,medium
+2025-11-02 11:04:26.138284,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 11:04:29.106492,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 11:04:32.079934,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:04:35.150248,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and speculative interest, with some users expressing hope for future gains.",75,greed,medium
+2025-11-02 11:04:38.341996,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 11:19:41.598099,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 11:19:44.831692,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 11:19:47.796872,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,greed,medium
+2025-11-02 11:19:50.841451,DOGE,0.3,"Recent X posts show a mix of optimism and speculative discussions about Dogecoin's future, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 11:19:53.821479,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 11:19:56.999388,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:20:00.164695,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some FOMO but no significant FUD.",75,greed,medium
+2025-11-02 11:20:04.002695,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on future developments.",75,neutral,medium
+2025-11-02 11:35:07.113491,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 11:35:10.044400,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 11:35:13.160627,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 11:35:16.252245,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:35:19.248365,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:35:22.261077,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:35:25.725342,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 11:35:28.743201,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 11:50:32.294046,BTC,0.3,"Recent X posts show a mix of optimism with some users expressing hope for price increases and others discussing Bitcoin's long-term value, though tempered by cautious views.",75,greed,medium
+2025-11-02 11:50:35.354711,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 11:50:38.346432,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious enthusiasm, with some users expressing hope for future growth.",75,greed,medium
+2025-11-02 11:50:41.621222,DOGE,0.2,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no significant FUD.",85,neutral,medium
+2025-11-02 11:50:44.591713,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 11:50:47.691385,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 11:50:50.899775,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 11:50:53.915527,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 16:13:24.359978,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 16:13:27.295520,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 16:13:30.376135,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 16:13:33.374485,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 16:13:36.307233,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 16:13:39.307530,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 16:13:42.422220,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some FOMO but no significant FUD.",75,greed,medium
+2025-11-02 16:13:45.746492,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 16:16:11.296832,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 16:16:14.659812,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 16:16:17.647445,SOL,0.3,Recent X posts show a mix of optimism about Solana's upcoming developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 16:16:20.667691,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 16:16:23.970731,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 16:16:27.264215,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 16:16:30.274702,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 16:16:33.289155,XRP,0.2,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",75,neutral,medium
+2025-11-02 16:31:36.400103,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 16:31:39.355435,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 16:31:42.653276,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,neutral,medium
+2025-11-02 16:31:45.990581,DOGE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Dogecoin, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 16:31:48.977099,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 16:31:52.132391,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 16:31:55.207462,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 16:31:58.285709,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some discussions on potential growth and regulatory developments.",75,neutral,medium
+2025-11-02 16:47:01.282221,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",75,greed,medium
+2025-11-02 16:47:04.223943,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 16:47:07.256441,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 16:47:10.213637,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 16:47:13.237136,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 16:47:16.221447,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 16:47:19.355557,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 16:47:22.315070,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some FOMO around potential partnerships.",75,greed,medium
+2025-11-02 17:02:25.956085,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 17:02:29.192497,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 17:02:32.203317,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with more positive sentiments about potential growth.",75,greed,medium
+2025-11-02 17:02:35.648717,DOGE,0.3,"Recent X posts show a mix of optimism and speculation about Dogecoin's future, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 17:02:38.704584,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 17:02:42.002621,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some users expressing FOMO but also balanced by neutral discussions.",75,greed,medium
+2025-11-02 17:02:45.158403,BONK,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bonk, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 17:02:48.139599,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 17:17:51.240957,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but balanced by neutral analysis.",75,greed,medium
+2025-11-02 17:17:54.391424,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 17:17:57.584123,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 17:18:00.758031,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and neutral discussions, with some users expressing hope for future price increases.",75,greed,medium
+2025-11-02 17:18:03.945239,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 17:18:07.006393,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but no overwhelming euphoria.",75,greed,medium
+2025-11-02 17:18:10.072805,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 17:18:13.156480,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some discussions on potential partnerships and legal developments.",75,greed,medium
+2025-11-02 17:33:16.390063,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 17:33:19.462910,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 17:33:22.569489,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,neutral,medium
+2025-11-02 17:33:25.550960,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 17:33:28.718916,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 17:33:31.994314,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 17:33:35.064741,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing hope for future gains.",75,greed,medium
+2025-11-02 17:33:37.995079,XRP,0.3,Recent posts show a mix of optimism about Ripple's legal developments and some neutral discussions on its market position.,75,greed,medium
+2025-11-02 17:48:41.005346,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 17:48:44.097270,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 17:48:47.198706,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral technical analysis.",75,greed,medium
+2025-11-02 17:48:50.227165,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 17:48:53.311849,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious enthusiasm, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 17:48:56.366908,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 17:48:59.361109,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 17:49:02.339821,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 18:04:05.673094,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 18:04:08.820017,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 18:04:11.968948,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 18:04:15.147400,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:04:18.133272,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:04:21.161876,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:04:24.166872,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:04:27.144884,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",85,greed,medium
+2025-11-02 18:19:30.370915,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some neutral discussions, with a slight lean towards positive sentiment.",75,greed,medium
+2025-11-02 18:19:33.340587,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 18:19:36.710679,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions.",75,neutral,medium
+2025-11-02 18:19:39.793147,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:19:42.764141,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:19:45.837900,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:19:48.850460,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing hope for future growth.",75,greed,medium
+2025-11-02 18:19:51.792437,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and cautious discussions about market conditions.,85,neutral,medium
+2025-11-02 18:34:54.856947,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 18:34:57.999563,ETH,0.3,Recent X posts show a mix of optimism about upcoming upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 18:35:01.010781,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 18:35:03.998205,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:35:07.018314,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:35:10.052797,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:35:13.017336,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 18:35:15.977444,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 18:50:19.024093,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 18:50:22.197011,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future updates and some concerns about market volatility.,85,neutral,medium
+2025-11-02 18:50:25.378586,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-02 18:50:28.804286,DOGE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Dogecoin, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 18:50:31.784434,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:50:35.213732,WIF,0.3,"Recent X posts show a mix of optimism and cautious interest in Dogwifhat, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 18:50:38.685643,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 18:50:42.167053,XRP,0.2,Recent X posts show a mix of optimism about Ripple's legal progress and some concerns about market volatility.,85,neutral,medium
+2025-11-02 19:05:45.435298,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 19:05:48.824755,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 19:05:51.835253,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 19:05:54.971431,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:05:58.760084,PEPE,0.3,"Recent X posts show a mix of optimism and cautious interest in Pepe, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:06:01.777339,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:06:04.814272,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 19:06:07.927388,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive news driving mild FOMO.",75,greed,medium
+2025-11-02 19:21:10.976085,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 19:21:14.038219,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 19:21:17.399466,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive updates on development and partnerships.",75,greed,medium
+2025-11-02 19:21:20.635290,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:21:23.701086,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:21:26.821832,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:21:29.776029,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:21:32.760070,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and some neutral discussions on its market performance.,85,greed,medium
+2025-11-02 19:36:35.957758,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 19:36:39.023333,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 19:36:42.186784,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 19:36:45.175914,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:36:48.111940,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:36:51.507218,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:36:54.525049,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:36:57.648552,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,greed,medium
+2025-11-02 19:52:01.040936,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 19:52:03.994601,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-02 19:52:06.996097,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-02 19:52:10.090339,DOGE,0.1,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 19:52:13.114994,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:52:16.131557,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 19:52:19.159316,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 19:52:22.119461,XRP,0.3,Recent posts show a mix of optimism about Ripple's legal progress and some neutral discussions on its market position.,85,greed,medium
+2025-11-02 20:07:25.130731,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 20:07:28.262829,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 20:07:31.257579,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 20:07:34.191476,DOGE,0.2,"Recent X posts show a mix of optimism and skepticism about Dogecoin, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 20:07:37.184012,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:07:40.175863,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:07:43.328664,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing hope for future gains.",75,greed,medium
+2025-11-02 20:07:46.314822,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive outlooks on potential partnerships.",75,neutral,medium
+2025-11-02 20:22:49.628969,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 20:22:52.642922,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 20:22:55.692915,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions about market volatility.",75,neutral,medium
+2025-11-02 20:22:59.069226,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:23:02.101044,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 20:23:05.155931,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 20:23:08.217457,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:23:11.332584,XRP,0.3,Recent X posts show a mix of optimism about Ripple's legal developments and some neutral discussions on its market performance.,85,greed,medium
+2025-11-02 20:38:14.398346,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 20:38:17.360855,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-02 20:38:20.556430,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-02 20:38:23.690519,DOGE,0.3,"Recent X posts show a mix of optimism and neutral discussions about Dogecoin, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:38:26.801707,PEPE,0.3,"Recent X posts show a mix of optimism and cautious discussions about Pepe, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 20:38:29.929800,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 20:38:33.102525,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and neutral discussions, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 20:38:36.179961,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 20:53:39.500778,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-02 20:53:42.527232,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-02 20:53:45.506729,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 20:53:48.850057,DOGE,0.3,"Recent X posts show a mix of optimism and speculative interest in Dogecoin, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 20:53:52.051435,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:53:55.429104,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-02 20:53:58.412590,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 20:54:01.368460,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious hope, with some positive developments mentioned.",75,greed,medium
+2025-11-02 21:09:05.227734,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-02 21:09:08.969476,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-02 21:09:12.235844,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-02 21:09:15.301253,DOGE,0.3,"Recent X posts show a mix of optimism and speculation about Dogecoin's future, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 21:09:18.577032,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 21:09:21.632118,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:09:24.693054,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some users expressing hope for future gains.",75,greed,medium
+2025-11-02 21:09:27.689988,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive news driving mild FOMO.",85,greed,medium
+2025-11-02 21:24:30.974169,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-02 21:24:34.045035,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,greed,medium
+2025-11-02 21:24:37.527387,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,neutral,medium
+2025-11-02 21:24:40.507563,DOGE,0.3,"Recent X posts about Dogecoin show a mix of optimism and speculative interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 21:24:43.569427,PEPE,0.3,"Recent X posts about Pepe show a mix of optimism and cautious interest, with some FOMO but also neutral discussions.",75,greed,medium
+2025-11-02 21:24:46.743618,WIF,0.3,"Recent X posts about Dogwifhat show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:24:50.074967,BONK,0.3,"Recent X posts about Bonk show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:24:53.055724,XRP,0.3,"Recent X posts about Ripple show a mix of optimism and cautious discussions, with some positive updates on legal developments.",85,greed,medium
+2025-11-02 21:29:18.623772,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:29:21.677967,ASTER,0.2,"Recent X posts about Aster show a mix of optimism and cautious discussion, with some FOMO but no significant FUD.",75,neutral,medium
+2025-11-02 21:29:25.350956,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",85,greed,medium
+2025-11-02 21:29:28.420943,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some users expressing hope for future growth.",75,neutral,medium
+2025-11-02 21:29:31.455494,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-02 21:44:34.463822,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:44:37.592415,ASTER,0.1,"Recent X posts about Aster show a mix of cautious optimism and neutral discussions, with some mild FOMO.",75,neutral,medium
+2025-11-02 21:44:40.790388,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-02 21:44:43.814821,BNB,0.3,"Recent X posts about Binance Coin show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 21:44:46.773618,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-02 21:59:49.966826,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 21:59:52.998446,ASTER,0.1,"Recent X posts about Aster show a mix of optimism and cautious discussions, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 21:59:56.839584,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 21:59:59.808930,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-02 22:00:02.808391,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussion, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-02 22:15:06.043845,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some FOMO but no widespread euphoria.",75,greed,medium
+2025-11-02 22:15:09.117521,ASTER,0.1,"Recent X posts about Aster show a mix of optimism and cautious discussions, with a slight lean towards positive sentiment.",75,neutral,medium
+2025-11-02 22:15:12.295514,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions on market volatility.",75,neutral,medium
+2025-11-02 22:15:15.271267,BNB,0.3,"Recent X posts show a mix of optimism about BNB's future and some concerns about regulatory issues, leaning slightly positive.",75,greed,medium
+2025-11-02 22:15:18.202061,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-02 22:30:26.463595,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 22:30:29.600478,ASTER,0.1,"Recent X posts about Aster show a mix of cautious optimism and neutral discussions, with some mild FOMO but no significant FUD.",75,neutral,medium
+2025-11-02 22:30:32.672954,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,75,neutral,medium
+2025-11-02 22:30:35.664948,BNB,0.3,"Recent X posts show a mix of optimism about BNB's future and some concerns about regulatory issues, leaning slightly positive.",75,greed,medium
+2025-11-02 22:30:38.584766,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-02 22:45:41.690564,HYPE,0.3,"Recent X posts about Hyper show a mix of optimism and cautious interest, with some users expressing mild FOMO.",75,greed,medium
+2025-11-02 22:45:44.690580,ASTER,0.1,"Recent X posts about Aster show a mix of cautious optimism and neutral discussions, with some mild FOMO but no significant FUD.",75,neutral,medium
+2025-11-02 22:45:47.680436,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive updates on development and partnerships.",75,greed,medium
+2025-11-02 22:45:50.620333,BNB,0.3,Recent X posts show a mix of optimism about BNB's future and some concerns about regulatory issues.,75,neutral,medium
+2025-11-02 22:45:53.679450,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium

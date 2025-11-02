@@ -5,3 +5,6 @@ python3 -m src.agents.risk_agent
 
 python3 src/agents/trading_agent.py
 
+dashboardS
+python DIR_dash_agents/app.py
+

@@ -312,16 +312,34 @@ class ClipsAgent:
 
     def generate_voice_intro(self, text, video_id):
         """Generate voice intro from text and save as MP3"""
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+        cprint("⚠️ Voice generation disabled (OpenAI TTS commented out)", "yellow")
+        
+        # Play MP3 notification sound to indicate completion
         try:
-            cprint("\n🗣️ Generating voice intro...", "cyan")
+            from src import config
+            import subprocess
+            from pathlib import Path
             
-            # Generate voice using OpenAI
-            response = self.openai_client.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                speed=VOICE_SPEED,
-                input=text
-            )
+            if config.PLAY_MP3_AGENT_SOUNDS:
+                notification_file = Path("src/audio/notifications/success.mp3")
+                if notification_file.exists():
+                    subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                 check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except:
+            pass
+        return None
+        
+        # try:
+        #     cprint("\n🗣️ Generating voice intro...", "cyan")
+        #     
+        #     # Generate voice using OpenAI
+        #     response = self.openai_client.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         speed=VOICE_SPEED,
+        #         input=text
+        #     )
             
             # Save to materials directory
             intro_path = YOUTUBE_MATERIALS_DIR / video_id / f"{video_id}_intro.mp3"

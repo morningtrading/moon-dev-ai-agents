@@ -1,231 +1,250 @@
-# CLAUDE.md
+# Moon Dev AI Agents - WARP Context
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+**Last Updated:** 2025-11-02
+
+This file provides comprehensive context about the Moon Dev AI Trading Agents system for AI assistants.
+
+---
 
 ## Project Overview
 
-This is an experimental AI trading system that orchestrates 48+ specialized AI agents to analyze markets, execute strategies, and manage risk across cryptocurrency markets (primarily Solana). The project uses a modular agent architecture with unified LLM provider abstraction supporting Claude, GPT-4, DeepSeek, Groq, Gemini, and local Ollama models.
+Moon Dev's experimental AI trading system with 48+ specialized agents for cryptocurrency trading across multiple exchanges (Hyperliquid, Solana/BirdEye, Aster, Extended).
 
-## Key Development Commands
+**Key Characteristics:**
+- Modular agent architecture (each agent < 800 lines)
+- Multi-exchange support with unified API
+- LLM provider abstraction (6 providers via ModelFactory)
+- Risk-first trading approach
+- Backtesting with RBI agent
+- Educational/experimental project (no profit guarantees)
 
-### Environment Setup
-```bash
-# Use existing conda environment (DO NOT create new virtual environments)
-conda activate tflow
+---
 
-# Install/update dependencies
-pip install -r requirements.txt
+## Directory Structure
 
-# IMPORTANT: Update requirements.txt every time you add a new package
-pip freeze > requirements.txt
+```
+/home/titus/moon-dev-ai-agents/
+├── src/
+│   ├── agents/              # 48+ specialized AI agents
+│   ├── models/              # LLM provider abstraction (ModelFactory)
+│   ├── strategies/          # User-defined trading strategies
+│   ├── scripts/             # Standalone utility scripts
+│   ├── data/                # Agent outputs, memory, analysis results
+│   ├── config.py            # Global configuration
+│   ├── main.py              # Main orchestrator loop
+│   ├── nice_funcs.py        # Core trading utilities (Solana/BirdEye)
+│   ├── nice_funcs_hl.py     # Hyperliquid-specific functions
+│   └── nice_funcs_extended.py # Extended Exchange functions
+├── agent_manager.py         # CLI agent management tool
+├── agent_config.yaml        # Agent configuration
+├── .env                     # API keys and secrets (NEVER expose)
+├── .claude/skills/          # Claude AI skill definitions
+└── logs/                    # Agent log files
 ```
 
-### Running the System
-```bash
-# Run main orchestrator (controls multiple agents)
-python src/main.py
+---
 
-# Run individual agents standalone
+## Agent Management
+
+**Agent Manager** (`agent_manager.py`): CLI tool for starting/stopping agents
+**Agent Config** (`agent_config.yaml`): Defines which agents are enabled
+**Logs Directory** (`logs/`): Contains runtime logs for each agent
+
+**Current Running Agents** (as of last check):
+- funding_agent.log
+- grok_sentiment_agent.log
+- liquidation_agent.log
+- risk_agent.log (largest log - very active)
+- trading_agent.log (largest log - very active)
+- whale_agent.log
+
+---
+
+## Key Agents
+
+**Trading Agents:**
+- `trading_agent.py` - DUAL-MODE: Single model (~10s) or 6-model swarm consensus (~45-60s)
+- `strategy_agent.py` - Executes strategies from src/strategies/
+- `risk_agent.py` - **RUNS FIRST**, circuit breakers, risk management
+- `copybot_agent.py` - Copies successful traders
+
+**Market Analysis:**
+- `sentiment_agent.py` / `grok_sentiment_agent.py` - Social sentiment analysis
+- `whale_agent.py` - Tracks large wallet movements
+- `funding_agent.py` - Monitors funding rates
+- `liquidation_agent.py` - Tracks liquidation events
+
+**Research & Backtesting:**
+- `rbi_agent_pp_multi.py` - Parallel backtesting agent (18 threads, 20+ data sources)
+- `rbi_agent.py` - Codes backtests from videos/PDFs/text using DeepSeek-R1
+
+---
+
+## Exchange Support
+
+**Hyperliquid** (`nice_funcs_hl.py`):
+- EVM-compatible perpetuals DEX
+- Leverage up to 50x
+- Functions: `market_buy()`, `market_sell()`, `get_position()`, `close_position()`
+
+**Solana/BirdEye** (`nice_funcs.py`):
+- Solana spot token data and trading
+- 15,000+ tokens
+- Functions: `token_overview()`, `token_price()`, `get_ohlcv_data()`
+
+**Extended/Aster** (`nice_funcs_extended.py`):
+- StarkNet-based perpetuals
+- Leverage up to 20x
+- Auto symbol conversion (BTC → BTC-USD)
+
+---
+
+## Configuration
+
+**Trading Settings** (`src/config.py`):
+- Position sizing, risk limits, monitored tokens
+- AI model selection, temperature, max tokens
+- Sleep intervals, agent activation
+
+**Secrets** (`.env`):
+- AI Provider Keys: ANTHROPIC_KEY, OPENAI_KEY, DEEPSEEK_KEY, GROQ_API_KEY, GEMINI_KEY, XAI_API_KEY
+- Exchange Keys: HYPER_LIQUID_ETH_PRIVATE_KEY, X10_API_KEY, BIRDEYE_API_KEY
+- Blockchain: SOLANA_PRIVATE_KEY, RPC_ENDPOINT
+
+---
+
+## LLM Provider Abstraction
+
+**ModelFactory** (`src/models/`):
+- Unified interface for multiple LLM providers
+- Providers: Claude, GPT-4, DeepSeek, Groq, Gemini, Ollama
+- Usage: `model = ModelFactory.create_model('anthropic')`
+
+**Provider Strategy:**
+- Claude Sonnet: Default, balanced
+- Claude Haiku: Fast, cheap
+- DeepSeek-R1: Deep reasoning, very cheap
+- Groq: Ultra-fast inference
+- Ollama: Local, no API costs
+
+---
+
+## Existing Dashboards
+
+**Backtest Dashboard** (`src/scripts/backtestdashboard.py`):
+- FastAPI web interface
+- Views backtest results from `rbi_agent_pp_multi.py`
+- Port: 8001
+- Features: View stats CSV, organize backtest folders
+
+**Agent Manager** (`agent_manager.py`):
+- CLI tool for managing agents
+- Start/stop agents, view status
+- Check PIDs, monitor logs
+
+---
+
+## Development Rules (CRITICAL)
+
+1. **Keep files under 800 lines** - split if longer
+2. **NEVER move files** - can create new, but no moving without asking
+3. **Use existing environment** - don't create new virtual environments
+4. **Update requirements.txt** after any pip install: `pip freeze > requirements.txt`
+5. **Use real data only** - never synthetic/fake data
+6. **Minimal error handling** - user wants to see errors
+7. **Never expose API keys** - don't show .env contents
+8. **Use 'GEN_' prefix** - User prefers 'GEN_' before numbers in filenames (not numbers at start)
+
+---
+
+## Common Workflows
+
+**Run single agent:**
+```bash
 python src/agents/trading_agent.py
-python src/agents/risk_agent.py
-python src/agents/rbi_agent.py
-python src/agents/chat_agent.py
-# ... any agent in src/agents/ can run independently
 ```
 
-### Backtesting
+**Run orchestrator:**
 ```bash
-# Use backtesting.py library with pandas_ta or talib for indicators
-# Sample OHLCV data available at:
-# /Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading/src/data/rbi/BTC-USD-15m.csv
+python src/main.py
 ```
 
-## Architecture Overview
-
-### Core Structure
-```
-src/
-├── agents/              # 48+ specialized AI agents (each <800 lines)
-├── models/              # LLM provider abstraction (ModelFactory pattern)
-├── strategies/          # User-defined trading strategies
-├── scripts/             # Standalone utility scripts
-├── data/                # Agent outputs, memory, analysis results
-├── config.py            # Global configuration (positions, risk limits, API settings)
-├── main.py              # Main orchestrator for multi-agent loop
-├── nice_funcs.py        # ~1,200 lines of shared trading utilities
-├── nice_funcs_hl.py     # Hyperliquid-specific utilities
-└── ezbot.py             # Legacy trading controller
-```
-
-### Agent Ecosystem
-
-**Trading Agents**: `trading_agent`, `strategy_agent`, `risk_agent`, `copybot_agent`
-**Market Analysis**: `sentiment_agent`, `whale_agent`, `funding_agent`, `liquidation_agent`, `chartanalysis_agent`
-**Content Creation**: `chat_agent`, `clips_agent`, `tweet_agent`, `video_agent`, `phone_agent`
-**Strategy Development**: `rbi_agent` (Research-Based Inference - codes backtests from videos/PDFs), `research_agent`
-**Specialized**: `sniper_agent`, `solana_agent`, `tx_agent`, `million_agent`, `tiktok_agent`, `compliance_agent`
-
-Each agent can run independently or as part of the main orchestrator loop.
-
-### LLM Integration (Model Factory)
-
-Located at `src/models/model_factory.py` and `src/models/README.md`
-
-**Unified Interface**: All agents use `ModelFactory.create_model()` for consistent LLM access
-**Supported Providers**: Anthropic Claude (default), OpenAI, DeepSeek, Groq, Google Gemini, Ollama (local)
-**Key Pattern**:
+**Switch exchange in agent:**
 ```python
-from src.models.model_factory import ModelFactory
-
-model = ModelFactory.create_model('anthropic')  # or 'openai', 'deepseek', 'groq', etc.
-response = model.generate_response(system_prompt, user_content, temperature, max_tokens)
+EXCHANGE = "hyperliquid"  # or "birdeye", "extended"
+if EXCHANGE == "hyperliquid":
+    from src import nice_funcs_hl as nf
 ```
 
-### Configuration Management
+**Switch AI model:**
+```python
+model = ModelFactory.create_model('anthropic')  # or 'deepseek', 'groq', etc.
+```
 
-**Primary Config**: `src/config.py`
-- Trading settings: `MONITORED_TOKENS`, `EXCLUDED_TOKENS`, position sizing (`usd_size`, `max_usd_order_size`)
-- Risk management: `CASH_PERCENTAGE`, `MAX_POSITION_PERCENTAGE`, `MAX_LOSS_USD`, `MAX_GAIN_USD`, `MINIMUM_BALANCE_USD`
-- Agent behavior: `SLEEP_BETWEEN_RUNS_MINUTES`, `ACTIVE_AGENTS` dict in `main.py`
-- AI settings: `AI_MODEL`, `AI_MAX_TOKENS`, `AI_TEMPERATURE`
+---
 
-**Environment Variables**: `.env` (see `.env_example`)
-- Trading APIs: `BIRDEYE_API_KEY`, `MOONDEV_API_KEY`, `COINGECKO_API_KEY`
-- AI Services: `ANTHROPIC_KEY`, `OPENAI_KEY`, `DEEPSEEK_KEY`, `GROQ_API_KEY`, `GEMINI_KEY`
-- Blockchain: `SOLANA_PRIVATE_KEY`, `HYPER_LIQUID_ETH_PRIVATE_KEY`, `RPC_ENDPOINT`
-
-### Shared Utilities
-
-**`src/nice_funcs.py`** (~1,200 lines): Core trading functions
-- Data: `token_overview()`, `token_price()`, `get_position()`, `get_ohlcv_data()`
-- Trading: `market_buy()`, `market_sell()`, `chunk_kill()`, `open_position()`
-- Analysis: Technical indicators, PnL calculations, rug pull detection
-
-**`src/agents/api.py`**: `MoonDevAPI` class for custom Moon Dev API endpoints
-- `get_liquidation_data()`, `get_funding_data()`, `get_oi_data()`, `get_copybot_follow_list()`
-
-### Data Flow Pattern
+## Data Flow
 
 ```
 Config/Input → Agent Init → API Data Fetch → Data Parsing →
-LLM Analysis (via ModelFactory) → Decision Output →
+LLM Analysis (ModelFactory) → Decision Output →
 Result Storage (CSV/JSON in src/data/) → Optional Trade Execution
 ```
 
-## Development Rules
-
-### File Management
-- **Keep files under 800 lines** - if longer, split into new files and update README
-- **DO NOT move files without asking** - you can create new files but no moving
-- **NEVER create new virtual environments** - use existing `conda activate tflow`
-- **Update requirements.txt** after adding any new package
-
-### Backtesting
-- Use `backtesting.py` library (NOT their built-in indicators)
-- Use `pandas_ta` or `talib` for technical indicators instead
-- Sample data available at `/Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading/src/data/rbi/BTC-USD-15m.csv`
-
-### Code Style
-- **No fake/synthetic data** - always use real data or fail the script
-- **Minimal error handling** - user wants to see errors, not over-engineered try/except blocks
-- **No API key exposure** - never show keys from `.env` in output
-
-### Agent Development Pattern
-
-When creating new agents:
-1. Inherit from base patterns in existing agents
-2. Use `ModelFactory` for LLM access
-3. Store outputs in `src/data/[agent_name]/`
-4. Make agent independently executable (standalone script)
-5. Add configuration to `config.py` if needed
-6. Follow naming: `[purpose]_agent.py`
-
-### Testing Strategies
-
-Place strategy definitions in `src/strategies/` folder:
-```python
-class YourStrategy(BaseStrategy):
-    name = "strategy_name"
-    description = "what it does"
-
-    def generate_signals(self, token_address, market_data):
-        return {
-            "action": "BUY"|"SELL"|"NOTHING",
-            "confidence": 0-100,
-            "reasoning": "explanation"
-        }
+**Risk-First Flow:**
+```
+Main Orchestrator → Risk Agent (circuit breaker) →
+Active Agents → ModelFactory → Exchange API → Blockchain/Market
 ```
 
-## Important Context
+---
 
-### Risk-First Philosophy
-- Risk Agent runs first in main loop before any trading decisions
-- Configurable circuit breakers (`MAX_LOSS_USD`, `MINIMUM_BALANCE_USD`)
-- AI confirmation for position-closing decisions (configurable via `USE_AI_CONFIRMATION`)
+## Philosophy
 
-### Data Sources
-1. **BirdEye API** - Solana token data (price, volume, liquidity, OHLCV)
-2. **Moon Dev API** - Custom signals (liquidations, funding rates, OI, copybot data)
-3. **CoinGecko API** - 15,000+ token metadata, market caps, sentiment
-4. **Helius RPC** - Solana blockchain interaction
+- **Experimental, educational project** - no guarantees of profitability
+- **Never over-engineer** - always ship real trading systems
+- **Fail fast** - minimal error handling to see issues immediately
+- **Open source and free** - democratize AI agent development
+- **No official token** - avoid scams claiming association
 
-### Autonomous Execution
-- Main loop runs every 15 minutes by default (`SLEEP_BETWEEN_RUNS_MINUTES`)
-- Agents handle errors gracefully and continue execution
-- Keyboard interrupt for graceful shutdown
-- All agents log to console with color-coded output (termcolor)
+---
 
-### AI-Driven Strategy Generation (RBI Agent)
-1. User provides: YouTube video URL / PDF / trading idea text
-2. DeepSeek-R1 analyzes and extracts strategy logic
-3. Generates backtesting.py compatible code
-4. Executes backtest and returns performance metrics
-5. Cost: ~$0.027 per backtest execution (~6 minutes)
+## Key Resources
 
-## Common Patterns
+**Claude Skills:** `.claude/skills/moon-dev-trading-agents/`
+- SKILL.md - Main skill file
+- AGENTS.md - Complete agent list
+- WORKFLOWS.md - Practical workflows
+- ARCHITECTURE.md - Deep architecture dive
 
-### Adding New Agent
-1. Create `src/agents/your_agent.py`
-2. Implement standalone execution logic
-3. Add to `ACTIVE_AGENTS` in `main.py` if needed for orchestration
-4. Use `ModelFactory` for LLM calls
-5. Store results in `src/data/your_agent/`
+**Documentation:** `docs/`
+- CLAUDE.md - Project overview
+- hyperliquid.md, extended_exchange.md - Exchange guides
+- rbi_agent.md - Backtesting guide
 
-### Switching AI Models
-Edit `config.py`:
-```python
-AI_MODEL = "claude-3-haiku-20240307"  # Fast, cheap
-# AI_MODEL = "claude-3-sonnet-20240229"  # Balanced
-# AI_MODEL = "claude-3-opus-20240229"  # Most powerful
-```
+---
 
-Or use different models per agent via ModelFactory:
-```python
-model = ModelFactory.create_model('deepseek')  # Reasoning tasks
-model = ModelFactory.create_model('groq')      # Fast inference
-```
+## Git Info
 
-### Reading Market Data
-```python
-from src.nice_funcs import token_overview, get_ohlcv_data, token_price
+**Branch:** main
+**Python Version:** 3.10.9
+**Environment:** User's choice (conda, venv, etc.) - commonly `tflow` for conda users
 
-# Get comprehensive token data
-overview = token_overview(token_address)
+---
 
-# Get price history
-ohlcv = get_ohlcv_data(token_address, timeframe='1H', days_back=3)
+## Notes for AI Assistants
 
-# Get current price
-price = token_price(token_address)
-```
+- Always activate environment before running commands
+- Check `.env` exists and has required keys
+- Respect the 800-line file limit
+- Never move files without explicit permission
+- Update requirements.txt after pip installs
+- Use 'GEN_' prefix for generated files with numbers
+- Read existing code patterns before suggesting changes
+- Prioritize user's existing patterns over "best practices"
 
-## Project Philosophy
+---
 
-This is an **experimental, educational project** demonstrating AI agent patterns through algorithmic trading:
-- No guarantees of profitability (substantial risk of loss)
-- Open source and free for learning
-- YouTube-driven development with weekly updates
-- Community-supported via Discord
-- No token associated with project (avoid scams)
+**Built with 🌙 by Moon Dev**
 
-The goal is to democratize AI agent development and show practical multi-agent orchestration patterns that can be applied beyond trading.
+*This WARP file ensures AI assistants have full context about the Moon Dev trading system.*

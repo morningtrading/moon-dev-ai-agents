@@ -28,27 +28,14 @@ if str(project_root) not in sys.path:
 
 from src.models.model_factory import model_factory
 from src.agents.base_agent import BaseAgent
+from src.config import HYPERLIQUID_SYMBOLS, TOKEN_NAMES
 
 # Configuration
 CHECK_INTERVAL_MINUTES = 15  # Check sentiment every 15 minutes
 
-# Tokens to track (configurable)
-TOKENS_TO_TRACK = {
-    'BTC': 'Bitcoin',
-    'ETH': 'Ethereum',
-    'SOL': 'Solana',
-    'DOGE': 'Dogecoin',
-    'PEPE': 'Pepe',
-    'WIF': 'Dogwifhat',
-    'BONK': 'Bonk',
-    'XRP': 'Ripple',
-    # Add more tokens here:
-    # 'SHIB': 'Shiba Inu',
-    # 'AVAX': 'Avalanche',
-    # 'LINK': 'Chainlink',
-    # 'DOT': 'Polkadot',
-    # 'MATIC': 'Polygon',
-}
+# 🌙 Tokens to track - imported from centralized config
+# This ensures all agents (trading, sentiment, funding, whale, liquidation) track the same coins
+TOKENS_TO_TRACK = TOKEN_NAMES  # Uses the master coin list from config.py
 
 # Sentiment thresholds for alerts
 SENTIMENT_EXTREME_THRESHOLD = 0.6  # Alert if abs(sentiment) > 0.6
@@ -278,33 +265,53 @@ class GrokSentimentAgent(BaseAgent):
     
     def announce(self, message, important=False):
         """Announce via text and optionally voice"""
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
         cprint(f"\n🗣️ {message}", "yellow", attrs=['bold'])
         
-        if not self.voice_enabled or not important:
-            return
+        # Play MP3 notification sound for important messages
+        if important:
+            try:
+                from src import config
+                import subprocess
+                from pathlib import Path
+                
+                if not config.PLAY_MP3_AGENT_SOUNDS:
+                    return
+                
+                notification_file = Path("src/audio/notifications/alert.mp3")
+                if notification_file.exists():
+                    for i in range(config.MP3_REPEAT_COUNT):
+                        subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                     check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except:
+                pass
+        return
         
-        try:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            audio_file = self.audio_dir / f"grok_sentiment_{timestamp}.mp3"
-            
-            response = openai.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                speed=VOICE_SPEED,
-                input=message
-            )
-            
-            response.stream_to_file(audio_file)
-            
-            # Play audio
-            os.system(f"afplay {audio_file} 2>/dev/null || aplay {audio_file} 2>/dev/null")
-            
-            # Clean up after playing
-            time.sleep(1)
-            audio_file.unlink(missing_ok=True)
-            
-        except Exception as e:
-            cprint(f"⚠️ Voice alert failed: {e}", "yellow")
+        # if not self.voice_enabled or not important:
+        #     return
+        # 
+        # try:
+        #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        #     audio_file = self.audio_dir / f"grok_sentiment_{timestamp}.mp3"
+        #     
+        #     response = openai.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         speed=VOICE_SPEED,
+        #         input=message
+        #     )
+        #     
+        #     response.stream_to_file(audio_file)
+        #     
+        #     # Play audio
+        #     os.system(f"afplay {audio_file} 2>/dev/null || aplay {audio_file} 2>/dev/null")
+        #     
+        #     # Clean up after playing
+        #     time.sleep(1)
+        #     audio_file.unlink(missing_ok=True)
+        #     
+        # except Exception as e:
+        #     cprint(f"⚠️ Voice alert failed: {e}", "yellow")
     
     def save_sentiment(self, token, data):
         """Save sentiment data to history"""

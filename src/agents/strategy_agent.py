@@ -3,21 +3,26 @@
 Handles all strategy-based trading decisions
 """
 
-from src.config import *
+import sys
+import os
+
+# Add project root to path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config import *
 import json
 from termcolor import cprint
 import anthropic
-import os
 import importlib
 import inspect
 import time
 
 # Import exchange manager for unified trading
 try:
-    from src.exchange_manager import ExchangeManager
+    from exchange_manager import ExchangeManager
     USE_EXCHANGE_MANAGER = True
 except ImportError:
-    from src import nice_funcs as n
+    import nice_funcs as n
     USE_EXCHANGE_MANAGER = False
 
 # 🎯 Strategy Evaluation Prompt
@@ -70,12 +75,10 @@ class StrategyAgent:
         if ENABLE_STRATEGIES:
             try:
                 # Import strategies directly
-                from src.strategies.custom.example_strategy import ExampleStrategy
-                from src.strategies.custom.private_my_strategy import MyStrategy
+                from strategies.custom.private_my_strategy import MyStrategy
                 
                 # Initialize strategies
                 self.enabled_strategies.extend([
-                    ExampleStrategy(),
                     MyStrategy()
                 ])
                 
@@ -162,7 +165,7 @@ class StrategyAgent:
             
             # 2. Get market data for context
             try:
-                from src.data.ohlcv_collector import collect_token_data
+                from data.ohlcv_collector import collect_token_data
                 market_data = collect_token_data(token)
             except Exception as e:
                 print(f"⚠️ Could not get market data: {e}")
@@ -303,4 +306,149 @@ class StrategyAgent:
                 
         except Exception as e:
             print(f"❌ Error executing strategy signals: {str(e)}")
-            print("🔧 Moon Dev suggests checking the logs and trying again!") 
+            print("🔧 Moon Dev suggests checking the logs and trying again!")
+    
+    def run_strategy_cycle(self):
+        """Run one complete strategy evaluation cycle"""
+        try:
+            from datetime import datetime
+            
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            cprint(f"\n{'='*90}", "cyan")
+            cprint(f"🔄 Strategy Cycle Started at {timestamp}", "cyan", attrs=['bold'])
+            cprint(f"{'='*90}", "cyan")
+            
+            if not self.enabled_strategies:
+                cprint("⚠️ No strategies loaded! Check ENABLE_STRATEGIES in config.py", "yellow")
+                return
+            
+            cprint(f"\n📊 Active Strategies: {len(self.enabled_strategies)}", "white")
+            for strategy in self.enabled_strategies:
+                cprint(f"  • {strategy.name}", "cyan")
+            
+            # Collect signals from all strategies
+            all_signals = []
+            
+            cprint(f"\n🔍 Collecting signals from all strategies...", "yellow")
+            for strategy in self.enabled_strategies:
+                try:
+                    signal = strategy.generate_signals()
+                    if signal:
+                        all_signals.append({
+                            'token': signal['token'],
+                            'strategy_name': strategy.name,
+                            'signal': signal['signal'],
+                            'direction': signal['direction'],
+                            'metadata': signal.get('metadata', {})
+                        })
+                        cprint(f"  ✅ {strategy.name}: {signal['direction']} {signal['token']} (confidence: {signal['signal']:.2f})", "green")
+                    else:
+                        cprint(f"  ⏸️  {strategy.name}: No signal", "white")
+                except Exception as e:
+                    cprint(f"  ❌ {strategy.name}: Error - {str(e)}", "red")
+            
+            # Process signals if any were generated
+            if all_signals:
+                cprint(f"\n📋 Total Signals Collected: {len(all_signals)}", "yellow", attrs=['bold'])
+                
+                # Group signals by token
+                signals_by_token = {}
+                for signal in all_signals:
+                    token = signal['token']
+                    if token not in signals_by_token:
+                        signals_by_token[token] = []
+                    signals_by_token[token].append(signal)
+                
+                # AI evaluation and execution for each token
+                for token, signals in signals_by_token.items():
+                    cprint(f"\n🎯 Evaluating {len(signals)} signal(s) for {token}", "cyan")
+                    
+                    # Get market data for context
+                    try:
+                        from data.ohlcv_collector import collect_token_data
+                        market_data = collect_token_data(token)
+                    except Exception as e:
+                        cprint(f"⚠️ Could not get market data: {e}", "yellow")
+                        market_data = {}
+                    
+                    # AI evaluation
+                    evaluation = self.evaluate_signals(signals, market_data)
+                    
+                    if evaluation:
+                        # Execute approved signals
+                        approved_signals = []
+                        for signal, decision in zip(signals, evaluation['decisions']):
+                            if "EXECUTE" in decision.upper():
+                                cprint(f"✅ AI approved: {signal['strategy_name']} {signal['direction']}", "green")
+                                approved_signals.append(signal)
+                            else:
+                                cprint(f"❌ AI rejected: {signal['strategy_name']} {signal['direction']}", "red")
+                        
+                        if approved_signals:
+                            self.execute_strategy_signals(approved_signals)
+                        else:
+                            cprint(f"⏸️  No signals approved for {token}", "white")
+                    else:
+                        cprint(f"❌ AI evaluation failed for {token}", "red")
+            else:
+                cprint(f"\n⏸️  No signals generated this cycle", "white")
+            
+            cprint(f"\n{'='*90}", "cyan")
+            cprint(f"✅ Strategy Cycle Complete", "cyan", attrs=['bold'])
+            cprint(f"{'='*90}\n", "cyan")
+            
+        except Exception as e:
+            cprint(f"❌ Error in strategy cycle: {str(e)}", "red")
+            import traceback
+            traceback.print_exc()
+
+
+def main():
+    """Main function to run strategy agent continuously"""
+    from datetime import datetime, timedelta
+    
+    cprint("\n" + "="*90, "cyan")
+    cprint("🌙 Moon Dev's Strategy Agent - Multi-Strategy Trading System", "cyan", attrs=['bold'])
+    cprint("="*90 + "\n", "cyan")
+    
+    try:
+        # Initialize strategy agent
+        agent = StrategyAgent()
+        
+        # Check interval from config (default 15 minutes)
+        try:
+            check_interval = SLEEP_BETWEEN_RUNS_MINUTES * 60  # Convert to seconds
+        except:
+            check_interval = 15 * 60  # Default 15 minutes
+        
+        cprint(f"⏰ Check Interval: {check_interval // 60} minutes", "white")
+        cprint(f"🚀 Starting continuous strategy evaluation...", "green", attrs=['bold'])
+        cprint(f"Press Ctrl+C to stop\n", "white")
+        
+        cycle_count = 0
+        
+        while True:
+            cycle_count += 1
+            cprint(f"\n📈 Cycle #{cycle_count}", "yellow")
+            
+            # Run strategy cycle
+            agent.run_strategy_cycle()
+            
+            # Sleep until next cycle
+            next_run = datetime.now() + timedelta(seconds=check_interval)
+            cprint(f"💤 Sleeping {check_interval // 60} minutes... Next run at {next_run.strftime('%H:%M:%S')}", "white")
+            time.sleep(check_interval)
+            
+    except KeyboardInterrupt:
+        cprint(f"\n\n⚠️  Strategy Agent stopped by user", "yellow")
+        cprint(f"Total cycles completed: {cycle_count}", "white")
+    except Exception as e:
+        cprint(f"\n\n❌ Fatal error: {str(e)}", "red")
+        import traceback
+        traceback.print_exc()
+    finally:
+        cprint(f"\n👋 Strategy Agent shutdown complete", "cyan")
+
+
+if __name__ == "__main__":
+    main()

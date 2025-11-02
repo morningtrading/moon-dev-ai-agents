@@ -6,6 +6,10 @@ Built with love by Moon Dev 🚀
 
 import os
 import sys
+
+# Add project root to path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from termcolor import colored, cprint
 from dotenv import load_dotenv
 import pandas as pd
@@ -21,7 +25,7 @@ class ExchangeManager:
 
     def __init__(self, exchange=None):
         """Initialize the exchange manager with the specified exchange"""
-        from src import config
+        import config
 
         # Use provided exchange or default from config
         self.exchange = exchange or config.EXCHANGE
@@ -31,12 +35,12 @@ class ExchangeManager:
         if self.exchange.lower() == 'hyperliquid':
             try:
                 import eth_account
-                from src import nice_funcs_hyperliquid as hl
+                import nice_funcs_hyperliquid as hl
 
-                # Get HyperLiquid key from environment
-                hl_key = os.getenv('HYPER_LIQUID_KEY')
-                if not hl_key:
-                    raise ValueError("HYPER_LIQUID_KEY not found in environment")
+                # Get HyperLiquid key from environment (try both possible names)
+                hl_key = os.getenv('HYPER_LIQUID_ETH_PRIVATE_KEY') or os.getenv('HYPER_LIQUID_KEY')
+                if not hl_key or hl_key == 'your_eth_private_key_here':
+                    raise ValueError("HYPER_LIQUID_ETH_PRIVATE_KEY not found or not configured in .env")
 
                 # Initialize account
                 self.account = eth_account.Account.from_key(hl_key)
@@ -51,7 +55,7 @@ class ExchangeManager:
 
         elif self.exchange.lower() == 'solana':
             try:
-                from src import nice_funcs as solana
+                import nice_funcs as solana
                 self.solana = solana
                 cprint(f"✅ Initialized Solana exchange manager", "green")
 
@@ -195,7 +199,7 @@ class ExchangeManager:
             return self.hl.kill_switch(symbol_or_token, self.account)
         else:
             # Use chunk_kill for Solana
-            from src.config import max_usd_order_size, slippage
+            from config import max_usd_order_size, slippage
             return self.solana.chunk_kill(symbol_or_token, max_usd_order_size, slippage)
 
     def ai_entry(self, symbol_or_token, usd_amount):

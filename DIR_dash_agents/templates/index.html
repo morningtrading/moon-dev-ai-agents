@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Moon Dev Agent Control Center</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>🌙 Moon Dev Agent Control Center</h1>
+        <p class="subtitle">Real-time monitoring and control for AI trading agents</p>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard-grid">
+        <!-- Panel 1: Agent Status Grid -->
+        <div class="panel agent-status-panel">
+            <h2>🤖 Agent Status</h2>
+            <div id="agents-container" class="agents-grid">
+                <!-- Agent cards will be populated here -->
+                <div class="loading">Loading agents...</div>
+            </div>
+        </div>
+
+        <!-- Panel 2: Control Panel -->
+        <div class="panel control-panel">
+            <h2>🎛️ Master Control</h2>
+            <div class="control-buttons">
+                <button class="btn btn-start-all" onclick="startAllAgents()">
+                    ▶️ Start All Enabled
+                </button>
+                <button class="btn btn-stop-all" onclick="stopAllAgents()">
+                    ⏹️ Stop All
+                </button>
+                <button class="btn btn-refresh" onclick="refreshAll()">
+                    🔄 Refresh Status
+                </button>
+            </div>
+            <div class="sound-toggle-container" style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                <label style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                    <span style="font-size: 14px;">🔊 Notification Sounds</span>
+                    <input type="checkbox" id="sound-toggle" onchange="toggleSounds()" style="width: 40px; height: 20px; cursor: pointer;">
+                </label>
+            </div>
+            <div id="control-status" class="control-status">
+                <p>Ready to control agents</p>
+            </div>
+        </div>
+
+        <!-- Panel 3: Live Log Viewer -->
+        <div class="panel log-viewer-panel">
+            <h2>📜 Live Logs</h2>
+            <div class="log-tabs" id="log-tabs">
+                <!-- Log tabs will be populated here -->
+            </div>
+            <div class="log-content" id="log-content">
+                <div class="log-placeholder">Select an agent to view logs</div>
+            </div>
+        </div>
+
+        <!-- Panel 4: Trading Overview -->
+        <div class="panel trading-panel">
+            <h2>💰 Trading Overview</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Account Balance</div>
+                    <div class="metric-value" id="balance">$0.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Active Positions</div>
+                    <div class="metric-value" id="positions">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Today's P&L</div>
+                    <div class="metric-value" id="pnl">$0.00</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Risk Status</div>
+                    <div class="metric-value" id="risk-status">Unknown</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel 5: Recent Alerts -->
+        <div class="panel alerts-panel">
+            <h2>🔔 Recent Alerts</h2>
+            <div id="alerts-container" class="alerts-list">
+                <!-- Alerts will be populated here -->
+                <div class="no-alerts">No recent alerts</div>
+            </div>
+        </div>
+
+        <!-- Panel 6: System Info -->
+        <div class="panel system-panel">
+            <h2>⚙️ System Info</h2>
+            <div class="system-info">
+                <div class="info-row">
+                    <span class="info-label">Python:</span>
+                    <span class="info-value" id="python-version">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">System Uptime:</span>
+                    <span class="info-value" id="system-uptime">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Active Agents:</span>
+                    <span class="info-value" id="active-agents">0 / 0</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Exchange:</span>
+                    <span class="info-value" id="exchange">-</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Confirm Action</h3>
+            <p id="modal-message">Are you sure?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-confirm" id="modal-confirm">Confirm</button>
+                <button class="btn btn-cancel" id="modal-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

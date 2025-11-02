@@ -46,15 +46,10 @@ POSITIVE_THRESHOLD = 20  # AI Run & Alert if annual rate above 20%
 TIMEFRAME = '15m'  # Candlestick timeframe
 LOOKBACK_BARS = 100  # Number of candles to analyze
 
-# Symbol to name mapping
-SYMBOL_NAMES = {
-    # 'BTC': 'Bitcoin',
-    # 'ETH': 'Ethereum',
-    # 'SOL': 'Solana',
-    # 'WIF': 'Wif',
-    # 'BNB': 'BNB',
-    'FARTCOIN': 'Fart Coin'
-}
+# 🌙 Symbol to name mapping - imported from centralized config
+# This ensures all agents track the same coins
+from src.config import TOKEN_NAMES, HYPERLIQUID_SYMBOLS
+SYMBOL_NAMES = TOKEN_NAMES  # Uses master coin list: BTC, ETH, SOL, BNB, XLM
 
 # AI Settings - Override config.py if set
 # Import defaults from config
@@ -347,31 +342,52 @@ class FundingAgent(BaseAgent):
             
     def _announce(self, message):
         """Announce message using OpenAI TTS"""
-        if not message:
-            return
-            
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+        print(f"\n📢 {message}")
+        
+        # Play MP3 notification sound
         try:
-            print(f"\n📢 Announcing: {message}")
+            from src import config
+            import subprocess
+            from pathlib import Path
             
-            # Generate speech
-            response = openai.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                input=message,
-                speed=VOICE_SPEED
-            )
+            if not config.PLAY_MP3_AGENT_SOUNDS:
+                return
             
-            # Save audio file
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            audio_file = self.audio_dir / f"funding_alert_{timestamp}.mp3"
-            
-            response.stream_to_file(audio_file)
-            
-            # Play audio using system command
-            os.system(f"afplay {audio_file}")
-            
-        except Exception as e:
-            print(f"❌ Error in announcement: {str(e)}")
+            notification_file = Path("src/audio/notifications/alert.mp3")
+            if notification_file.exists():
+                for i in range(config.MP3_REPEAT_COUNT):
+                    subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                 check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        except:
+            pass
+        return
+        
+        # if not message:
+        #     return
+        #     
+        # try:
+        #     print(f"\n📢 Announcing: {message}")
+        #     
+        #     # Generate speech
+        #     response = openai.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         input=message,
+        #         speed=VOICE_SPEED
+        #     )
+        #     
+        #     # Save audio file
+        #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        #     audio_file = self.audio_dir / f"funding_alert_{timestamp}.mp3"
+        #     
+        #     response.stream_to_file(audio_file)
+        #     
+        #     # Play audio using system command
+        #     os.system(f"afplay {audio_file}")
+        #     
+        # except Exception as e:
+        #     print(f"❌ Error in announcement: {str(e)}")
 
     def load_history(self):
         """Load or initialize historical funding rate data"""
@@ -398,6 +414,13 @@ class FundingAgent(BaseAgent):
             if df is not None and not df.empty:
                 # Get latest data for each symbol
                 current_data = df.sort_values('event_time').groupby('symbol').last().reset_index()
+                
+                # Filter to only track configured symbols from HYPERLIQUID_SYMBOLS
+                current_data = current_data[current_data['symbol'].isin(HYPERLIQUID_SYMBOLS)]
+                
+                if current_data.empty:
+                    print(f"⚠️ No funding data found for configured symbols: {HYPERLIQUID_SYMBOLS}")
+                    return None
                 
                 # Ensure funding_rate and yearly_funding_rate are numeric
                 numeric_cols = ['funding_rate', 'yearly_funding_rate']

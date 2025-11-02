@@ -1,0 +1,563 @@
+/* ============================================================================
+   Moon Dev Agent Control Center Dashboard Stylesheet
+   Dark theme optimized for trading
+   ============================================================================ */
+
+/* ===== VARIABLES ===== */
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-panel: #0f3460;
+    --text-primary: #eaeaea;
+    --text-secondary: #a8a8a8;
+    --success: #00ff88;
+    --warning: #ffd93d;
+    --error: #ff4757;
+    --info: #5f9dff;
+    --inactive: #6c757d;
+    --border: #2d3748;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: var(--bg-secondary);
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid var(--border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+header .subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ===== DASHBOARD GRID ===== */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+/* Grid positioning */
+.agent-status-panel { grid-column: 1; grid-row: 1; }
+.control-panel { grid-column: 2; grid-row: 1; }
+.log-viewer-panel { grid-column: 1; grid-row: 2; }
+.trading-panel { grid-column: 2; grid-row: 2; }
+.alerts-panel { grid-column: 1; grid-row: 3; }
+.system-panel { grid-column: 2; grid-row: 3; }
+
+/* ===== PANELS ===== */
+.panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.panel:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.panel h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--info);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+/* ===== AGENT STATUS GRID ===== */
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.agent-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.agent-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--info);
+}
+
+.agent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.agent-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    color: var(--info);
+}
+
+.agent-name:hover {
+    text-decoration: underline;
+}
+
+.status-badge {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-badge.running {
+    background: var(--success);
+    animation: pulse 2s infinite;
+}
+
+.status-badge.stopped {
+    background: var(--inactive);
+}
+
+.status-badge.error {
+    background: var(--error);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.agent-info {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.agent-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.agent-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    flex: 1;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-start {
+    background: var(--success);
+    color: #000;
+}
+
+.btn-start:hover {
+    background: #00dd77;
+}
+
+.btn-stop {
+    background: var(--error);
+    color: #fff;
+}
+
+.btn-stop:hover {
+    background: #ee3344;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== CONTROL PANEL ===== */
+.control-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-start-all {
+    background: var(--success);
+    color: #000;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.btn-stop-all {
+    background: var(--error);
+    color: #fff;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.btn-refresh {
+    background: var(--info);
+    color: #fff;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.control-status {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-panel);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ===== LOG VIEWER ===== */
+.log-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.log-tab {
+    padding: 0.5rem 1rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.log-tab:hover {
+    background: var(--info);
+    color: #fff;
+}
+
+.log-tab.active {
+    background: var(--info);
+    color: #fff;
+    border-color: var(--info);
+}
+
+.log-content {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    height: 400px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.log-line {
+    margin-bottom: 0.25rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.log-placeholder {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* ===== TRADING OVERVIEW ===== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.metric-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#balance { color: var(--success); }
+#pnl.positive { color: var(--success); }
+#pnl.negative { color: var(--error); }
+
+/* ===== ALERTS ===== */
+.alerts-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.alert-item {
+    background: var(--bg-panel);
+    border-left: 4px solid var(--info);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-radius: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.alert-item.whale { border-left-color: var(--info); }
+.alert-item.liquidation { border-left-color: #ff9500; }
+.alert-item.sentiment { border-left-color: #9d4edd; }
+.alert-item.funding { border-left-color: var(--success); }
+.alert-item.error { border-left-color: var(--error); }
+.alert-item.warning { border-left-color: var(--warning); }
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.alert-type {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.alert-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.alert-message {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.no-alerts {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+}
+
+/* ===== SYSTEM INFO ===== */
+.system-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: var(--bg-panel);
+    border-radius: 4px;
+}
+
+.info-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--info);
+}
+
+/* ===== TOAST NOTIFICATIONS ===== */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.3s ease;
+    min-width: 300px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(400px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.toast.success { border-left: 4px solid var(--success); }
+.toast.error { border-left: 4px solid var(--error); }
+.toast.info { border-left: 4px solid var(--info); }
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+    color: var(--warning);
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-confirm {
+    background: var(--error);
+    color: #fff;
+    flex: 1;
+}
+
+.btn-cancel {
+    background: var(--inactive);
+    color: #fff;
+    flex: 1;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--info);
+}
+
+/* ===== LOADING ===== */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .agent-status-panel,
+    .control-panel,
+    .log-viewer-panel,
+    .trading-panel,
+    .alerts-panel,
+    .system-panel {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .agents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard-grid {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .panel {
+        padding: 1rem;
+    }
+}

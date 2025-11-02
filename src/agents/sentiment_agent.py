@@ -149,24 +149,46 @@ class SentimentAgent:
 
     def _announce(self, message, is_important=False):
         """Announce a message using text-to-speech"""
-        try:
-            print(f"\n🗣️ {message}")
-            
-            # Only use voice for important messages
-            if not is_important:
-                return
+        # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+        print(f"\n🗣️ {message}")
+        
+        # Play MP3 notification sound for important messages
+        if is_important:
+            try:
+                from src import config
+                import subprocess
+                from pathlib import Path
                 
-            # Generate unique filename based on timestamp
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            speech_file = self.audio_dir / f"sentiment_audio_{timestamp}.mp3"
-            
-            # Generate speech using OpenAI
-            response = openai.audio.speech.create(
-                model=VOICE_MODEL,
-                voice=VOICE_NAME,
-                speed=VOICE_SPEED,
-                input=message
-            )
+                if not config.PLAY_MP3_AGENT_SOUNDS:
+                    return
+                
+                notification_file = Path("src/audio/notifications/alert.mp3")
+                if notification_file.exists():
+                    for i in range(config.MP3_REPEAT_COUNT):
+                        subprocess.run(['mpg123', '-q', str(notification_file)], 
+                                     check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except:
+                pass
+        return
+        
+        # try:
+        #     print(f"\n🗣️ {message}")
+        #     
+        #     # Only use voice for important messages
+        #     if not is_important:
+        #         return
+        #         
+        #     # Generate unique filename based on timestamp
+        #     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        #     speech_file = self.audio_dir / f"sentiment_audio_{timestamp}.mp3"
+        #     
+        #     # Generate speech using OpenAI
+        #     response = openai.audio.speech.create(
+        #         model=VOICE_MODEL,
+        #         voice=VOICE_NAME,
+        #         speed=VOICE_SPEED,
+        #         input=message
+        #     )
             
             # Save and play the audio
             with open(speech_file, 'wb') as f:

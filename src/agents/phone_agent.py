@@ -358,18 +358,36 @@ async def process_audio_chunk(audio_data):
 
 async def play_audio_response(text):
     """Generate and play voice response for text"""
+    # TODO: TTS disabled - uncomment to re-enable OpenAI voice generation
+    cprint(f"🗣️ Response: {text}", "cyan")
+    
+    # Play MP3 notification sound
     try:
-        # Clean up any extra whitespace and add final punctuation if missing
-        text = text.strip()
-        if not any(text.endswith(char) for char in '.!?'):
-            text += '.'
-            
-        voice_response = openai.audio.speech.create(
-            model="tts-1",
-            voice=VOICE_NAME,
-            speed=1.2,  # Slightly faster for more natural flow
-            input=text
-        )
+        from src import config
+        import subprocess
+        from pathlib import Path
+        
+        if config.PLAY_MP3_AGENT_SOUNDS:
+            notification_file = Path("src/audio/notifications/success.mp3")
+            if notification_file.exists():
+                subprocess.run(['mpg123', '-q', str(notification_file)], 
+                             check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except:
+        pass
+    return True
+    
+    # try:
+    #     # Clean up any extra whitespace and add final punctuation if missing
+    #     text = text.strip()
+    #     if not any(text.endswith(char) for char in '.!?'):
+    #         text += '.'
+    #         
+    #     voice_response = openai.audio.speech.create(
+    #         model="tts-1",
+    #         voice=VOICE_NAME,
+    #         speed=1.2,  # Slightly faster for more natural flow
+    #         input=text
+    #     )
         
         # Save to temp file
         with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as temp_file:

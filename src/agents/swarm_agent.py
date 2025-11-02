@@ -68,8 +68,8 @@ SWARM_MODELS = {
     # 🔇 Disabled Models (uncomment to enable)
     #"claude": (True, "claude", "claude-sonnet-4-5"),  # Claude 4.5 Sonnet - Latest & Greatest!
     #"openai": (True, "openai", "gpt-5"),  # GPT-5 - Most advanced model!
-    #"ollama_qwen": (True, "ollama", "qwen3:8b"),  # Qwen3 8B via Ollama - Fast local reasoning!
-    "ollama": (True, "ollama", "DeepSeek-R1:latest"),  # DeepSeek-R1 local model via Ollama
+    "ollama": (True, "ollama", "qwen3:8b"),  # Qwen3 8B via Ollama - Fast local reasoning! (free!)
+    #"ollama_llama2": (True, "ollama", "llama2:latest"),  # Llama2 local model via Ollama
     #"openrouter_qwen": (True, "openrouter", "qwen/qwen3-max"),  # Qwen 3 Max - Powerful reasoning ($1.00/$1.00 per 1M tokens)
 
     # 🌙 OpenRouter Models - Access 200+ models through one API!
