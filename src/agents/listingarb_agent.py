@@ -135,19 +135,23 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com"  # Base URL for DeepSeek API
 AI_MODEL = MODEL_OVERRIDE if MODEL_OVERRIDE != "0" else config.AI_MODEL
 
 # 📁 File Paths
-DISCOVERED_TOKENS_FILE = Path("src/data/discovered_tokens.csv")  # Input from token discovery script
+# Use trending_coins.csv if it exists, otherwise fall back to discovered_tokens.csv
+TREND_FILE = Path("src/data/trending_coins.csv")
+FALLBACK_FILE = Path("src/data/discovered_tokens.csv")
+DISCOVERED_TOKENS_FILE = TREND_FILE if TREND_FILE.exists() else FALLBACK_FILE
 AI_ANALYSIS_FILE = Path("src/data/ai_analysis.csv")  # AI analysis results
 
 # 🤖 CoinGecko API Settings
 COINGECKO_API_KEY = os.getenv("COINGECKO_API_KEY")
-COINGECKO_BASE_URL = "https://pro-api.coingecko.com/api/v3"
+# Use demo API endpoint (works for demo keys)
+COINGECKO_BASE_URL = "https://api.coingecko.com/api/v3"
 TEMP_DATA_DIR = Path("src/data/temp_data")
 
 # ⚙️ Configuration
 HOURS_BETWEEN_RUNS = 24        # Run AI analysis every 24 hours to manage API costs
 PARALLEL_PROCESSES = 50        # Number of parallel processes to run
 MIN_VOLUME_USD = 100_000      # Minimum 24h volume to analyze
-MAX_MARKET_CAP = 10_000_000   # Maximum market cap to include in analysis (10M)
+MAX_MARKET_CAP = 100_000_000   # Maximum market cap to include in analysis (10M)
 
 # 🤖 Tokens to Ignore
 DO_NOT_ANALYZE = [
@@ -436,12 +440,11 @@ class ListingArbSystem:
             
             url = f"{COINGECKO_BASE_URL}/coins/{token_id}/ohlc"
             params = {
-                'vs_currency': 'usd',  # Required parameter
-                'days': '14'           # Will give us 4h intervals based on docs
+                'vs_currency': 'usd',              # Required parameter
+                'days': '14',                      # Will give us 4h intervals based on docs
+                'x_cg_demo_api_key': COINGECKO_API_KEY  # Add API key as query parameter
             }
-            headers = {
-                'x-cg-pro-api-key': COINGECKO_API_KEY
-            }
+            headers = {}
             
             response = requests.get(url, headers=headers, params=params)
             
@@ -569,13 +572,13 @@ class ListingArbSystem:
                 print(f"⏭️ Skipping - Volume below minimum (${MIN_VOLUME_USD:,.2f})")
                 return
             
-            # Get OHLCV data
+            # Get OHLCV data (optional, proceed without if it fails)
             ohlcv_data = self.get_ohlcv_data(token_id)
             
-            # Skip if OHLCV data fetch failed
+            # Continue even if OHLCV data fetch failed - agents can work with price/volume data
             if ohlcv_data.startswith("❌"):
-                print(f"⏭️ Skipping - Failed to get OHLCV data")
-                return
+                print(f"⚠️ Note: OHLCV data unavailable, proceeding with price/volume analysis")
+                ohlcv_data = "❌ OHLCV data not available from API - analyzing based on market cap and volume metrics"
             
             # Add OHLCV data to token_data for analysis
             analysis_data = token_data.copy()

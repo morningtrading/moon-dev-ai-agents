@@ -1,0 +1,55 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 IsomorphicPairing initialized with lookback=1000 periods, RSI added for momentum filter 🚀
+🌙 Moon Dev SHORT entry: 6 units at 115033.66, Z=2.62, RSI=71.39, VolRatio=6.07, ADX=12.44 🚀
+✨ Moon Dev CONVERGENCE exit at 115519.82, Z=0.18 🎉
+🌙 Moon Dev SHORT entry: 2 units at 122258.05, Z=2.55, RSI=80.25, VolRatio=3.46, ADX=19.51 🚀
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-19 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     80 days 23:45:00
+Exposure Time [%]                     9.51646
+Equity Final [$]                 995677.54632
+Equity Peak [$]                  1002007.5562
+Commissions [$]                    2766.64152
+Return [%]                           -0.43225
+Buy & Hold Return [%]                 2.14519
+Return (Ann.) [%]                    -1.93307
+Volatility (Ann.) [%]                 3.38577
+CAGR [%]                             -1.93331
+Sharpe Ratio                         -0.57094
+Sortino Ratio                        -0.80023
+Calmar Ratio                         -0.96251
+Alpha [%]                            -0.30824
+Beta                                 -0.05781
+Max. Drawdown [%]                    -2.00836
+Avg. Drawdown [%]                    -0.87748
+Max. Drawdown Duration       22 days 10:15:00
+Avg. Drawdown Duration        6 days 12:23:00
+# Trades                                    1
+Win Rate [%]                              0.0
+Best Trade [%]                       -0.82347
+Worst Trade [%]                      -0.82347
+Avg. Trade [%]                       -0.82347
+Max. Trade Duration           7 days 16:45:00
+Avg. Trade Duration           7 days 16:45:00
+Profit Factor                             0.0
+Expectancy [%]                       -0.82347
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                   IsomorphicPairing
+_equity_curve                             ...
+_trades                      Size  EntryBa...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available - skipping multi-data testing. Initial backtest completed successfully! 🌙
+
+Backtest.run:   0%|          | 0/6776 [00:00<?, ?bar/s]
+                                                       
+/home/titus/moon-dev-ai-agents/src/data/multi_coin_backtest/temp_IsomorphicPairing_BTC.py:89: UserWarning: Some trades remain open at the end of backtest. Use `Backtest(..., finalize_trades=True)` to close them and include them in stats.
+  stats = bt.run()

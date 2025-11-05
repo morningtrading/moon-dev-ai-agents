@@ -1,0 +1,54 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 IsomorphicPairing initialized with lookback=1000 periods, RSI added for momentum filter 🚀
+🌙 Moon Dev SHORT entry: 78214 units at 4.11, Z=2.89, RSI=70.22, VolRatio=2.20, ADX=15.25 🚀
+✨ Moon Dev CONVERGENCE exit at 4.14, Z=0.12 🎉
+🌙 Moon Dev SHORT entry: 55643 units at 4.34, Z=2.61, RSI=73.79, VolRatio=3.20, ADX=17.13 🚀
+✨ Moon Dev CONVERGENCE exit at 4.15, Z=0.24 🎉
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-12 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     87 days 23:45:00
+Exposure Time [%]                    11.47017
+Equity Final [$]                1005565.67515
+Equity Peak [$]                 1008753.79648
+Commissions [$]                    2235.93285
+Return [%]                            0.55657
+Buy & Hold Return [%]                -4.65331
+Return (Ann.) [%]                     2.32879
+Volatility (Ann.) [%]                 7.00396
+CAGR [%]                              2.32907
+Sharpe Ratio                           0.3325
+Sortino Ratio                         0.51513
+Calmar Ratio                          0.51442
+Alpha [%]                             0.42627
+Beta                                   -0.028
+Max. Drawdown [%]                    -4.52699
+Avg. Drawdown [%]                    -1.38388
+Max. Drawdown Duration       24 days 23:00:00
+Avg. Drawdown Duration        4 days 18:45:00
+# Trades                                    2
+Win Rate [%]                             50.0
+Best Trade [%]                        3.94446
+Worst Trade [%]                       -1.2285
+Avg. Trade [%]                        1.32497
+Max. Trade Duration           6 days 02:15:00
+Avg. Trade Duration           5 days 00:53:00
+Profit Factor                         3.21079
+Expectancy [%]                        1.35798
+SQN                                   0.41326
+Kelly Criterion                       0.29242
+_strategy                   IsomorphicPairing
+_equity_curve                             ...
+_trades                       Size  EntryB...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available - skipping multi-data testing. Initial backtest completed successfully! 🌙
+
+Backtest.run:   0%|          | 0/7448 [00:00<?, ?bar/s]
+                                                       

@@ -1,0 +1,59 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 Moon Dev: Loading data from /home/titus/moon-dev-ai-agents/src/data/rbi/BNB-USDT-15m.csv ✨
+🌙 Moon Dev: Raw data shape: (7776, 6) 🚀
+🌙 Moon Dev: Columns after lowering: ['datetime', 'open', 'high', 'low', 'close', 'volume'] ✨
+🌙 Moon Dev: Data shape after dropping unnamed: (7776, 6) 🚀
+🌙 Moon Dev: Columns after renaming: ['datetime', 'Open', 'High', 'Low', 'Close', 'Volume'] ✨
+🌙 Moon Dev: Datetime index set, final shape: (7776, 6) 🚀
+🌙 Moon Dev: Date range: 2025-07-19 00:00:00 to 2025-10-07 23:45:00 ✨
+🌙 Moon Dev: Starting backtest on 7776 bars... 🚀
+🌙 Moon Dev: Short entry at 960.60, Z=2.55, Size=1475, ATR=5.09, RSI=70.5, ADX=20.2 ✨
+🌙 Moon Dev: Long entry at 1010.30, Z=-2.62, Size=1966, ATR=3.81, RSI=28.6, ADX=23.1 🚀
+🌙 Moon Dev: Backtest completed! Total trades: 0 ✨
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-19 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     80 days 23:45:00
+Exposure Time [%]                         0.0
+Equity Final [$]                    1000000.0
+Equity Peak [$]                     1000000.0
+Return [%]                                0.0
+Buy & Hold Return [%]                73.81739
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+CAGR [%]                                  0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Alpha [%]                                 0.0
+Beta                                      0.0
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                    NormalizedSpread
+_equity_curve                             ...
+_trades                   Empty DataFrame
+...
+dtype: object
+================================================================================
+
+🌙 Moon Dev: Single data backtest successful! Multi-data testing skipped. 🚀✨
+
+Backtest.run:   0%|          | 0/7576 [00:00<?, ?bar/s]
+                                                       

@@ -6,6 +6,8 @@ Built with love by Moon Dev 🚀
 # 🔄 Exchange Selection
 EXCHANGE = 'hyperliquid'  # Options: 'solana', 'hyperliquid'
 
+COINGECKO_API_KEY =  "CG-5V6Pki7HN29YApVLV5TDqm88"
+
 # 💰 Trading Configuration
 USDC_ADDRESS = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"  # Never trade or close
 SOL_ADDRESS = "So11111111111111111111111111111111111111111"   # Never trade or close

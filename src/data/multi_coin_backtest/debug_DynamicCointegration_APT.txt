@@ -1,0 +1,160 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 Loading data from: /home/titus/moon-dev-ai-agents/src/data/rbi/APT-USDT-15m.csv
+📊 Raw data shape: (8448, 6)
+🔍 Raw columns: ['datetime', 'open', 'high', 'low', 'close', 'volume']
+🌙 After lowercasing columns: ['datetime', 'open', 'high', 'low', 'close', 'volume']
+🌙 After dropping unnamed: ['datetime', 'open', 'high', 'low', 'close', 'volume']
+🌙 After renaming: ['datetime', 'Open', 'High', 'Low', 'Close', 'Volume']
+✅ Data prepared: shape (8448, 5), index type: <class 'pandas.core.indexes.datetimes.DatetimeIndex'>
+🌙 Date range: 2025-07-12 00:00:00 to 2025-10-07 23:45:00
+🚀 Starting backtest run...
+🚀 Moon Dev LONG Entry: z=-4.05, mu=5.26, half_life=113.8, size fraction=0.82, trend=True 🌙
+✨ Moon Dev Exit: z=0.12, held=7 bars, half_life=68.6 🌙
+🚀 Moon Dev LONG Entry: z=-2.79, mu=5.36, half_life=102.4, size fraction=0.74, trend=True 🌙
+✨ Moon Dev Exit: z=0.24, held=5 bars, half_life=66.6 🌙
+🌙 DynamicCointegration Update: Z-score=0.59, mu=5.55, sigma=0.03, half_life=106.1 bars, trend_up=True ✨
+🚀 Moon Dev SHORT Entry: z=9.37, mu=4.42, half_life=132.4, size fraction=0.45, trend=False 🌙
+🚨 Moon Dev Stop Loss SHORT: z=13.01 (entry 9.37) 🚀
+✨ Moon Dev Exit: z=13.01, held=8 bars, half_life=145.4 🌙
+🚀 Moon Dev SHORT Entry: z=4.18, mu=4.51, half_life=73.5, size fraction=0.45, trend=False 🌙
+✨ Moon Dev Exit: z=-5.70, held=371 bars, half_life=61.2 🌙
+🚀 Moon Dev SHORT Entry: z=3.86, mu=4.54, half_life=142.1, size fraction=0.85, trend=False 🌙
+✨ Moon Dev Exit: z=0.24, held=4 bars, half_life=113.8 🌙
+🚀 Moon Dev SHORT Entry: z=6.77, mu=4.39, half_life=144.9, size fraction=0.73, trend=False 🌙
+🌙 DynamicCointegration Update: Z-score=1.03, mu=4.54, sigma=0.02, half_life=92.3 bars, trend_up=False ✨
+✨ Moon Dev Exit: z=0.18, held=21 bars, half_life=71.4 🌙
+🌙 DynamicCointegration Update: Z-score=-0.89, mu=4.31, sigma=0.02, half_life=70.1 bars, trend_up=False ✨
+🚀 Moon Dev SHORT Entry: z=5.43, mu=4.04, half_life=118.4, size fraction=0.67, trend=False 🌙
+🌙 DynamicCointegration Update: Z-score=2.31, mu=4.34, sigma=0.01, half_life=61.8 bars, trend_up=True ✨
+✨ Moon Dev Exit: z=2.31, held=290 bars, half_life=61.8 🌙
+🚀 Moon Dev LONG Entry: z=-3.39, mu=4.52, half_life=106.7, size fraction=1.00, trend=True 🌙
+✨ Moon Dev Exit: z=-0.17, held=5 bars, half_life=84.5 🌙
+🚀 Moon Dev LONG Entry: z=-15.10, mu=4.91, half_life=126.9, size fraction=1.00, trend=True 🌙
+🌙 DynamicCointegration Update: Z-score=-11.33, mu=4.89, sigma=0.02, half_life=108.4 bars, trend_up=True ✨
+🚨 Moon Dev Stop Loss LONG: z=-23.14 (entry -15.10) 🚀
+✨ Moon Dev Exit: z=-23.14, held=25 bars, half_life=147.0 🌙
+🚀 Moon Dev LONG Entry: z=-14.88, mu=5.05, half_life=115.0, size fraction=1.00, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-18.60 (entry -14.88) 🚀
+✨ Moon Dev Exit: z=-18.60, held=15 bars, half_life=135.9 🌙
+🚀 Moon Dev LONG Entry: z=-3.39, mu=4.97, half_life=124.3, size fraction=0.82, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-6.58 (entry -3.39) 🚀
+✨ Moon Dev Exit: z=-6.58, held=29 bars, half_life=146.3 🌙
+🚀 Moon Dev LONG Entry: z=-5.23, mu=5.07, half_life=116.7, size fraction=0.79, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-8.32 (entry -5.23) 🚀
+✨ Moon Dev Exit: z=-8.32, held=20 bars, half_life=114.2 🌙
+🚀 Moon Dev LONG Entry: z=-7.49, mu=5.22, half_life=113.6, size fraction=0.79, trend=True 🌙
+✨ Moon Dev Exit: z=-0.28, held=15 bars, half_life=60.8 🌙
+🚀 Moon Dev LONG Entry: z=-2.66, mu=5.18, half_life=76.6, size fraction=0.78, trend=True 🌙
+✨ Moon Dev Exit: z=0.18, held=334 bars, half_life=77.6 🌙
+🚀 Moon Dev LONG Entry: z=-7.81, mu=5.04, half_life=116.3, size fraction=1.00, trend=True 🌙
+✨ Moon Dev Exit: z=-0.18, held=8 bars, half_life=80.5 🌙
+🌙 DynamicCointegration Update: Z-score=-2.19, mu=4.62, sigma=0.01, half_life=141.3 bars, trend_up=False ✨
+🚀 Moon Dev SHORT Entry: z=3.31, mu=4.50, half_life=137.0, size fraction=0.93, trend=False 🌙
+🚨 Moon Dev Stop Loss SHORT: z=6.63 (entry 3.31) 🚀
+✨ Moon Dev Exit: z=6.63, held=6 bars, half_life=134.8 🌙
+🚀 Moon Dev SHORT Entry: z=5.50, mu=4.44, half_life=128.3, size fraction=0.90, trend=False 🌙
+🚨 Moon Dev Stop Loss SHORT: z=10.85 (entry 5.50) 🚀
+✨ Moon Dev Exit: z=10.85, held=13 bars, half_life=138.0 🌙
+🚀 Moon Dev SHORT Entry: z=8.00, mu=4.30, half_life=106.3, size fraction=0.86, trend=False 🌙
+✨ Moon Dev Exit: z=-0.04, held=69 bars, half_life=68.3 🌙
+🚀 Moon Dev LONG Entry: z=-2.97, mu=4.80, half_life=118.8, size fraction=0.71, trend=True 🌙
+✨ Moon Dev Exit: z=0.26, held=7 bars, half_life=81.7 🌙
+🌙 DynamicCointegration Update: Z-score=-0.45, mu=4.73, sigma=0.02, half_life=60.2 bars, trend_up=True ✨
+🚀 Moon Dev SHORT Entry: z=3.35, mu=4.37, half_life=136.7, size fraction=0.82, trend=False 🌙
+🚨 Moon Dev Stop Loss SHORT: z=6.49 (entry 3.35) 🚀
+✨ Moon Dev Exit: z=6.49, held=16 bars, half_life=131.8 🌙
+🚀 Moon Dev SHORT Entry: z=4.32, mu=4.33, half_life=112.7, size fraction=0.83, trend=False 🌙
+✨ Moon Dev Exit: z=0.15, held=4 bars, half_life=80.3 🌙
+🌙 DynamicCointegration Update: Z-score=0.51, mu=4.37, sigma=0.02, half_life=70.9 bars, trend_up=False ✨
+🚀 Moon Dev SHORT Entry: z=4.97, mu=4.24, half_life=96.8, size fraction=0.80, trend=False 🌙
+🚨 Moon Dev Stop Loss SHORT: z=8.85 (entry 4.97) 🚀
+✨ Moon Dev Exit: z=8.85, held=30 bars, half_life=134.6 🌙
+🚀 Moon Dev SHORT Entry: z=6.49, mu=4.17, half_life=121.3, size fraction=0.76, trend=False 🌙
+✨ Moon Dev Exit: z=-4.91, held=331 bars, half_life=61.3 🌙
+🌙 DynamicCointegration Update: Z-score=-1.98, mu=4.29, sigma=0.01, half_life=91.3 bars, trend_up=False ✨
+🚀 Moon Dev SHORT Entry: z=3.86, mu=4.19, half_life=134.1, size fraction=1.00, trend=False 🌙
+✨ Moon Dev Exit: z=-0.23, held=11 bars, half_life=61.4 🌙
+🌙 DynamicCointegration Update: Z-score=1.76, mu=4.30, sigma=0.01, half_life=73.9 bars, trend_up=True ✨
+🚀 Moon Dev LONG Entry: z=-5.22, mu=4.46, half_life=105.8, size fraction=1.00, trend=True 🌙
+✨ Moon Dev Exit: z=-0.12, held=16 bars, half_life=67.5 🌙
+🚀 Moon Dev LONG Entry: z=-7.43, mu=4.56, half_life=113.8, size fraction=1.00, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-11.25 (entry -7.43) 🚀
+✨ Moon Dev Exit: z=-11.25, held=1 bars, half_life=135.6 🌙
+🚀 Moon Dev SHORT Entry: z=4.66, mu=4.31, half_life=130.9, size fraction=1.00, trend=False 🌙
+✨ Moon Dev Exit: z=0.05, held=243 bars, half_life=103.6 🌙
+🚀 Moon Dev LONG Entry: z=-3.39, mu=4.67, half_life=117.1, size fraction=1.00, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-6.84 (entry -3.39) 🚀
+✨ Moon Dev Exit: z=-6.84, held=2 bars, half_life=140.2 🌙
+🚀 Moon Dev LONG Entry: z=-2.92, mu=4.66, half_life=121.6, size fraction=1.00, trend=True 🌙
+✨ Moon Dev Exit: z=-0.07, held=2 bars, half_life=79.0 🌙
+🚀 Moon Dev LONG Entry: z=-9.89, mu=4.81, half_life=144.9, size fraction=1.00, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-16.82 (entry -9.89) 🚀
+✨ Moon Dev Exit: z=-16.82, held=10 bars, half_life=148.8 🌙
+🚀 Moon Dev LONG Entry: z=-10.05, mu=4.86, half_life=129.5, size fraction=1.00, trend=True 🌙
+✨ Moon Dev Exit: z=-3.57, held=297 bars, half_life=73.6 🌙
+🚀 Moon Dev SHORT Entry: z=11.92, mu=4.10, half_life=145.0, size fraction=0.83, trend=False 🌙
+✨ Moon Dev Exit: z=-0.21, held=247 bars, half_life=82.1 🌙
+🚀 Moon Dev SHORT Entry: z=4.23, mu=3.91, half_life=98.5, size fraction=0.78, trend=False 🌙
+✨ Moon Dev Exit: z=2.26, held=305 bars, half_life=61.0 🌙
+🚀 Moon Dev LONG Entry: z=-3.74, mu=4.50, half_life=135.1, size fraction=1.00, trend=True 🌙
+🌙 DynamicCointegration Update: Z-score=3.01, mu=4.38, sigma=0.01, half_life=77.3 bars, trend_up=True ✨
+✨ Moon Dev Exit: z=0.23, held=14 bars, half_life=85.0 🌙
+🌙 DynamicCointegration Update: Z-score=-19.32, mu=5.24, sigma=0.02, half_life=135.5 bars, trend_up=True ✨
+🚀 Moon Dev LONG Entry: z=-9.01, mu=5.15, half_life=86.0, size fraction=0.78, trend=True 🌙
+🚨 Moon Dev Stop Loss LONG: z=-13.08 (entry -9.01) 🚀
+✨ Moon Dev Exit: z=-13.08, held=4 bars, half_life=104.0 🌙
+🚀 Moon Dev LONG Entry: z=-19.50, mu=5.50, half_life=133.2, size fraction=0.76, trend=True 🌙
+✨ Moon Dev Exit: z=-0.29, held=92 bars, half_life=66.2 🌙
+🚀 Moon Dev LONG Entry: z=-3.18, mu=5.61, half_life=95.4, size fraction=0.76, trend=True 🌙
+✅ Backtest completed!
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-12 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     87 days 23:45:00
+Exposure Time [%]                     38.6482
+Equity Final [$]                 935953.98708
+Equity Peak [$]                 1002348.71117
+Commissions [$]                   73922.87392
+Return [%]                            -6.4046
+Buy & Hold Return [%]                 4.99605
+Return (Ann.) [%]                   -24.00737
+Volatility (Ann.) [%]                21.38926
+CAGR [%]                            -24.00984
+Sharpe Ratio                          -1.1224
+Sortino Ratio                        -1.18141
+Calmar Ratio                         -1.95938
+Alpha [%]                            -6.42288
+Beta                                  0.00366
+Max. Drawdown [%]                   -12.25252
+Avg. Drawdown [%]                     -7.0649
+Max. Drawdown Duration       74 days 00:30:00
+Avg. Drawdown Duration       28 days 12:40:00
+# Trades                                   37
+Win Rate [%]                         43.24324
+Best Trade [%]                        5.23523
+Worst Trade [%]                      -7.94329
+Avg. Trade [%]                       -0.66782
+Max. Trade Duration           3 days 20:45:00
+Avg. Trade Duration           0 days 21:49:00
+Profit Factor                           0.513
+Expectancy [%]                        -0.6281
+SQN                                  -0.59194
+Kelly Criterion                       -0.1814
+_strategy                 DynamicCointegra...
+_equity_curve                             ...
+_trades                         Size  Entr...
+dtype: object
+DynamicCointegration
+================================================================================
+
+
+🌙 Single data backtest complete! Multi-data testing disabled due to module unavailability. ✨
+💡 To enable multi-data, ensure 'multi_data_tester.py' is in the script directory.
+
+Backtest.run:   0%|          | 0/8248 [00:00<?, ?bar/s]
+Backtest.run:  53%|█████▎    | 4379/8248 [00:02<00:01, 2189.14bar/s]
+                                                                    

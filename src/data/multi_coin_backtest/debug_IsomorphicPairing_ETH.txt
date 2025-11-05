@@ -1,0 +1,53 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 IsomorphicPairing initialized with lookback=1000 periods, RSI added for momentum filter 🚀
+🌙 Moon Dev SHORT entry: 46 units at 4581.03, Z=2.62, RSI=74.59, VolRatio=2.18, ADX=17.83 🚀
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-19 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     80 days 23:45:00
+Exposure Time [%]                         0.0
+Equity Final [$]                1005712.18432
+Equity Peak [$]                 1005712.18432
+Return [%]                            0.57122
+Buy & Hold Return [%]                14.84989
+Return (Ann.) [%]                     2.59991
+Volatility (Ann.) [%]                 3.03945
+CAGR [%]                              2.60025
+Sharpe Ratio                          0.85539
+Sortino Ratio                         1.54386
+Calmar Ratio                           1.8815
+Alpha [%]                             0.67611
+Beta                                 -0.00706
+Max. Drawdown [%]                    -1.38182
+Avg. Drawdown [%]                    -0.43881
+Max. Drawdown Duration        3 days 07:45:00
+Avg. Drawdown Duration        1 days 01:30:00
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                   IsomorphicPairing
+_equity_curve                             ...
+_trades                   Empty DataFrame
+...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available - skipping multi-data testing. Initial backtest completed successfully! 🌙
+
+Backtest.run:   0%|          | 0/6776 [00:00<?, ?bar/s]
+                                                       
+/home/titus/moon-dev-ai-agents/src/data/multi_coin_backtest/temp_IsomorphicPairing_ETH.py:89: UserWarning: Some trades remain open at the end of backtest. Use `Backtest(..., finalize_trades=True)` to close them and include them in stats.
+  stats = bt.run()

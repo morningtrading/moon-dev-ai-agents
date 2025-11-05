@@ -1,0 +1,52 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 IsomorphicPairing initialized with lookback=1000 periods, RSI added for momentum filter 🚀
+🌙 Moon Dev LONG entry: 1095206 units at 0.25, Z=-2.67, RSI=29.25, VolRatio=4.27, ADX=17.14 🚀
+✨ Moon Dev CONVERGENCE exit at 0.23, Z=-0.30 🎉
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-12 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     87 days 23:45:00
+Exposure Time [%]                    14.19271
+Equity Final [$]                 971122.48436
+Equity Peak [$]                 1010066.03835
+Commissions [$]                    1059.28324
+Return [%]                           -2.88775
+Buy & Hold Return [%]                -3.81339
+Return (Ann.) [%]                   -11.44439
+Volatility (Ann.) [%]                 5.01598
+CAGR [%]                            -11.44567
+Sharpe Ratio                         -2.28159
+Sortino Ratio                        -2.18155
+Calmar Ratio                         -2.01426
+Alpha [%]                            -2.80233
+Beta                                   0.0224
+Max. Drawdown [%]                    -5.68169
+Avg. Drawdown [%]                    -0.90828
+Max. Drawdown Duration       19 days 05:00:00
+Avg. Drawdown Duration        2 days 09:00:00
+# Trades                                    1
+Win Rate [%]                              0.0
+Best Trade [%]                      -10.36039
+Worst Trade [%]                     -10.36039
+Avg. Trade [%]                      -10.36039
+Max. Trade Duration          12 days 11:30:00
+Avg. Trade Duration          12 days 11:30:00
+Profit Factor                             0.0
+Expectancy [%]                      -10.36039
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                   IsomorphicPairing
+_equity_curve                             ...
+_trades                         Size  Entr...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available - skipping multi-data testing. Initial backtest completed successfully! 🌙
+
+Backtest.run:   0%|          | 0/7448 [00:00<?, ?bar/s]
+                                                       

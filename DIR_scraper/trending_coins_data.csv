@@ -1,0 +1,115 @@
+rank,coin_id,coin_name,symbol,price,price_change_24h,volume_24h,market_cap,category,scraped_at
+,ankr-network,Ankr Network ANKR,ANKR,Buy,1.1%,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:46.562813
+,altlayer,AltLayer ALT,ALT,,1.4%,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:46.662873
+,caldera,Caldera ERA,ERA,,17.6%,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:46.761125
+,dymension,Dymension DYM,DYM,,1.9%,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:46.863198
+,gelato,Gelato GEL,GEL,,0.3%,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:47.001332
+,espresso,Espresso ESP,ESP,,N/A,N/A,N/A,Rollups-as-a-Service (RaaS),2025-11-05T13:14:47.097984
+,plasma,Plasma XPL,XPL,,4.5%,N/A,N/A,Echo Launchpad,2025-11-05T13:14:53.888388
+,lab,LAB LAB,LAB,,1.5%,N/A,N/A,Echo Launchpad,2025-11-05T13:14:54.002152
+,dash,Dash DASH,DASH,Buy,6.5%,N/A,N/A,Masternodes,2025-11-05T13:15:00.895632
+,beldex,Beldex BDX,BDX,,0.6%,N/A,N/A,Masternodes,2025-11-05T13:15:01.019032
+,ontology,Ontology ONT,ONT,,0.7%,N/A,N/A,Masternodes,2025-11-05T13:15:01.156108
+,flux-zelcash,Flux FLUX,FLUX,,1.5%,N/A,N/A,Masternodes,2025-11-05T13:15:01.267154
+,firo,Firo FIRO,FIRO,,0.2%,N/A,N/A,Masternodes,2025-11-05T13:15:01.407918
+,pivx,PIVX PIVX,PIVX,,1.1%,N/A,N/A,Masternodes,2025-11-05T13:15:01.510552
+,syscoin,Syscoin SYS,SYS,,0.9%,N/A,N/A,Masternodes,2025-11-05T13:15:01.633962
+,viction,Viction VIC,VIC,,3.1%,N/A,N/A,Masternodes,2025-11-05T13:15:01.740327
+,divi,Divi DIVI,DIVI,,0.1%,N/A,N/A,Masternodes,2025-11-05T13:15:01.853120
+,energi,Energi NRG,NRG,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:01.965676
+,axel,AXEL AXEL,AXEL,,0.6%,N/A,N/A,Masternodes,2025-11-05T13:15:02.082085
+,spacem-world,SPACEM WORLD SPCM,SPCM,,0.4%,N/A,N/A,Masternodes,2025-11-05T13:15:02.235662
+,morpheus-network,Morpheus Network MNW,MNW,,2.5%,N/A,N/A,Masternodes,2025-11-05T13:15:02.387735
+,waterfall-2,Waterfall WATER,WATER,,0.9%,N/A,N/A,Masternodes,2025-11-05T13:15:02.508276
+,bitcore,BitCore BTX,BTX,,0.4%,N/A,N/A,Masternodes,2025-11-05T13:15:02.621723
+,raptoreum,Raptoreum RTM,RTM,,1.1%,N/A,N/A,Masternodes,2025-11-05T13:15:02.736911
+,cosanta,Cosanta COSA,COSA,,0.3%,N/A,N/A,Masternodes,2025-11-05T13:15:02.875494
+,neoxa,Neoxa NEOX,NEOX,,0.7%,N/A,N/A,Masternodes,2025-11-05T13:15:02.999662
+,moneybyte,Moneybyte MON,MON,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:03.107614
+,blocxtech,BLOCX. BLOCX,BLOCX,,6.9%,N/A,N/A,Masternodes,2025-11-05T13:15:03.229860
+,honest,Honest HNST,HNST,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:03.346607
+,terracoin,Terracoin TRC,TRC,,0.6%,N/A,N/A,Masternodes,2025-11-05T13:15:03.476196
+,swiftcash,SwiftCash SWIFT,SWIFT,,0.1%,N/A,N/A,Masternodes,2025-11-05T13:15:03.598025
+,blocknet,Blocknet BLOCK,BLOCK,,0.4%,N/A,N/A,Masternodes,2025-11-05T13:15:03.730592
+,stakecube,Stakecube SCC,SCC,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:03.836778
+,smartcash,SmartCash SMART,SMART,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:03.974042
+,prcy-coin,PRivaCY Coin PRCY,PRCY,,0.6%,N/A,N/A,Masternodes,2025-11-05T13:15:04.109368
+,kira-3,KIRA KIRA,KIRA,,1.0%,N/A,N/A,Masternodes,2025-11-05T13:15:04.233498
+,pac-protocol,PAC Protocol PAC,PAC,,0.4%,N/A,N/A,Masternodes,2025-11-05T13:15:04.369910
+,wagerr,Wagerr WGR,WGR,,1.2%,N/A,N/A,Masternodes,2025-11-05T13:15:04.499366
+,etho-protocol,Etho Protocol ETHO,ETHO,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:04.613286
+,dogecash,DogeCash DOGEC,DOGEC,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:04.798021
+,crown,Crown CRW,CRW,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:04.940025
+,axe,Axe AXE,AXE,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:05.040554
+,safedeal,SafeDeal SFD,SFD,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:05.164341
+,bolivarcoin,Bolivarcoin BOLI,BOLI,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:05.254510
+,monk,Monk MONK,MONK,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:05.354487
+,nebula-project,Nebula Project NBLA,NBLA,,N/A,N/A,N/A,Masternodes,2025-11-05T13:15:05.461976
+,colossusxt,ColossusXT COLX,COLX,,0.0%,N/A,N/A,Masternodes,2025-11-05T13:15:05.584494
+,wrapped-viction,Wrapped Viction WVIC,WVIC,,2.7%,N/A,N/A,Masternodes,2025-11-05T13:15:05.714524
+,hyperliquid,Hyperliquid HYPE,HYPE,,2.5%,N/A,N/A,Derivatives,2025-11-05T13:15:13.396925
+,pendle,Pendle PENDLE,PENDLE,,1.5%,N/A,N/A,Derivatives,2025-11-05T13:15:13.529345
+,myx-finance,MYX Finance MYX,MYX,,5.4%,N/A,N/A,Derivatives,2025-11-05T13:15:13.658177
+,synthetix-network-token,Synthetix SNX,SNX,Buy,1.0%,N/A,N/A,Derivatives,2025-11-05T13:15:13.773293
+,arkham,Arkham ARKM,ARKM,,2.0%,N/A,N/A,Derivatives,2025-11-05T13:15:13.908402
+,avantis,Avantis AVNT,AVNT,,1.7%,N/A,N/A,Derivatives,2025-11-05T13:15:14.016345
+,drift-protocol,Drift Protocol DRIFT,DRIFT,,1.7%,N/A,N/A,Derivatives,2025-11-05T13:15:14.138474
+,awe-network,AWE Network AWE,AWE,,1.3%,N/A,N/A,Derivatives,2025-11-05T13:15:14.272243
+,apex-token,APEX APEX,APEX,,1.3%,N/A,N/A,Derivatives,2025-11-05T13:15:14.405985
+,gmx,GMX GMX,GMX,,1.3%,N/A,N/A,Derivatives,2025-11-05T13:15:14.551630
+,uma,UMA UMA,UMA,,1.5%,N/A,N/A,Derivatives,2025-11-05T13:15:14.673504
+,fulcrom,Fulcrom FUL,FUL,,1.3%,N/A,N/A,Derivatives,2025-11-05T13:15:14.777730
+,woo,WOO WOO,WOO,,1.0%,N/A,N/A,Derivatives,2025-11-05T13:15:14.900558
+,whiteheart,Whiteheart WHITE,WHITE,,N/A,N/A,N/A,Derivatives,2025-11-05T13:15:15.013833
+,aevo,Aevo AEVO,AEVO,,0.8%,N/A,N/A,Derivatives,2025-11-05T13:15:15.154148
+,synthetix-susd,Synthetix sUSD SUSD,SUSD,,0.5%,N/A,N/A,Derivatives,2025-11-05T13:15:15.269909
+,seth,sETH SETH,SETH,,0.8%,N/A,N/A,Derivatives,2025-11-05T13:15:15.388014
+,gains-network,Gains Network GNS,GNS,,0.9%,N/A,N/A,Derivatives,2025-11-05T13:15:15.519800
+,nirvana-ana-2,Nirvana ANA ANA,ANA,,0.0%,N/A,N/A,Derivatives,2025-11-05T13:15:15.708876
+,derive,Derive DRV,DRV,,0.5%,N/A,N/A,Derivatives,2025-11-05T13:15:15.843773
+,hegic,Hegic HEGIC,HEGIC,,0.8%,N/A,N/A,Derivatives,2025-11-05T13:15:16.008505
+,tradoor,Tradoor TRADOOR,TRADOOR,,0.5%,N/A,N/A,Derivatives,2025-11-05T13:15:16.162189
+,thales,Thales THALES,THALES,,0.9%,N/A,N/A,Derivatives,2025-11-05T13:15:16.290294
+,adrena,Adrena ADX,ADX,,1.0%,N/A,N/A,Derivatives,2025-11-05T13:15:16.435073
+,bmx,BMX BMX,BMX,,1.6%,N/A,N/A,Derivatives,2025-11-05T13:15:16.554478
+,parcl,Parcl PRCL,PRCL,,0.8%,N/A,N/A,Derivatives,2025-11-05T13:15:16.716209
+,mango,Mango MNGO,MNGO,,8.8%,N/A,N/A,Derivatives,2025-11-05T13:15:16.886072
+,superp,Superp SUP,SUP,,0.0%,N/A,N/A,Derivatives,2025-11-05T13:15:17.032399
+,strike-2,Strike STRIKE,STRIKE,,1.0%,N/A,N/A,Derivatives,2025-11-05T13:15:17.365069
+,zeta,Zeta ZEX,ZEX,,2.6%,N/A,N/A,Derivatives,2025-11-05T13:15:17.834021
+,dydx-ethdydx,dYdX ETHDYDX,ETHDYDX,,1.7%,N/A,N/A,Derivatives,2025-11-05T13:15:17.988022
+,quickswap,Quickswap QUICK,QUICK,,1.2%,N/A,N/A,Derivatives,2025-11-05T13:15:18.110410
+,perpetual-protocol,Perpetual Protocol PERP,PERP,,1.2%,N/A,N/A,Derivatives,2025-11-05T13:15:18.242544
+,pika-protocol,Pika Protocol PIKA,PIKA,,N/A,N/A,N/A,Derivatives,2025-11-05T13:15:18.363555
+,mux-protocol,MUX Protocol MCB,MCB,,0.2%,N/A,N/A,Derivatives,2025-11-05T13:15:18.484390
+,indigo-protocol,Indigo Protocol INDY,INDY,,1.3%,N/A,N/A,Derivatives,2025-11-05T13:15:18.586553
+,cryptex-finance,Cryptex Finance CTX,CTX,,0.6%,N/A,N/A,Derivatives,2025-11-05T13:15:18.711438
+,symmio,SYMMIO SYMM,SYMM,,4.9%,N/A,N/A,Derivatives,2025-11-05T13:15:18.825539
+,kwenta,Kwenta KWENTA,KWENTA,,0.5%,N/A,N/A,Derivatives,2025-11-05T13:15:18.952189
+,index-coop-eth-2x-flexible-leverage-index,Index Coop - ETH 2x Flexible Leverage Index ETH2X-FLI,ETH2X-FLI,,1.1%,N/A,N/A,Derivatives,2025-11-05T13:15:19.071778
+,divergence-protocol,Divergence Protocol DIVER,DIVER,,0.0%,N/A,N/A,Derivatives,2025-11-05T13:15:19.215972
+,premia,Premia PREMIA,PREMIA,,14.3%,N/A,N/A,Derivatives,2025-11-05T13:15:19.339221
+,rch-token,RCH Token RCH,RCH,,1.0%,N/A,N/A,Derivatives,2025-11-05T13:15:19.476544
+,nereus-token,Nereus NRS,NRS,,0.1%,N/A,N/A,Derivatives,2025-11-05T13:15:19.605366
+,overlay-protocol,Overlay Protocol OVL,OVL,,0.9%,N/A,N/A,Derivatives,2025-11-05T13:15:19.723669
+,full-moon,Full Moon FM,FM,,1.4%,N/A,N/A,Derivatives,2025-11-05T13:15:19.834673
+,contango,Contango TANGO,TANGO,,0.8%,N/A,N/A,Derivatives,2025-11-05T13:15:19.952748
+,ribbon-finance,Ribbon Finance RBN,RBN,,N/A,N/A,N/A,Derivatives,2025-11-05T13:15:20.053599
+,tlx,TLX TLX,TLX,,N/A,N/A,N/A,Derivatives,2025-11-05T13:15:20.170958
+,bifrost-native-coin,Bifrost BNC,BNC,,0.4%,N/A,N/A,Derivatives,2025-11-05T13:15:20.278716
+,polkadot,Polkadot DOT,DOT,Buy,1.4%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:26.548473
+,internet-computer,Internet Computer ICP,ICP,Buy,3.5%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:26.639298
+,cosmos-hub,Cosmos Hub ATOM,ATOM,Buy,0.6%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:26.730483
+,atomone,AtomOne ATONE,ATONE,,0.9%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:26.818064
+,layerzero,LayerZero ZRO,ZRO,,1.2%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:26.907217
+,constellation,Constellation DAG,DAG,,0.3%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.002420
+,c8ntinuum,c8ntinuum CTM,CTM,,1.3%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.090972
+,naoris-protocol,Naoris Protocol NAORIS,NAORIS,,0.2%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.181686
+,openverse-network,Openverse Network BTG,BTG,,0.7%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.280507
+,streamr,Streamr DATA,DATA,,1.5%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.389319
+,cellframe,Cellframe CELL,CELL,,0.4%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.478356
+,analog,Analog ANLOG,ANLOG,,0.6%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.568476
+,geeq,GEEQ GEEQ,GEEQ,,2.8%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.653070
+,photon-2,Photon PHOTON,PHOTON,,0.4%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.766248
+,hypercycle,HyperCycle HYPC,HYPC,,0.5%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.894553
+,vitreus,Vitreus WVTRS,WVTRS,,0.6%,N/A,N/A,Layer 0 (L0),2025-11-05T13:15:27.984480

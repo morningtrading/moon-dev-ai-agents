@@ -1,0 +1,60 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 Moon Dev: Loading data from /home/titus/moon-dev-ai-agents/src/data/rbi/ADA-USDT-15m.csv ✨
+🌙 Moon Dev: Raw data shape: (8448, 6) 🚀
+🌙 Moon Dev: Columns after lowering: ['datetime', 'open', 'high', 'low', 'close', 'volume'] ✨
+🌙 Moon Dev: Data shape after dropping unnamed: (8448, 6) 🚀
+🌙 Moon Dev: Columns after renaming: ['datetime', 'Open', 'High', 'Low', 'Close', 'Volume'] ✨
+🌙 Moon Dev: Datetime index set, final shape: (8448, 6) 🚀
+🌙 Moon Dev: Date range: 2025-07-12 00:00:00 to 2025-10-07 23:45:00 ✨
+🌙 Moon Dev: Starting backtest on 8448 bars... 🚀
+🌙 Moon Dev: Long entry at 0.82, Z=-2.75, Size=727063, ATR=0.01, RSI=29.1, ADX=19.3 🚀
+🌙 Moon Dev: Long exit on Z-score normalization at 0.83, Z=-0.81 🚀
+🌙 Moon Dev: Short entry at 0.83, Z=2.55, Size=2810083, ATR=0.00, RSI=70.2, ADX=18.9 ✨
+🌙 Moon Dev: Backtest completed! Total trades: 1 ✨
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-12 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     87 days 23:45:00
+Exposure Time [%]                     0.08286
+Equity Final [$]                1004872.77623
+Equity Peak [$]                 1006733.33044
+Commissions [$]                    2397.85377
+Return [%]                            0.48728
+Buy & Hold Return [%]                 8.97248
+Return (Ann.) [%]                     2.03665
+Volatility (Ann.) [%]                 1.01837
+CAGR [%]                              2.03689
+Sharpe Ratio                          1.99991
+Sortino Ratio                             inf
+Calmar Ratio                          8.92386
+Alpha [%]                             0.48453
+Beta                                  0.00031
+Max. Drawdown [%]                    -0.22823
+Avg. Drawdown [%]                    -0.20652
+Max. Drawdown Duration       81 days 07:15:00
+Avg. Drawdown Duration       40 days 15:53:00
+# Trades                                    1
+Win Rate [%]                            100.0
+Best Trade [%]                        0.81782
+Worst Trade [%]                       0.81782
+Avg. Trade [%]                        0.81782
+Max. Trade Duration           0 days 01:30:00
+Avg. Trade Duration           0 days 01:30:00
+Profit Factor                             NaN
+Expectancy [%]                        0.81782
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                    NormalizedSpread
+_equity_curve                             ...
+_trades                        Size  Entry...
+dtype: object
+================================================================================
+
+🌙 Moon Dev: Single data backtest successful! Multi-data testing skipped. 🚀✨
+
+Backtest.run:   0%|          | 0/8248 [00:00<?, ?bar/s]
+                                                       

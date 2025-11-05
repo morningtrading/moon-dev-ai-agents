@@ -1,0 +1,171 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 Moon Dev: VolumetricSupertrend indicators initialized! ATR period=14, Multiplier=3, Vol SMA=14, EMA200, ADX=14 🚀
+🌙 Moon Dev: 🚀 LONG ENTRY at 17032.73! Size: 178, Volume Confirm: 781.26 > 305.86, ADX: 31.28, EMA Filter OK, Stop: 16948.29 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 17286.71! Size: 1123, Volume Confirm: 713.74 > 401.80, ADX: 20.31, EMA Filter OK, Stop: 17273.36 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 17285.85! Size: 1201, Volume Confirm: 711.96 > 610.83, ADX: 22.14, EMA Filter OK, Stop: 17273.36 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 17517.46! Size: 93, Volume Confirm: 1147.55 > 815.99, ADX: 26.21, EMA Filter OK, Stop: 17355.94 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 18653.59! Size: 32, Volume Confirm: 2689.11 > 1950.82, ADX: 34.75, EMA Filter OK, Stop: 18183.11 ✨
+🌙 Moon Dev: Exiting Long at 20576.74 - Trend reversal! Stop hit at 20994.55 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 21405.68! Size: 275, Volume Confirm: 533.45 > 456.97, ADX: 20.12, EMA Filter OK, Stop: 21347.93 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23228.33! Size: 5453, Volume Confirm: 635.91 > 568.38, ADX: 32.75, EMA Filter OK, Stop: 23225.42 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22629.80! Size: 141, Volume Confirm: 1757.51 > 952.01, ADX: 21.13, EMA Filter OK, Stop: 22742.62 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23045.52! Size: 8446, Volume Confirm: 531.16 > 500.13, ADX: 35.90, EMA Filter OK, Stop: 23043.64 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22939.13! Size: 2377, Volume Confirm: 243.52 > 168.58, ADX: 43.85, EMA Filter OK, Stop: 22945.81 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23521.57! Size: 14202, Volume Confirm: 581.01 > 470.76, ADX: 26.64, EMA Filter OK, Stop: 23520.45 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 23301.91! Size: 101, Volume Confirm: 160.74 > 90.17, ADX: 22.62, EMA Filter OK, Stop: 23458.86 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22798.28! Size: 31, Volume Confirm: 666.15 > 445.33, ADX: 22.13, EMA Filter OK, Stop: 23316.30 ✨
+🌙 Moon Dev: Exiting Short at 23231.23 - Trend reversal! Stop hit at 23216.00 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 21804.18! Size: 1959, Volume Confirm: 90.02 > 80.98, ADX: 34.94, EMA Filter OK, Stop: 21812.16 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 21804.55! Size: 189, Volume Confirm: 159.91 > 155.98, ADX: 32.07, EMA Filter OK, Stop: 21887.22 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 22259.95! Size: 26, Volume Confirm: 1122.73 > 653.53, ADX: 36.58, EMA Filter OK, Stop: 21654.41 ✨
+🌙 Moon Dev: Exiting Long at 24448.55 - Trend reversal! Stop hit at 24467.74 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 24208.24! Size: 37, Volume Confirm: 874.30 > 336.44, ADX: 20.01, EMA Filter OK, Stop: 23762.05 ✨
+🌙 Moon Dev: Exiting Long at 24172.46 - Trend reversal! Stop hit at 24407.96 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 24248.62! Size: 1224, Volume Confirm: 146.38 > 135.29, ADX: 22.61, EMA Filter OK, Stop: 24262.01 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23433.99! Size: 690, Volume Confirm: 105.49 > 99.72, ADX: 22.05, EMA Filter OK, Stop: 23410.24 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23505.97! Size: 171, Volume Confirm: 320.11 > 211.53, ADX: 20.75, EMA Filter OK, Stop: 23410.24 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 23230.67! Size: 47, Volume Confirm: 383.96 > 237.19, ADX: 27.49, EMA Filter OK, Stop: 23578.37 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 23701.97! Size: 300, Volume Confirm: 357.15 > 244.34, ADX: 23.09, EMA Filter OK, Stop: 23647.31 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22338.34! Size: 59, Volume Confirm: 317.83 > 172.58, ADX: 27.27, EMA Filter OK, Stop: 22615.79 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22365.56! Size: 92, Volume Confirm: 131.76 > 128.09, ADX: 20.42, EMA Filter OK, Stop: 22543.22 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 22402.20! Size: 256, Volume Confirm: 260.26 > 233.96, ADX: 35.29, EMA Filter OK, Stop: 22466.09 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 22382.32! Size: 94, Volume Confirm: 720.36 > 530.06, ADX: 27.13, EMA Filter OK, Stop: 22208.43 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 24848.92! Size: 32, Volume Confirm: 399.50 > 291.30, ADX: 27.58, EMA Filter OK, Stop: 24341.45 ✨
+🌙 Moon Dev: Exiting Long at 26182.02 - Trend reversal! Stop hit at 26399.32 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28070.77! Size: 70, Volume Confirm: 265.15 > 228.13, ADX: 29.70, EMA Filter OK, Stop: 27827.09 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28115.35! Size: 23, Volume Confirm: 955.09 > 773.41, ADX: 23.95, EMA Filter OK, Stop: 27375.50 ✨
+🌙 Moon Dev: Exiting Long at 27960.59 - Trend reversal! Stop hit at 28100.20 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28257.64! Size: 257, Volume Confirm: 407.05 > 349.16, ADX: 24.84, EMA Filter OK, Stop: 28191.92 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28120.96! Size: 180, Volume Confirm: 584.72 > 363.52, ADX: 21.65, EMA Filter OK, Stop: 28027.39 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 28121.01! Size: 62, Volume Confirm: 345.06 > 182.04, ADX: 28.25, EMA Filter OK, Stop: 28394.58 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28215.57! Size: 86, Volume Confirm: 407.54 > 139.07, ADX: 25.41, EMA Filter OK, Stop: 28019.75 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27511.81! Size: 51, Volume Confirm: 306.43 > 268.46, ADX: 39.46, EMA Filter OK, Stop: 27840.12 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27331.54! Size: 36, Volume Confirm: 303.19 > 279.59, ADX: 22.18, EMA Filter OK, Stop: 27806.03 ✨
+🌙 Moon Dev: Exiting Short at 27560.94 - Trend reversal! Stop hit at 27204.22 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 28435.00! Size: 462, Volume Confirm: 230.11 > 196.53, ADX: 23.25, EMA Filter OK, Stop: 28471.16 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 28337.79! Size: 109, Volume Confirm: 269.86 > 163.35, ADX: 22.19, EMA Filter OK, Stop: 28491.66 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28583.07! Size: 183, Volume Confirm: 435.61 > 307.93, ADX: 27.76, EMA Filter OK, Stop: 28491.66 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 28484.52! Size: 2340, Volume Confirm: 906.27 > 598.58, ADX: 27.30, EMA Filter OK, Stop: 28491.66 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 29340.31! Size: 35, Volume Confirm: 583.22 > 215.41, ADX: 21.80, EMA Filter OK, Stop: 28869.43 ✨
+🌙 Moon Dev: Exiting Long at 29074.91 - Trend reversal! Stop hit at 29076.25 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26698.17! Size: 339, Volume Confirm: 176.21 > 128.68, ADX: 25.90, EMA Filter OK, Stop: 26746.78 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27000.83! Size: 170, Volume Confirm: 206.61 > 172.55, ADX: 21.84, EMA Filter OK, Stop: 26903.63 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26722.51! Size: 36, Volume Confirm: 705.91 > 576.72, ADX: 26.47, EMA Filter OK, Stop: 27182.54 ✨
+🌙 Moon Dev: Exiting Short at 26995.90 - Trend reversal! Stop hit at 26942.31 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27028.55! Size: 57, Volume Confirm: 422.79 > 158.57, ADX: 23.07, EMA Filter OK, Stop: 26742.95 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28040.21! Size: 251, Volume Confirm: 403.02 > 213.87, ADX: 24.93, EMA Filter OK, Stop: 27975.30 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27119.29! Size: 229, Volume Confirm: 283.21 > 240.28, ADX: 30.48, EMA Filter OK, Stop: 27190.32 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26713.85! Size: 292, Volume Confirm: 593.97 > 245.43, ADX: 23.35, EMA Filter OK, Stop: 26769.61 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26915.05! Size: 186, Volume Confirm: 578.03 > 339.75, ADX: 20.54, EMA Filter OK, Stop: 27002.74 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27107.52! Size: 239, Volume Confirm: 249.42 > 135.96, ADX: 24.65, EMA Filter OK, Stop: 27175.76 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27217.27! Size: 393, Volume Confirm: 43.99 > 41.84, ADX: 21.81, EMA Filter OK, Stop: 27175.76 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25870.22! Size: 34, Volume Confirm: 1369.24 > 401.76, ADX: 49.16, EMA Filter OK, Stop: 26347.88 ✨
+🌙 Moon Dev: Exiting Short at 25833.26 - Trend reversal! Stop hit at 25781.69 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25636.61! Size: 488, Volume Confirm: 553.78 > 484.87, ADX: 26.70, EMA Filter OK, Stop: 25669.89 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25801.96! Size: 47, Volume Confirm: 334.67 > 315.26, ADX: 48.03, EMA Filter OK, Stop: 26147.52 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26022.53! Size: 445, Volume Confirm: 290.85 > 145.75, ADX: 31.43, EMA Filter OK, Stop: 25986.02 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26490.95! Size: 873, Volume Confirm: 332.94 > 193.54, ADX: 26.65, EMA Filter OK, Stop: 26472.33 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26518.73! Size: 361, Volume Confirm: 113.15 > 87.14, ADX: 25.11, EMA Filter OK, Stop: 26473.72 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26895.14! Size: 1523, Volume Confirm: 119.26 > 115.52, ADX: 26.30, EMA Filter OK, Stop: 26884.46 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27085.51! Size: 47, Volume Confirm: 1056.77 > 534.58, ADX: 21.22, EMA Filter OK, Stop: 26740.86 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 30484.41! Size: 675, Volume Confirm: 191.19 > 124.63, ADX: 29.45, EMA Filter OK, Stop: 30460.32 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 30420.52! Size: 408, Volume Confirm: 240.43 > 188.39, ADX: 28.61, EMA Filter OK, Stop: 30460.32 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 30637.33! Size: 102, Volume Confirm: 443.56 > 438.33, ADX: 23.63, EMA Filter OK, Stop: 30478.03 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 30300.01! Size: 21, Volume Confirm: 3132.44 > 774.72, ADX: 36.79, EMA Filter OK, Stop: 31059.22 ✨
+🌙 Moon Dev: Exiting Short at 30595.64 - Trend reversal! Stop hit at 30565.34 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 30587.61! Size: 2071, Volume Confirm: 121.73 > 91.44, ADX: 20.30, EMA Filter OK, Stop: 30579.82 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 31333.73! Size: 36, Volume Confirm: 894.81 > 373.99, ADX: 41.18, EMA Filter OK, Stop: 30889.29 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 30843.87! Size: 45, Volume Confirm: 603.16 > 387.98, ADX: 41.20, EMA Filter OK, Stop: 30483.37 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 31266.83! Size: 366, Volume Confirm: 293.01 > 274.41, ADX: 28.41, EMA Filter OK, Stop: 31222.79 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 30369.02! Size: 243, Volume Confirm: 241.66 > 185.80, ADX: 41.54, EMA Filter OK, Stop: 30302.66 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 29428.37! Size: 1824, Volume Confirm: 256.39 > 174.70, ADX: 30.37, EMA Filter OK, Stop: 29419.53 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 29389.93! Size: 162, Volume Confirm: 135.41 > 67.62, ADX: 28.28, EMA Filter OK, Stop: 29290.20 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 29091.03! Size: 317, Volume Confirm: 203.14 > 184.18, ADX: 21.13, EMA Filter OK, Stop: 29141.84 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 29022.33! Size: 1476, Volume Confirm: 89.39 > 75.37, ADX: 23.60, EMA Filter OK, Stop: 29033.26 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26064.33! Size: 643, Volume Confirm: 120.26 > 79.05, ADX: 24.14, EMA Filter OK, Stop: 26089.41 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26197.70! Size: 313, Volume Confirm: 310.73 > 257.34, ADX: 26.80, EMA Filter OK, Stop: 26146.09 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26048.96! Size: 84, Volume Confirm: 658.55 > 191.44, ADX: 20.30, EMA Filter OK, Stop: 26240.59 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26148.61! Size: 282, Volume Confirm: 237.40 > 141.97, ADX: 37.41, EMA Filter OK, Stop: 26091.44 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25963.92! Size: 74, Volume Confirm: 252.25 > 148.32, ADX: 32.05, EMA Filter OK, Stop: 26182.72 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26114.64! Size: 818, Volume Confirm: 136.91 > 99.53, ADX: 29.06, EMA Filter OK, Stop: 26094.92 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27467.48! Size: 77, Volume Confirm: 438.61 > 127.25, ADX: 20.30, EMA Filter OK, Stop: 27258.79 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26061.44! Size: 1925, Volume Confirm: 202.27 > 116.22, ADX: 25.00, EMA Filter OK, Stop: 26069.82 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25896.99! Size: 82, Volume Confirm: 104.69 > 73.11, ADX: 23.92, EMA Filter OK, Stop: 26093.54 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 25846.91! Size: 94, Volume Confirm: 1070.82 > 523.79, ADX: 24.26, EMA Filter OK, Stop: 25675.02 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 25623.33! Size: 312, Volume Confirm: 201.50 > 175.08, ADX: 25.02, EMA Filter OK, Stop: 25675.02 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26658.96! Size: 74, Volume Confirm: 423.72 > 180.10, ADX: 30.79, EMA Filter OK, Stop: 26440.03 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 26558.08! Size: 129, Volume Confirm: 343.18 > 169.18, ADX: 22.99, EMA Filter OK, Stop: 26683.18 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26998.68! Size: 625, Volume Confirm: 442.34 > 427.31, ADX: 23.18, EMA Filter OK, Stop: 26972.87 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 27856.09! Size: 82, Volume Confirm: 250.99 > 171.07, ADX: 25.15, EMA Filter OK, Stop: 27659.78 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27551.86! Size: 77, Volume Confirm: 875.66 > 239.56, ADX: 36.42, EMA Filter OK, Stop: 27760.71 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 27132.28! Size: 251, Volume Confirm: 360.41 > 250.15, ADX: 31.80, EMA Filter OK, Stop: 27196.54 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26976.87! Size: 63, Volume Confirm: 661.49 > 254.09, ADX: 22.97, EMA Filter OK, Stop: 26719.19 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 26882.99! Size: 170, Volume Confirm: 90.82 > 43.25, ADX: 31.55, EMA Filter OK, Stop: 26788.04 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 28439.46! Size: 504, Volume Confirm: 199.85 > 192.89, ADX: 23.80, EMA Filter OK, Stop: 28407.45 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 29582.53! Size: 597, Volume Confirm: 669.79 > 329.61, ADX: 26.68, EMA Filter OK, Stop: 29555.52 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 29973.72! Size: 487, Volume Confirm: 204.22 > 141.34, ADX: 25.73, EMA Filter OK, Stop: 29940.61 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 34120.06! Size: 777, Volume Confirm: 796.08 > 692.68, ADX: 26.18, EMA Filter OK, Stop: 34099.30 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 34108.32! Size: 1788, Volume Confirm: 360.80 > 335.02, ADX: 37.24, EMA Filter OK, Stop: 34099.30 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 34196.49! Size: 63, Volume Confirm: 295.53 > 292.20, ADX: 20.60, EMA Filter OK, Stop: 34454.41 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 34471.58! Size: 939, Volume Confirm: 304.46 > 288.86, ADX: 23.05, EMA Filter OK, Stop: 34454.41 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 34188.29! Size: 44, Volume Confirm: 801.08 > 658.86, ADX: 25.41, EMA Filter OK, Stop: 34551.04 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 35220.80! Size: 47, Volume Confirm: 162.83 > 143.51, ADX: 32.50, EMA Filter OK, Stop: 34878.20 ✨
+🌙 Moon Dev: 📉 SHORT ENTRY at 34858.96! Size: 593, Volume Confirm: 161.35 > 130.65, ADX: 20.99, EMA Filter OK, Stop: 34886.14 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 35055.66! Size: 286, Volume Confirm: 191.78 > 157.69, ADX: 25.42, EMA Filter OK, Stop: 34999.34 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 35292.26! Size: 29, Volume Confirm: 850.25 > 314.71, ADX: 32.45, EMA Filter OK, Stop: 34740.52 ✨
+🌙 Moon Dev: Exiting Long at 35286.96 - Trend reversal! Stop hit at 35287.86 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37278.57! Size: 361, Volume Confirm: 652.57 > 484.83, ADX: 24.79, EMA Filter OK, Stop: 37234.08 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37260.63! Size: 605, Volume Confirm: 653.65 > 423.92, ADX: 21.14, EMA Filter OK, Stop: 37234.08 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37337.21! Size: 156, Volume Confirm: 332.69 > 195.06, ADX: 20.24, EMA Filter OK, Stop: 37234.08 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37054.50! Size: 22, Volume Confirm: 741.44 > 478.94, ADX: 41.28, EMA Filter OK, Stop: 36326.43 ✨
+🌙 Moon Dev: Exiting Long at 37260.41 - Trend reversal! Stop hit at 37278.42 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37402.95! Size: 31, Volume Confirm: 570.59 > 181.62, ADX: 44.56, EMA Filter OK, Stop: 36888.60 ✨
+🌙 Moon Dev: 🚀 LONG ENTRY at 37140.16! Size: 316, Volume Confirm: 100.33 > 85.94, ADX: 22.15, EMA Filter OK, Stop: 37089.23 ✨
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2023-01-01 00:00:00
+End                       2023-11-20 19:15:00
+Duration                    323 days 19:15:00
+Exposure Time [%]                     2.80371
+Equity Final [$]                1072198.40334
+Equity Peak [$]                 1159152.94288
+Commissions [$]                   42564.48666
+Return [%]                            7.21984
+Buy & Hold Return [%]               125.56034
+Return (Ann.) [%]                     8.16986
+Volatility (Ann.) [%]                 9.35065
+CAGR [%]                              8.17505
+Sharpe Ratio                          0.87372
+Sortino Ratio                         2.48746
+Calmar Ratio                          1.05995
+Alpha [%]                             3.57557
+Beta                                  0.02902
+Max. Drawdown [%]                    -7.70775
+Avg. Drawdown [%]                    -1.25014
+Max. Drawdown Duration      248 days 07:30:00
+Avg. Drawdown Duration       17 days 07:43:00
+# Trades                                   13
+Win Rate [%]                         30.76923
+Best Trade [%]                        9.87102
+Worst Trade [%]                      -2.30686
+Avg. Trade [%]                         1.0451
+Max. Trade Duration           1 days 23:00:00
+Avg. Trade Duration           0 days 16:30:00
+Profit Factor                         2.48731
+Expectancy [%]                        1.12142
+SQN                                   0.75133
+Kelly Criterion                       0.14429
+_strategy                 VolumetricSupert...
+_equity_curve                             ...
+_trades                       Size  ...  E...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data testing disabled in this environment - run single backtest only.
+
+Backtest.run:   0%|          | 0/30866 [00:00<?, ?bar/s]
+                                                        

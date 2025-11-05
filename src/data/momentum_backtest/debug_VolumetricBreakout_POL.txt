@@ -1,0 +1,55 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 LONG Entry: Close 0.2398 > Upper 0.2384, Vol 1315973.00 > 940999.73, RSI 73.9 >50, SMA200 0.2310, Size 4572510, Stop 0.2376 (1.5*ATR) 🚀
+🌙 LONG Entry: Close 0.2448 > Upper 0.2399, Vol 2397629.90 > 1220449.65, RSI 82.3 >50, SMA200 0.2310, Size 3848187, Stop 0.2422 (1.5*ATR) 🚀
+🌙 New LONG position opened, size 3848187 🚀
+🌙 LONG Partial profit taken at middle 0.2397 ✨ (half size: 1924093)
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-12 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     87 days 23:45:00
+Exposure Time [%]                     0.10653
+Equity Final [$]                 972182.60977
+Equity Peak [$]                 1082433.19597
+Commissions [$]                    1862.52202
+Return [%]                           -2.78174
+Buy & Hold Return [%]                 0.89362
+Return (Ann.) [%]                   -11.04274
+Volatility (Ann.) [%]                32.74411
+CAGR [%]                            -11.04397
+Sharpe Ratio                         -0.33724
+Sortino Ratio                        -0.42067
+Calmar Ratio                         -0.75209
+Alpha [%]                            -3.19625
+Beta                                  0.46386
+Max. Drawdown [%]                   -14.68268
+Avg. Drawdown [%]                    -3.33792
+Max. Drawdown Duration       37 days 11:30:00
+Avg. Drawdown Duration        5 days 08:35:00
+# Trades                                    1
+Win Rate [%]                              0.0
+Best Trade [%]                       -2.60237
+Worst Trade [%]                      -2.60237
+Avg. Trade [%]                       -2.60237
+Max. Trade Duration           0 days 02:00:00
+Avg. Trade Duration           0 days 02:00:00
+Profit Factor                             0.0
+Expectancy [%]                       -2.60237
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                  VolumetricBreakout
+_equity_curve                             ...
+_trades                         Size  Entr...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available: No module named 'multi_data_tester'. Skipping multi-data testing. 🌙
+
+Backtest.run:   0%|          | 0/8248 [00:00<?, ?bar/s]
+                                                       
+/home/titus/moon-dev-ai-agents/src/data/momentum_backtest/temp_VolumetricBreakout_POL.py:145: UserWarning: Some trades remain open at the end of backtest. Use `Backtest(..., finalize_trades=True)` to close them and include them in stats.
+  stats = bt.run()

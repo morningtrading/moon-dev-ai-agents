@@ -1,0 +1,55 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 SHORT Entry: Close 109946.0000 < Lower 110000.0000, Vol 1537.99 > 873.56, RSI 28.2 <50, SMA200 113582.4863, Size 13, Stop 110730.9717 (1.5*ATR) 🚀
+🌙 SHORT Entry: Close 108759.4600 < Lower 108900.0000, Vol 937.33 > 799.46, RSI 25.4 <50, SMA200 111851.9527, Size 16, Stop 109402.9297 (1.5*ATR) 🚀
+🌙 SHORT Entry: Close 108833.6300 < Lower 109374.0600, Vol 732.39 > 693.30, RSI 22.8 <50, SMA200 112372.7450, Size 15, Stop 109501.0433 (1.5*ATR) 🚀
+🌙 LONG Entry: Close 123123.2300 > Upper 122366.0000, Vol 1854.63 > 1016.91, RSI 85.1 >50, SMA200 119278.8126, Size 17, Stop 122531.1413 (1.5*ATR) 🚀
+🌙 LONG Entry: Close 123659.8200 > Upper 123298.0000, Vol 1382.83 > 1216.80, RSI 87.2 >50, SMA200 119311.4277, Size 16, Stop 123014.6812 (1.5*ATR) 🚀
+🌙 SHORT Entry: Close 121951.0800 < Lower 122568.0000, Vol 966.90 > 894.28, RSI 20.7 <50, SMA200 124050.1807, Size 15, Stop 122640.0953 (1.5*ATR) 🚀
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-19 00:00:00
+End                       2025-10-07 23:45:00
+Duration                     80 days 23:45:00
+Exposure Time [%]                         0.0
+Equity Final [$]                    1000000.0
+Equity Peak [$]                     1000000.0
+Return [%]                                0.0
+Buy & Hold Return [%]                 3.43298
+Return (Ann.) [%]                         0.0
+Volatility (Ann.) [%]                     0.0
+CAGR [%]                                  0.0
+Sharpe Ratio                              NaN
+Sortino Ratio                             NaN
+Calmar Ratio                              NaN
+Alpha [%]                                 0.0
+Beta                                      0.0
+Max. Drawdown [%]                        -0.0
+Avg. Drawdown [%]                         NaN
+Max. Drawdown Duration                    NaN
+Avg. Drawdown Duration                    NaN
+# Trades                                    0
+Win Rate [%]                              NaN
+Best Trade [%]                            NaN
+Worst Trade [%]                           NaN
+Avg. Trade [%]                            NaN
+Max. Trade Duration                       NaN
+Avg. Trade Duration                       NaN
+Profit Factor                             NaN
+Expectancy [%]                            NaN
+SQN                                       NaN
+Kelly Criterion                           NaN
+_strategy                  VolumetricBreakout
+_equity_curve                             ...
+_trades                   Empty DataFrame
+...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available: No module named 'multi_data_tester'. Skipping multi-data testing. 🌙
+
+Backtest.run:   0%|          | 0/7576 [00:00<?, ?bar/s]
+                                                       

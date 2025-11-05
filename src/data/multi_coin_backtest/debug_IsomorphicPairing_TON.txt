@@ -1,0 +1,56 @@
+
+🌙 Running initial backtest for stats extraction...
+🌙 IsomorphicPairing initialized with lookback=1000 periods, RSI added for momentum filter 🚀
+🌙 Moon Dev SHORT entry: 69944 units at 3.66, Z=3.38, RSI=75.66, VolRatio=2.82, ADX=17.79 🚀
+✨ Moon Dev CONVERGENCE exit at 3.45, Z=0.23 🎉
+🌙 Moon Dev SHORT entry: 151437 units at 3.26, Z=2.54, RSI=71.14, VolRatio=2.12, ADX=19.89 🚀
+✨ Moon Dev CONVERGENCE exit at 3.15, Z=0.29 🎉
+🌙 Moon Dev LONG entry: 154892 units at 3.03, Z=-2.56, RSI=26.71, VolRatio=2.95, ADX=19.97 🚀
+💥 Moon Dev STOP LOSS at 2.75, Z=-7.14 ⚠️
+
+================================================================================
+📊 BACKTEST STATISTICS (Moon Dev's Format)
+================================================================================
+Start                     2025-07-19 00:00:00
+End                       2025-10-09 23:45:00
+Duration                     82 days 23:45:00
+Exposure Time [%]                      6.3504
+Equity Final [$]                 982879.20246
+Equity Peak [$]                 1029115.39381
+Commissions [$]                    4726.80054
+Return [%]                           -1.71208
+Buy & Hold Return [%]               -15.97669
+Return (Ann.) [%]                    -7.31302
+Volatility (Ann.) [%]                 9.08904
+CAGR [%]                             -7.31391
+Sharpe Ratio                          -0.8046
+Sortino Ratio                        -0.79796
+Calmar Ratio                         -1.62772
+Alpha [%]                             -1.9643
+Beta                                 -0.01579
+Max. Drawdown [%]                    -4.49281
+Avg. Drawdown [%]                    -0.63351
+Max. Drawdown Duration       43 days 09:30:00
+Avg. Drawdown Duration        4 days 09:17:00
+# Trades                                    3
+Win Rate [%]                         66.66667
+Best Trade [%]                        5.37972
+Worst Trade [%]                      -9.49369
+Avg. Trade [%]                       -0.66576
+Max. Trade Duration           3 days 20:00:00
+Avg. Trade Duration           1 days 17:55:00
+Profit Factor                          0.8583
+Expectancy [%]                       -0.44841
+SQN                                  -0.29391
+Kelly Criterion                      -0.41625
+_strategy                   IsomorphicPairing
+_equity_curve                             ...
+_trades                        Size  Entry...
+dtype: object
+================================================================================
+
+
+⚠️ Multi-data tester not available - skipping multi-data testing. Initial backtest completed successfully! 🌙
+
+Backtest.run:   0%|          | 0/6968 [00:00<?, ?bar/s]
+                                                       
