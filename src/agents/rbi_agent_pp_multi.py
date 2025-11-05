@@ -69,7 +69,10 @@ AI_MAX_TOKENS = 16000  # 🌙 Moon Dev: Increased for complete backtest code gen
 
 # Import model factory with proper path handling
 import sys
-sys.path.append('/Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading')
+from pathlib import Path
+project_root = str(Path(__file__).parent.parent.parent)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 try:
     from src.models import model_factory
@@ -99,8 +102,8 @@ RATE_LIMIT_GLOBAL_DELAY = 0.5  # Global delay between any API calls
 #   - Each FILE = one complete strategy idea
 #   - Perfect for auto-generated strategies from web search agent!
 #
-STRATEGIES_FROM_FILES = True  # Set to True to read from folder instead of ideas.txt
-STRATEGIES_FOLDER = "/Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading/src/data/web_search_research/final_strategies"
+STRATEGIES_FROM_FILES = False  # Using line-by-line ideas for momentum strategies
+STRATEGIES_FOLDER = str(Path(__file__).parent.parent.parent / "src/data/web_search_research/final_strategies")
 
 # Thread color mapping
 THREAD_COLORS = {
@@ -163,7 +166,7 @@ OPTIMIZE_CONFIG = {
 }
 
 # 🎯 PROFIT TARGET CONFIGURATION
-TARGET_RETURN = 50  # Target return in %
+TARGET_RETURN = 15  # Target return in % (lowered for realistic bull market performance)
 SAVE_IF_OVER_RETURN = 1.0  # Save backtest to CSV and folders if return > this % (Moon Dev's threshold!)
 CONDA_ENV = "tflow"
 MAX_DEBUG_ITERATIONS = 10
@@ -193,7 +196,7 @@ EXECUTION_DIR = None
 
 PROCESSED_IDEAS_LOG = DATA_DIR / "processed_ideas.log"
 STATS_CSV = DATA_DIR / "backtest_stats.csv"  # Moon Dev's stats tracker!
-IDEAS_FILE = DATA_DIR / "ideas.txt"
+IDEAS_FILE = DATA_DIR / "leverage_strategies.txt"  # Using leverage-optimized strategies
 
 def update_date_folders():
     """
@@ -384,11 +387,11 @@ RISK MANAGEMENT:
 
 If you need indicators use TA lib or pandas TA.
 
-Use this data path: /Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading/src/data/rbi/BTC-USD-15m.csv
-the above data head looks like below
+Use this data path: /home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-2022-BEAR-15m.csv
+the above data head looks like below (2022 BEAR MARKET: -62.4% return)
 datetime, open, high, low, close, volume,
-2023-01-01 00:00:00, 16531.83, 16532.69, 16509.11, 16510.82, 231.05338022,
-2023-01-01 00:15:00, 16509.78, 16534.66, 16509.11, 16533.43, 308.12276951,
+2022-01-01 00:00:00, 46332.51, 46429.73, 46228.47, 46327.01, 1234.56,
+2022-01-01 00:15:00, 46327.01, 46450.21, 46301.33, 46400.82, 987.65,
 
 Always add plenty of Moon Dev themed debug prints with emojis to make debugging easier! 🌙 ✨ 🚀
 
@@ -409,8 +412,8 @@ if __name__ == "__main__":
     import pandas as pd
 
     # FIRST: Run standard backtest and print stats (REQUIRED for parsing!)
-    print("\\n🌙 Running initial backtest for stats extraction...")
-    data = pd.read_csv('/Users/md/Dropbox/dev/github/moon-dev-ai-agents-for-trading/src/data/rbi/BTC-USD-15m.csv')
+    print("\\n🌙 Running backtest on 2022 BEAR MARKET (-62.4% B&H)...")
+    data = pd.read_csv('/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-2022-BEAR-15m.csv')
     data['datetime'] = pd.to_datetime(data['datetime'])
     data = data.set_index('datetime')
     data.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
