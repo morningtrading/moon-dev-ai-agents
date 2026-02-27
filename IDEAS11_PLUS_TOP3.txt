@@ -1,0 +1,43 @@
+🌙 MOON DEV'S CONCATENATED IDEAS FILE 🚀
+==============================================
+
+📊 TOP 3 WINNERS FROM PREVIOUS RUN:
+
+1. StableInfluxTrigger (141% return, 42 trades - BEAR ONLY):
+   Volume surge detection with stability filter. Long when volume ratio crosses 1.2x (7-day SMA), current volume > 14-day SMA, and market drawdown > -5%. ATR-based position sizing (1% risk or 0.5% in high vol). Exit on: hard stop (2.5%), trailing stop after 4% TP1, volume drop below SMA7, flow reversal (volume < 70% of peak), or 7-day time limit. Uses 4H timeframe resampled from 15m.
+
+2. SkewedSpreadCapturer (93.6% return, 211 trades):
+   Market-making strategy with dynamic spread capture. Posts limit orders around (H+L)/2 mid-price with 0.2% base offset. Filters: ADX<20 (no trends), RSI 25-75 (neutral), volume>85% avg, volatility<1.5% ATR/price, spread<1.5%. Position sizing: 0.4% risk per side, volatility-adjusted with 0.5x floor. Skewed rebalancing: 2x offset against inventory (long=wider buys, short=wider sells). Hedges at 3% exposure. Pauses permanently at 10% drawdown.
+
+3. EquispacedFilter (26.5% return, 180 trades):
+   Grid DCA strategy with partial TPs. Long above 200 SMA when RSI crosses above 30 with volume>1.2x avg; short opposite. Dynamic grid spacing: 2×ATR (min $100). Max 4 layers, $10k per layer. Partial exits: 50% at +1 spacing, 50% at +2 spacing. Global SL: 5× spacing from lowest/highest entry. Adds layers when price drops/rises by 1 spacing. Trend-following with RSI mean reversion entries.
+
+==============================================
+
+📈 NEW IDEAS FROM IDEAS11.TXT:
+
+4. EMA Crossover + RSI Filter: Buy when EMA9 crosses above EMA21 and RSI(14) > 55, BTC above 50 SMA; sell opposite. SL=2×ATR(14), TP=4×ATR(14).
+
+5. ADX Trend Strength + EMA Pullback: Trade only when ADX(14)>25; enter long on EMA20 bounce (price > EMA20, previous candle touched it); SL=2×ATR, TP=4×ATR.
+
+6. Bollinger Band Reversion: Buy when price closes below lower Bollinger Band(20,2) and RSI(14)<30 while BTC above 50 SMA; SL=2×ATR, TP=4×ATR.
+
+7. RSI Breakout: Enter long when RSI(14) crosses above 50 and price > EMA50; short when RSI crosses below 50 and price < EMA50; SL=2×ATR, TP=4×ATR.
+
+8. EMA Triple Trend Ride: Buy if EMA9>EMA21>EMA55 and price retraces to EMA21; BTC above 50 SMA; SL=2×ATR, TP=4×ATR.
+
+9. MACD Momentum Confirm: Long when MACD line crosses above signal and price > EMA50; short when opposite; BTC trend aligned; SL=2×ATR, TP=4×ATR.
+
+10. Stochastic Oversold Trend Entry: Buy when Stoch(14,3,3)<20 and price>EMA50; short when >80 and price<EMA50; SL=2×ATR, TP=4×ATR.
+
+11. Bollinger Band Squeeze Breakout: Detect BB width < 0.015, enter breakout candle direction; confirm BTC trend; SL=2×ATR, TP=4×ATR.
+
+12. RSI Divergence Reversal: Identify bullish RSI divergence below 30 zone with BTC uptrend; sell on bearish divergence above 70; SL=2×ATR, TP=4×ATR.
+
+13. EMA Momentum Burst: Enter when EMA8 sharply slopes up (>20°), price > EMA50, and RSI(14)>60; opposite for shorts; SL=2×ATR, TP=4×ATR.
+
+==============================================
+🌙 TOTAL: 13 STRATEGIES FOR TESTING 🚀
+- 3 proven winners (to retest on complete dataset)
+- 10 new technical indicator strategies
+==============================================

@@ -1356,3 +1356,73 @@ timestamp,token,sentiment_score,reasoning,confidence,market_mood,volume
 2025-11-05 19:27:07.038241,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,75,neutral,medium
 2025-11-05 19:27:10.134358,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but no overwhelming euphoria.",75,neutral,medium
 2025-11-05 19:27:13.474740,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-05 22:30:52.618444,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-05 22:30:55.690119,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-05 22:30:58.702459,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-05 22:31:01.825784,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some users expressing hope for future growth.",75,neutral,medium
+2025-11-05 22:31:04.892460,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-05 22:46:12.883366,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-05 22:46:15.827852,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-05 22:46:19.261890,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral technical analysis.",75,greed,medium
+2025-11-05 22:46:22.472941,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-05 22:46:25.417102,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 08:24:33.548753,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",75,greed,medium
+2025-11-06 08:24:36.516792,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 08:24:39.689121,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious enthusiasm, with some users expressing hope for future growth.",75,greed,medium
+2025-11-06 08:24:42.977080,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 08:24:46.082182,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 08:39:49.303837,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-06 08:39:52.424600,ETH,0.3,"Recent X posts about Ethereum show a mix of optimism with some discussions on potential growth and positive developments, though tempered by cautious views.",75,neutral,medium
+2025-11-06 08:39:55.678927,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by cautious discussions.",75,neutral,medium
+2025-11-06 08:39:58.777953,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral market analysis.",75,greed,medium
+2025-11-06 08:40:02.265055,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 08:55:05.065484,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",85,greed,medium
+2025-11-06 08:55:08.119819,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-06 08:55:11.107804,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 08:55:14.094569,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,neutral,medium
+2025-11-06 08:55:17.295228,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 09:10:20.643376,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also neutral analysis.",85,greed,medium
+2025-11-06 09:10:23.650605,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,greed,medium
+2025-11-06 09:10:26.619901,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 09:10:29.602933,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 09:10:32.650964,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 09:25:35.806312,BTC,0.3,"Recent X posts show a mix of optimism about Bitcoin's future and some cautious discussions, leaning slightly positive.",85,greed,medium
+2025-11-06 09:25:38.776485,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,neutral,medium
+2025-11-06 09:25:41.887810,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers and users discussing new projects and updates, though there's also some skepticism.",75,neutral,medium
+2025-11-06 09:25:45.160547,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but no widespread euphoria.",75,neutral,medium
+2025-11-06 09:25:48.475168,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 09:40:51.662909,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-06 09:40:54.976057,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-06 09:40:58.688583,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,neutral,medium
+2025-11-06 09:41:02.121915,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",85,greed,medium
+2025-11-06 09:41:05.269876,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 09:56:08.536004,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 09:56:11.708367,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,75,greed,medium
+2025-11-06 09:56:15.259720,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive price predictions and project updates.",75,greed,medium
+2025-11-06 09:56:18.671956,BNB,0.3,"Recent X posts show a mix of optimism about BNB's future and some concerns about regulatory issues, leaning slightly positive.",75,greed,medium
+2025-11-06 09:56:22.104907,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming projects but no significant FOMO or FUD.",75,neutral,medium
+2025-11-06 10:11:25.909345,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also neutral analysis.",85,greed,medium
+2025-11-06 10:11:28.978050,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-06 10:11:31.993467,SOL,0.3,"Recent X posts about Solana show a mix of optimism with some developers announcing new projects and positive price predictions, though tempered by some cautious or neutral discussions.",75,greed,medium
+2025-11-06 10:11:35.037209,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 10:11:38.446234,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 10:26:41.950761,BTC,0.3,"Recent X posts show a mix of optimism with some FOMO, but also neutral discussions about Bitcoin's future.",85,greed,medium
+2025-11-06 10:26:45.087726,ETH,0.3,Recent X posts show a mix of optimism about upcoming Ethereum upgrades and some concerns about market volatility.,85,greed,medium
+2025-11-06 10:26:48.210066,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with more leaning towards positive developments and potential growth.",75,greed,medium
+2025-11-06 10:26:51.419369,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 10:26:54.412870,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 10:41:57.669558,BTC,0.3,Recent X posts show a mix of optimism about Bitcoin's future and some concerns about market volatility.,85,greed,medium
+2025-11-06 10:42:01.358474,ETH,0.3,Recent X posts show a mix of optimism about upcoming Ethereum upgrades and some concerns about market volatility.,75,greed,medium
+2025-11-06 10:42:04.492395,SOL,0.3,"Recent X posts about Solana show a mix of optimism and cautious discussions, with some positive developments mentioned.",75,neutral,medium
+2025-11-06 10:42:07.529372,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,neutral,medium
+2025-11-06 10:42:10.823010,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 10:57:13.982057,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-06 10:57:16.960186,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future upgrades and some concerns about market volatility.,85,neutral,medium
+2025-11-06 10:57:20.062202,SOL,0.3,Recent X posts show a mix of optimism about Solana's development and some concerns about market volatility.,75,neutral,medium
+2025-11-06 10:57:23.120171,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-06 10:57:26.251311,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium
+2025-11-06 11:12:29.909066,BTC,0.3,"Recent X posts show a mix of optimism and cautious discussions about Bitcoin's future, with some FOMO but also balanced by neutral analysis.",75,greed,medium
+2025-11-06 11:12:33.195683,ETH,0.3,Recent X posts show a mix of optimism about Ethereum's future developments and some concerns about market volatility.,85,neutral,medium
+2025-11-06 11:12:36.140740,SOL,0.3,Recent X posts show a mix of optimism about upcoming developments and some concerns about market volatility.,85,neutral,medium
+2025-11-06 11:12:39.316392,BNB,0.3,"Recent X posts about BNB show a mix of optimism and cautious discussions, with some FOMO but also neutral analysis.",75,greed,medium
+2025-11-06 11:12:42.651404,XLM,0.1,"Recent X posts about Stellar show a mix of optimism and neutral discussions, with some positive mentions of upcoming developments.",75,neutral,medium

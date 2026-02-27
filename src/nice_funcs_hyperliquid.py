@@ -322,32 +322,39 @@ def market_buy(symbol, usd_size, account):
 
     # Get current ask price
     ask, bid, _ = ask_bid(symbol)
+    
+    # Get decimals first
+    sz_decimals, px_decimals = get_sz_px_decimals(symbol)
 
-    # Overbid by 0.1% to ensure fill (market buy needs to be above ask)
-    buy_price = ask * 1.001
+    # Overbid by 1% to ensure fill (market buy needs to be above ask)
+    buy_price = ask * 1.01
 
-    # Round to appropriate decimals for BTC (whole numbers)
+    # Round to appropriate decimals
     if symbol == 'BTC':
         buy_price = round(buy_price)
     else:
-        buy_price = round(buy_price, 1)
+        # Use valid precision from meta, default to 4 if 0/unknown for safety on low price coins
+        prec = px_decimals if px_decimals > 0 else 4
+        buy_price = round(buy_price, prec)
 
-    # Calculate position size
-    pos_size = usd_size / buy_price
+    # Calculate position size using the ASK price (estimated fill price)
+    # forcing size to be enough to cover the usd_size at fill price, not limit price
+    pos_size = usd_size / ask
 
-    # Get decimals and round
-    sz_decimals, _ = get_sz_px_decimals(symbol)
+    # Round size
     pos_size = round(pos_size, sz_decimals)
 
     # Ensure minimum order value
-    order_value = pos_size * buy_price
+    # HyperLiquid requires > $10 value
+    order_value = pos_size * ask
     if order_value < 10:
         print(f'   ⚠️ Order value ${order_value:.2f} below $10 minimum, adjusting...')
-        pos_size = 11 / buy_price  # $11 to have buffer
+        # Aim for $12 to be safe against price moves
+        pos_size = 12.0 / ask 
         pos_size = round(pos_size, sz_decimals)
 
-    print(f'   Placing IOC buy at ${buy_price} (0.1% above ask ${ask})')
-    print(f'   Position size: {pos_size} {symbol} (value: ${pos_size * buy_price:.2f})')
+    print(f'   Placing IOC buy at ${buy_price} (1% above ask ${ask})')
+    print(f'   Position size: {pos_size} {symbol} (est value: ${pos_size * ask:.2f})')
 
     # Place IOC order above ask to ensure fill
     exchange = Exchange(account, constants.MAINNET_API_URL)

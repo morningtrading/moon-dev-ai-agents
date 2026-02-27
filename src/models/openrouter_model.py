@@ -27,6 +27,11 @@ class OpenRouterModel(BaseModel):
         },
 
         # Google Gemini Models
+        "google/gemini-3-pro-preview": {
+            "description": "Gemini 3 Pro Preview - Latest reasoning model with thinking support - 1M context",
+            "input_price": "See openrouter.ai/docs",
+            "output_price": "See openrouter.ai/docs"
+        },
         "google/gemini-2.5-pro": {
             "description": "Gemini 2.5 Pro - Advanced reasoning - 128k context",
             "input_price": "$1.25/1M tokens",

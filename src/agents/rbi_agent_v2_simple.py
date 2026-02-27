@@ -21,6 +21,7 @@ from anthropic import Anthropic
 load_dotenv()
 
 # Configuration
+COIN = "SUI"  # Change to BNB, SUI, etc for different coins
 CONDA_ENV = "tflow"
 MAX_DEBUG_ITERATIONS = 3
 EXECUTION_TIMEOUT = 300
@@ -231,10 +232,11 @@ def create_backtest(strategy, strategy_name="UnknownStrategy"):
     return output
 
 def execute_backtest(file_path: str, strategy_name: str) -> dict:
-    """Execute backtest in conda environment"""
+    """Execute backtest in tflow conda environment"""
     cprint(f"\n🚀 Executing backtest: {strategy_name}", "cyan")
     
-    cmd = ["conda", "run", "-n", CONDA_ENV, "python", str(file_path)]
+    # Use bash to properly activate the conda environment
+    cmd = ["bash", "-c", f"source activate {CONDA_ENV} && python {str(file_path)}"]
     
     result = subprocess.run(
         cmd,

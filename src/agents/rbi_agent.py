@@ -34,6 +34,17 @@ This helps keep your strategy research organized by day!
 Remember: Past performance doesn't guarantee future results!
 """
 
+import sys
+from pathlib import Path
+
+# Add the repository root to sys.path to resolve 'src' package imports
+# When rbi_agent.py is run directly from src/agents/, its parent directory src/
+# is not automatically added to sys.path in a way that makes 'src' a top-level package.
+# This ensures that 'src' can be imported correctly.
+repository_root = Path(__file__).resolve().parent.parent.parent
+if str(repository_root) not in sys.path:
+    sys.path.insert(0, str(repository_root))
+
 
 ## Previous presets (kept for easy switching) 👇
 # RESEARCH_CONFIG = {

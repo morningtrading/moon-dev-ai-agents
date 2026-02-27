@@ -235,6 +235,10 @@ from termcolor import colored, cprint
 import anthropic
 from pathlib import Path
 import openai
+import sys
+
+# Add parent directory to path so we can import from src
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 # Local imports
 from src.config import *
@@ -548,10 +552,22 @@ class TokenExtractorAgent:
     """Agent that extracts token/crypto symbols from conversations"""
     
     def __init__(self):
-        self.client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_KEY"))
         self.model = TOKEN_EXTRACTOR_MODEL
+        # Initialize appropriate client based on model
+        if "deepseek" in self.model.lower():
+            deepseek_key = os.getenv("DEEPSEEK_KEY")
+            if deepseek_key:
+                self.client = openai.OpenAI(
+                    api_key=deepseek_key,
+                    base_url=DEEPSEEK_BASE_URL
+                )
+                cprint("🔍 Token Extractor Agent initialized with DeepSeek!", "white", "on_cyan")
+            else:
+                raise ValueError("🚨 DEEPSEEK_KEY not found in environment variables!")
+        else:
+            self.client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_KEY"))
+            cprint("🔍 Token Extractor Agent initialized!", "white", "on_cyan")
         self.token_history = self._load_token_history()
-        cprint("🔍 Token Extractor Agent initialized!", "white", "on_cyan")
         
     def _load_token_history(self) -> pd.DataFrame:
         """Load or create token history DataFrame"""
@@ -567,14 +583,7 @@ class TokenExtractorAgent:
         try:
             print_section("🔍 Extracting Mentioned Tokens", "on_cyan")
             
-            message = self.client.messages.create(
-                model=self.model,
-                max_tokens=EXTRACTOR_MAX_TOKENS,
-                temperature=EXTRACTOR_TEMP,
-                system=TOKEN_EXTRACTOR_PROMPT,  # Use the token extractor prompt
-                messages=[{
-                    "role": "user",
-                    "content": f"""
+            user_content = f"""
 Agent One said:
 {agent_one_msg}
 
@@ -583,11 +592,34 @@ Agent Two said:
 
 Extract all token symbols and return as a simple list.
 """
-                }]
-            )
+            
+            # Use correct API format based on model
+            if "deepseek" in self.model.lower():
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": TOKEN_EXTRACTOR_PROMPT},
+                        {"role": "user", "content": user_content}
+                    ],
+                    max_tokens=EXTRACTOR_MAX_TOKENS,
+                    temperature=EXTRACTOR_TEMP
+                )
+                response_text = response.choices[0].message.content
+            else:
+                message = self.client.messages.create(
+                    model=self.model,
+                    max_tokens=EXTRACTOR_MAX_TOKENS,
+                    temperature=EXTRACTOR_TEMP,
+                    system=TOKEN_EXTRACTOR_PROMPT,
+                    messages=[{
+                        "role": "user",
+                        "content": user_content
+                    }]
+                )
+                response_text = str(message.content)
             
             # Clean up response and split into list
-            tokens = str(message.content).strip().split('\n')
+            tokens = response_text.strip().split('\n')
             tokens = [t.strip().upper() for t in tokens if t.strip()]
             
             # Create records for each token
@@ -633,14 +665,7 @@ class MultiAgentSystem:
     def generate_round_synopsis(self, agent_one_response: str, agent_two_response: str) -> str:
         """Generate a brief synopsis of the round's key points using Synopsis Agent"""
         try:
-            message = self.agent_one.client.messages.create(
-                model="claude-3-haiku-20240307",
-                max_tokens=SYNOPSIS_MAX_TOKENS,
-                temperature=SYNOPSIS_TEMP,
-                system=SYNOPSIS_AGENT_PROMPT,  # Use the synopsis agent prompt
-                messages=[{
-                    "role": "user",
-                    "content": f"""
+            user_content = f"""
 Agent One said:
 {agent_one_response}
 
@@ -649,10 +674,32 @@ Agent Two said:
 
 Create a brief synopsis of this trading round.
 """
-                }]
-            )
             
-            synopsis = str(message.content).strip()
+            # Use correct API format based on agent_one's model
+            if "deepseek" in self.agent_one.model.lower():
+                response = self.agent_one.client.chat.completions.create(
+                    model=self.agent_one.model,
+                    messages=[
+                        {"role": "system", "content": SYNOPSIS_AGENT_PROMPT},
+                        {"role": "user", "content": user_content}
+                    ],
+                    max_tokens=SYNOPSIS_MAX_TOKENS,
+                    temperature=SYNOPSIS_TEMP
+                )
+                synopsis = response.choices[0].message.content.strip()
+            else:
+                message = self.agent_one.client.messages.create(
+                    model="claude-3-haiku-20240307",
+                    max_tokens=SYNOPSIS_MAX_TOKENS,
+                    temperature=SYNOPSIS_TEMP,
+                    system=SYNOPSIS_AGENT_PROMPT,
+                    messages=[{
+                        "role": "user",
+                        "content": user_content
+                    }]
+                )
+                synopsis = str(message.content).strip()
+            
             return synopsis
             
         except Exception as e:

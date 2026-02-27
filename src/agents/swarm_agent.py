@@ -64,17 +64,19 @@ SWARM_MODELS = {
     "deepseek": (True, "deepseek", "deepseek-chat"),  # DeepSeek Chat - Fast chat model (API)
     "xai": (True, "xai", "grok-4-fast-reasoning"),  # Grok-4 fast reasoning ($0.20-$0.50/1M tokens)
     "openrouter_qwen": (True, "openrouter", "qwen/qwen3-max"),  # Qwen 3 Max - Powerful reasoning ($1.00/$1.00 per 1M tokens)
+    "groq": (True, "groq", "mixtral-8x7b-32768"),  # Groq - Ultra-fast inference with Mixtral
+    "openai": (True, "openai", "gpt-4o"),  # OpenAI GPT-4o - Latest & fastest GPT-4
 
     # 🔇 Disabled Models (uncomment to enable)
     #"claude": (True, "claude", "claude-sonnet-4-5"),  # Claude 4.5 Sonnet - Latest & Greatest!
-    #"openai": (True, "openai", "gpt-5"),  # GPT-5 - Most advanced model!
-    "ollama": (True, "ollama", "qwen3:8b"),  # Qwen3 8B via Ollama - Fast local reasoning! (free!)
+    #"ollama": (True, "ollama", "qwen3:8b"),  # Qwen3 8B via Ollama - Fast local reasoning! (free!)
     #"ollama_llama2": (True, "ollama", "llama2:latest"),  # Llama2 local model via Ollama
     #"openrouter_qwen": (True, "openrouter", "qwen/qwen3-max"),  # Qwen 3 Max - Powerful reasoning ($1.00/$1.00 per 1M tokens)
 
     # 🌙 OpenRouter Models - Access 200+ models through one API!
     # Uncomment any of these to add them to your swarm:
     "openrouter_gemini": (True, "openrouter", "google/gemini-2.5-flash"),  # Gemini 2.5 Flash - Fast & cheap! ($0.10/$0.40 per 1M tokens)
+    "openrouter_gemini3": (True, "openrouter", "google/gemini-3-pro-preview"),  # Gemini 3 Pro Preview - Latest reasoning model!
     #"openrouter_glm": (True, "openrouter", "z-ai/glm-4.6"),  # GLM 4.6 - Zhipu AI reasoning ($0.50/$0.50 per 1M tokens)
     #"openrouter_deepseek_r1": (True, "openrouter", "deepseek/deepseek-r1-0528"),  # DeepSeek R1 - Advanced reasoning ($0.55/$2.19 per 1M tokens)
     #"openrouter_claude_opus": (True, "openrouter", "anthropic/claude-opus-4.1"),  # Claude Opus 4.1 via OpenRouter

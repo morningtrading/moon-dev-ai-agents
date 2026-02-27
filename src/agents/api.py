@@ -139,8 +139,20 @@ class MoonDevAPI:
                         if chunk:
                             f.write(chunk)
 
+                # Define column names for liquidation data (no header in CSV)
+                liq_column_names = [
+                    "symbol", "side", "order_type", "time_in_force",
+                    "original_quantity", "price", "average_price", "order_status",
+                    "order_last_filled_quantity", "order_filled_accumulated_quantity",
+                    "order_trade_time", "usd_size"
+                ]
+                
                 # Once download is complete, read the file
-                df = pd.read_csv(temp_file)
+                # For liq_data.csv, there's no header row so we specify column names
+                if 'liq_data' in filename:
+                    df = pd.read_csv(temp_file, header=None, names=liq_column_names)
+                else:
+                    df = pd.read_csv(temp_file)
 
                 # Move temp file to final location
                 final_file = self.base_dir / filename

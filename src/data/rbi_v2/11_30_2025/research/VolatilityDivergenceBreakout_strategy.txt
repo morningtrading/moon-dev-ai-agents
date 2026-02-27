@@ -1,0 +1,37 @@
+STRATEGY_NAME: Volatility Divergence Breakout
+
+STRATEGY_DETAILS:
+
+KEY STRATEGY COMPONENTS:
+This strategy combines multiple technical analysis concepts to identify high-probability trend entries during volatility expansion periods. The core approach detects bullish divergence when price makes lower lows while momentum indicators show higher lows, then confirms the reversal with volatility-based breakout signals. The strategy specifically waits for Bollinger Band expansion to indicate increased market volatility, then requires price to break above the Keltner Channel upper boundary for entry confirmation.
+
+REQUIRED INDICATORS:
+1. Keltner Channel (20-period EMA with 2.0 ATR bands)
+2. Bollinger Bands (20-period, 2 standard deviations)
+3. RSI or MACD for divergence detection
+4. Price action for swing high/low identification
+
+ENTRY RULES:
+1. Identify bullish divergence: Price forms a lower low while RSI/MACD forms a higher low
+2. Confirm volatility expansion: Bollinger Bands must be widening (band width increasing)
+3. Wait for breakout: Price must close above the upper Keltner Channel
+4. Enter long position on the next candle open after all three conditions are met
+
+EXIT RULES:
+1. Primary exit: Close position when price closes below the Keltner Channel lower boundary
+2. Alternative exit: Use trailing stop based on recent swing lows or ATR multiple
+3. Time-based exit: Consider exiting if no significant momentum develops within 5-10 periods
+
+RISK MANAGEMENT:
+1. Position sizing based on 1-2% risk per trade
+2. Initial stop loss placed below the most recent swing low or divergence point
+3. Monitor Bollinger Band contraction as potential early warning for trend exhaustion
+4. Avoid trading during low volatility periods when bands are contracting
+5. Consider reducing position size if multiple divergence signals occur in quick succession
+
+ADDITIONAL CONSIDERATIONS:
+- This strategy works best in trending markets with clear momentum shifts
+- Higher timeframe signals (4H/Daily) typically provide more reliable entries
+- Combine with volume confirmation for enhanced signal reliability
+- Be cautious of false breakouts during high volatility periods
+- The strategy may produce fewer signals but aims for higher quality setups with strong risk-reward ratios

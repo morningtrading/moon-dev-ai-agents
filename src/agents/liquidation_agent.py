@@ -16,6 +16,11 @@ from dotenv import load_dotenv
 import openai
 import anthropic
 from pathlib import Path
+import sys
+
+# Add parent directory to path so we can import from src
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
 from src import nice_funcs as n
 from src import nice_funcs_hyperliquid as hl
 from src.agents.api import MoonDevAPI
@@ -183,13 +188,31 @@ class LiquidationAgent(BaseAgent):
             df = self.api.get_liquidation_data(limit=LIQUIDATION_ROWS)
             
             if df is not None and not df.empty:
-                # Set column names
-                df.columns = ['symbol', 'side', 'type', 'time_in_force', 
-                            'quantity', 'price', 'price2', 'status', 
-                            'filled_qty', 'total_qty', 'timestamp', 'usd_value']
+                # Debug: print column names to verify structure
+                # print(f"🔍 Columns: {df.columns.tolist()}")
                 
-                # Convert timestamp to datetime (UTC)
-                df['datetime'] = pd.to_datetime(df['timestamp'], unit='ms')
+                # API returns columns: symbol, side, order_type, time_in_force,
+                # original_quantity, price, average_price, order_status,
+                # order_last_filled_quantity, order_filled_accumulated_quantity,
+                # order_trade_time, usd_size
+                
+                # Convert timestamp to datetime (UTC) - use order_trade_time
+                if 'order_trade_time' in df.columns:
+                    df['datetime'] = pd.to_datetime(df['order_trade_time'], unit='ms')
+                elif 'datetime' not in df.columns:
+                    print("❌ No timestamp column found in data")
+                    return None
+                    
+                # Use correct column name for USD value
+                if 'usd_size' in df.columns:
+                    usd_col = 'usd_size'
+                elif 'usd_value' in df.columns:
+                    usd_col = 'usd_value'
+                else:
+                    print(f"❌ No USD column found. Available columns: {df.columns.tolist()}")
+                    return None
+                df[usd_col] = pd.to_numeric(df[usd_col], errors='coerce')
+                
                 current_time = datetime.utcnow()
                 
                 # Calculate time windows
@@ -202,12 +225,12 @@ class LiquidationAgent(BaseAgent):
                 shorts = df[df['side'] == 'BUY']  # BUY side = short liquidation
                 
                 # Calculate totals for each time window and type
-                fifteen_min_longs = longs[longs['datetime'] >= fifteen_min]['usd_value'].sum()
-                fifteen_min_shorts = shorts[shorts['datetime'] >= fifteen_min]['usd_value'].sum()
-                one_hour_longs = longs[longs['datetime'] >= one_hour]['usd_value'].sum()
-                one_hour_shorts = shorts[shorts['datetime'] >= one_hour]['usd_value'].sum()
-                four_hour_longs = longs[longs['datetime'] >= four_hours]['usd_value'].sum()
-                four_hour_shorts = shorts[shorts['datetime'] >= four_hours]['usd_value'].sum()
+                fifteen_min_longs = longs[longs['datetime'] >= fifteen_min][usd_col].sum()
+                fifteen_min_shorts = shorts[shorts['datetime'] >= fifteen_min][usd_col].sum()
+                one_hour_longs = longs[longs['datetime'] >= one_hour][usd_col].sum()
+                one_hour_shorts = shorts[shorts['datetime'] >= one_hour][usd_col].sum()
+                four_hour_longs = longs[longs['datetime'] >= four_hours][usd_col].sum()
+                four_hour_shorts = shorts[shorts['datetime'] >= four_hours][usd_col].sum()
                 
                 # Get event counts
                 fifteen_min_long_events = len(longs[longs['datetime'] >= fifteen_min])

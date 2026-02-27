@@ -1,0 +1,102 @@
+STRATEGY_NAME: VolatilityDivergence Breakout
+
+STRATEGY_DETAILS:
+Key Strategy Components:
+- Core logic: Long-only, trend-following breakout that is gated by bullish oscillator divergence and confirmed by volatility expansion. The breakout trigger is a close above the upper Keltner Channel; the volatility gate uses Bollinger Band width expansion; the exit is a correction closing below the lower Keltner band.
+- Trend filter (optional but recommended): Require higher-timeframe or long-term EMA uptrend to align with trend-following bias.
+- Divergence engine: Detect bullish divergence between price and an oscillator (RSI or MACD) across two recent swing lows.
+- Volatility regime detection: Use Bollinger Band width to confirm an expansion regime at the time of breakout.
+
+Entry Rules (Long):
+1) Trend filter:
+   - Price above 200-EMA on the execution timeframe AND 200-EMA slope > 0 (or price above the 50/200-EMA with 50 > 200 for stronger filter).
+
+2) Bullish divergence (within lookback L bars, e.g., L = 30):
+   - Identify two consecutive swing lows in price: Low2 (older) and Low1 (newer), where Low1 < Low2 (a lower low).
+   - Compute RSI(14) or MACD histogram values at/near those lows (use the bar of lowest price in a ±2-bar window).
+   - Bullish divergence condition: Osc(Low1) > Osc(Low2) while Price(Low1) < Price(Low2).
+   - Flag remains valid for D bars after detection (e.g., D = 10) to allow a breakout trigger window.
+
+3) Volatility expansion (Bollinger confirmation on the signal bar):
+   - Use BB(20, 2). Define BBWidth = UpperBB - LowerBB.
+   - Define BBWidthMA = SMA(BBWidth, 20).
+   - Require BBWidth > 1.2 × BBWidthMA AND BBWidth rising vs previous bar (BBWidth > BBWidth[1]).
+   - Optional percentile gate: BBWidth in top 60th percentile of last 250 bars for added robustness.
+
+4) Breakout trigger (must occur while divergence flag is active):
+   - Keltner Channel KC(EMA length = 20, ATR length = 20, multiplier = 1.5–2.0; default 1.8).
+   - Entry on close above KC Upper band (Close_t > KC_Upper_t).
+   - Optional confirmation: bar closes in top 20% of its range and volume > 20-bar average.
+
+5) Order execution:
+   - Place market order on next bar open after a valid breakout close, or use stop order at KC_Upper if you prefer stop entries.
+
+Exit Rules:
+Primary exit (strategy-defined correction):
+- Full exit when Close < KC_Lower (a clear correction below the channel).
+
+Protective and profit management (recommended overlays):
+- Initial stop-loss (at entry):
+  - Stop = min(Recent swing low − 0.5×ATR20, KC_Lower − 0.25×ATR20).
+- Trailing stop (after price moves +1R):
+  - Trail to KC_Mid (the Keltner basis EMA) − 0.25×ATR20 OR use Chandelier Exit (ATR20 × 3 below highest close since entry), whichever is tighter.
+- Partial profit take (optional):
+  - Scale out 50% at 1.5R; move stop to breakeven. Continue to trail as above.
+- Time stop:
+  - If trade has not reached +0.5R within 10 bars, exit at market to avoid stagnation.
+
+Risk Management:
+- Position sizing:
+  - Risk per trade: 0.5–1.0% of account equity.
+  - Shares/contracts = (Risk$) / (EntryPrice − InitialStop).
+  - Cap position so that notional exposure ≤ 10–20% of equity per single trade in leveraged products.
+- Portfolio risk:
+  - Max 3 concurrent positions triggered by correlated tickers/indices.
+  - Daily max loss stop: cease new entries after −2% equity drawdown in a day.
+- Slippage/fees:
+  - Include realistic slippage and commissions in backtests; widen triggers by a small buffer (e.g., +0.05% above KC_Upper for entries) on thin markets.
+
+Required Indicators and Settings:
+- Keltner Channel:
+  - Basis: EMA(20)
+  - ATR: 20
+  - Multiplier: 1.8 (tune 1.5–2.0 by instrument)
+- Bollinger Bands:
+  - Period: 20
+  - StdDev: 2
+  - BBWidth = UpperBB − LowerBB; BBWidthMA = SMA(BBWidth, 20)
+- Divergence oscillator (choose one and stick with it per system version):
+  - RSI(14) or MACD (12, 26, 9) histogram
+  - Swing identification: use pivot lows (e.g., a low with 2 bars on each side with higher lows)
+- Trend filter:
+  - EMA(200) slope and price relation (optional EMA(50) > EMA(200) cross as additional filter)
+- ATR(20):
+  - For stops, targets, and trailing logic
+- Volume (optional):
+  - Average Volume(20) for confirmation
+
+Implementation Notes:
+- Only accept breakout if the divergence occurred within the last D bars and before/at the breakout bar; ignore divergences that form after the breakout.
+- Avoid duplicate entries: require price to close back inside KC (below KC_Upper) before a new signal can form after a stopped/closed trade.
+- Test across multiple timeframes:
+  - Intraday: 30–120 min
+  - Swing: Daily primary, Weekly for higher-timeframe trend filter
+- Instruments:
+  - Liquid equities, index futures, liquid FX pairs, liquid crypto majors. Adjust KC multiplier upward for higher-volatility assets.
+
+Parameter Defaults (starting points for optimization):
+- KC: EMA(20), ATR(20), Multiplier = 1.8
+- BB: 20, 2; BBWidth expansion = 1.2 × BBWidthMA and rising
+- Divergence: RSI(14); lookback L = 30 bars; validity window D = 10 bars; pivot left/right = 2
+- Stops: Initial = min(swing low − 0.5×ATR20, KC_Lower − 0.25×ATR20); Trail = KC_Mid − 0.25×ATR20
+- Risk: 0.75% per trade; partial at 1.5R
+
+Signal Pseudocode (concise):
+- If price > EMA200 and slope(EMA200) > 0
+- And BullishDivergence(RSI14) detected within last D bars
+- And BBWidth > 1.2 × SMA(BBWidth, 20) and BBWidth > BBWidth[1]
+- And Close > KC_Upper
+=> Go Long next bar; set Initial Stop
+- Exit if Close < KC_Lower (or stop/trail hits earlier)
+
+This specification captures the bullish divergence + Keltner breakout gated by Bollinger expansion, with exits on correction below the channel, and adds robust risk controls for practical execution.

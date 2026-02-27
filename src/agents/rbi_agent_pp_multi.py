@@ -137,34 +137,34 @@ rate_limiter = Semaphore(MAX_PARALLEL_THREADS)
 # - GLM: z-ai/glm-4.6
 # See src/models/openrouter_model.py for ALL available models!
 
-# 🧠 RESEARCH: Grok 4 Fast Reasoning (xAI's blazing fast model!)
+# 🧠 RESEARCH: Gemini 2.5 Flash (Fast and efficient!)
 RESEARCH_CONFIG = {
-    "type": "xai",
-    "name": "grok-4-fast-reasoning"
+    "type": "gemini",
+    "name": "gemini-2.5-flash"
 }
 
-# 💻 BACKTEST CODE GEN: Grok 4 Fast Reasoning (xAI's blazing fast model!)
+# 💻 BACKTEST CODE GEN: Gemini 2.5 Flash
 BACKTEST_CONFIG = {
-    "type": "xai",
-    "name": "grok-4-fast-reasoning"
+    "type": "gemini",
+    "name": "gemini-2.5-flash"
 }
 
-# 🐛 DEBUGGING: Grok 4 Fast Reasoning (xAI's blazing fast model!)
+# 🐛 DEBUGGING: Gemini 2.5 Flash
 DEBUG_CONFIG = {
-    "type": "xai",
-    "name": "grok-4-fast-reasoning"
+    "type": "gemini",
+    "name": "gemini-2.5-flash"
 }
 
-# 📦 PACKAGE CHECK: Grok 4 Fast Reasoning (xAI's blazing fast model!)
+# 📦 PACKAGE CHECK: Gemini 2.5 Flash
 PACKAGE_CONFIG = {
-    "type": "xai",
-    "name": "grok-4-fast-reasoning"
+    "type": "gemini",
+    "name": "gemini-2.5-flash"
 }
 
-# 🚀 OPTIMIZATION: Grok 4 Fast Reasoning (xAI's blazing fast model!)
+# 🚀 OPTIMIZATION: Gemini 2.5 Flash
 OPTIMIZE_CONFIG = {
-    "type": "xai",
-    "name": "grok-4-fast-reasoning"
+    "type": "gemini",
+    "name": "gemini-2.5-flash"
 }
 
 # 🎯 PROFIT TARGET CONFIGURATION
@@ -510,11 +510,11 @@ RISK MANAGEMENT:
 
 If you need indicators use TA lib or pandas TA.
 
-Use this data path: /home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-2022-BEAR-15m.csv
-the above data head looks like below (2022 BEAR MARKET: -62.4% return)
+Use this data path: /home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-COMPLETE-15m.csv
+the above data head looks like below (COMPLETE: 100% coverage, 3.85 years, NO GAPS)
 datetime, open, high, low, close, volume,
 2022-01-01 00:00:00, 46332.51, 46429.73, 46228.47, 46327.01, 1234.56,
-2022-01-01 00:15:00, 46327.01, 46450.21, 46301.33, 46400.82, 987.65,
+2023-01-01 00:00:00, 16531.83, 16532.69, 16509.11, 16510.82, 231.05,
 
 Always add plenty of Moon Dev themed debug prints with emojis to make debugging easier! 🌙 ✨ 🚀
 
@@ -535,8 +535,8 @@ if __name__ == "__main__":
     import pandas as pd
 
     # FIRST: Run standard backtest and print stats (REQUIRED for parsing!)
-    print("\\n🌙 Running backtest on 2022 BEAR MARKET (-62.4% B&H)...")
-    data = pd.read_csv('/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-2022-BEAR-15m.csv')
+    print("\\n🌙 Running backtest on COMPLETE dataset (100% coverage, 3.85 years)...")
+    data = pd.read_csv('/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-COMPLETE-15m.csv')
     data['datetime'] = pd.to_datetime(data['datetime'])
     data = data.set_index('datetime')
     data.columns = ['Open', 'High', 'Low', 'Close', 'Volume']
@@ -1718,6 +1718,9 @@ def main(ideas_file_path=None, run_name=None):
     global IDEAS_FILE
     if ideas_file_path:
         IDEAS_FILE = Path(ideas_file_path)
+    else:
+        # 🌙 Moon Dev: Default to concatenated file with top 3 winners + new ideas
+        IDEAS_FILE = Path("/home/titus/moon-dev-ai-agents/IDEAS11_PLUS_TOP3.txt")
 
     cprint(f"\n{'='*60}", "cyan", attrs=['bold'])
     cprint(f"🌟 Moon Dev's RBI AI v3.0 PARALLEL PROCESSOR + MULTI-DATA 🚀", "cyan", attrs=['bold'])
