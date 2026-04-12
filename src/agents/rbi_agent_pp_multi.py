@@ -32,7 +32,7 @@ NEW FEATURES:
 Required Setup:
 1. Conda environment 'tflow' with backtesting packages
 2. Set MAX_PARALLEL_THREADS (default: 5)
-3. Multi-data tester at: /Users/md/Dropbox/dev/github/moon-dev-trading-bots/backtests/multi_data_tester.py
+3. Multi-data tester path set via MULTI_DATA_TESTER_DIR env var (see BTC_DATA_PATH / MULTI_DATA_TESTER_DIR constants)
 4. Run and watch all ideas process in parallel with multi-data validation! 🚀💰
 
 IMPORTANT: Each thread is fully independent and won't interfere with others!
@@ -56,8 +56,8 @@ import sys
 import argparse  # 🌙 Moon Dev: For command-line args
 from dotenv import load_dotenv
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from threading import Lock, Semaphore, Thread
-from queue import Queue
+from threading import Event, Lock, Thread
+from queue import Empty, Queue
 import requests
 from io import BytesIO
 
@@ -121,9 +121,6 @@ console_lock = Lock()
 api_lock = Lock()
 file_lock = Lock()
 date_lock = Lock()  # 🌙 Moon Dev: Lock for date checking/updating
-
-# Rate limiter
-rate_limiter = Semaphore(MAX_PARALLEL_THREADS)
 
 # 🌙 Moon Dev's Model Configurations
 # Available types: "claude", "openai", "deepseek", "groq", "gemini", "xai", "ollama", "openrouter"
@@ -200,6 +197,14 @@ PROCESSED_IDEAS_LOG = DATA_DIR / "processed_ideas.log"
 STATS_CSV = DATA_DIR / "backtest_stats.csv"  # Moon Dev's stats tracker!
 IDEAS_FILE = DATA_DIR / "leverage_strategies.txt"  # Using leverage-optimized strategies
 
+# 🌙 Moon Dev: Portable data paths - derived from this file's location so they work on any machine
+BTC_DATA_PATH = str(Path(__file__).parent.parent / "data/rbi/BTC-USDT-COMPLETE-15m.csv")
+# Override with MULTI_DATA_TESTER_DIR env var if your multi_data_tester.py lives elsewhere
+MULTI_DATA_TESTER_DIR = os.getenv(
+    "MULTI_DATA_TESTER_DIR",
+    str(Path(__file__).parent.parent.parent / "moon-dev-trading-bots/backtests")
+)
+
 def update_date_folders():
     """
     🌙 Moon Dev's Date Folder Updater!
@@ -268,9 +273,11 @@ def rate_limited_api_call(func, thread_id, *args, **kwargs):
     - Per-thread rate limiting (RATE_LIMIT_DELAY)
     - Global rate limiting (RATE_LIMIT_GLOBAL_DELAY)
     """
-    # Global rate limit (quick check)
+    # Global rate limit — acquire lock briefly to serialize calls, then sleep outside
+    # so other threads are not blocked while this thread is sleeping
     with api_lock:
-        time.sleep(RATE_LIMIT_GLOBAL_DELAY)
+        pass
+    time.sleep(RATE_LIMIT_GLOBAL_DELAY)
 
     # Execute the API call
     result = func(*args, **kwargs)
@@ -358,7 +365,7 @@ def extract_youtube_id(url):
         else:
             video_id = url.split("/")[-1].split("?")[0]
         return video_id
-    except:
+    except Exception:
         return None
 
 def extract_content_from_url(idea: str, thread_id: int) -> str:
@@ -586,6 +593,14 @@ ONLY SEND BACK CODE, NO OTHER TEXT.
 FOR THE PYTHON BACKTESTING LIBRARY USE BACKTESTING.PY AND SEND BACK ONLY THE CODE, NO OTHER TEXT.
 ONLY SEND BACK CODE, NO OTHER TEXT.
 """
+# 🌙 Moon Dev: Replace hardcoded machine-specific paths with portable constants
+BACKTEST_PROMPT = BACKTEST_PROMPT.replace(
+    '/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-COMPLETE-15m.csv',
+    BTC_DATA_PATH
+).replace(
+    '/Users/md/Dropbox/dev/github/moon-dev-trading-bots/backtests',
+    MULTI_DATA_TESTER_DIR
+)
 
 DEBUG_PROMPT = """
 You are Moon Dev's Debug AI 🌙
@@ -766,7 +781,8 @@ def parse_all_stats_from_output(stdout: str, thread_id: int) -> dict:
         'sharpe': None,
         'sortino': None,
         'expectancy': None,
-        'trades': None
+        'trades': None,
+        'exposure': None,
     }
 
     try:
@@ -1087,24 +1103,24 @@ def has_nan_results(execution_result: dict) -> bool:
 
     stdout = execution_result.get('stdout', '')
 
-    nan_indicators = [
-        '# Trades                                    0',
-        'Win Rate [%]                              NaN',
-        'Exposure Time [%]                         0.0',
-        'Return [%]                                0.0'
+    nan_patterns = [
+        r'#\s*Trades\s+0\b',
+        r'Win Rate \[%\]\s+NaN',
+        r'Exposure Time \[%\]\s+0\.0\b',
+        r'Return \[%\]\s+0\.0\b',
     ]
 
-    nan_count = sum(1 for indicator in nan_indicators if indicator in stdout)
+    nan_count = sum(1 for pattern in nan_patterns if re.search(pattern, stdout))
     return nan_count >= 2
 
 def analyze_no_trades_issue(execution_result: dict) -> str:
     """Analyze why strategy shows signals but no trades"""
     stdout = execution_result.get('stdout', '')
 
-    if 'ENTRY SIGNAL' in stdout and '# Trades                                    0' in stdout:
+    if 'ENTRY SIGNAL' in stdout and re.search(r'#\s*Trades\s+0\b', stdout):
         return "Strategy is generating entry signals but self.buy() calls are not executing. This usually means: 1) Position sizing issues (size parameter invalid), 2) Insufficient cash/equity, 3) Logic preventing buy execution, or 4) Missing actual self.buy() call in the code. The strategy prints signals but never calls self.buy()."
 
-    elif '# Trades                                    0' in stdout:
+    elif re.search(r'#\s*Trades\s+0\b', stdout):
         return "Strategy executed but took 0 trades, resulting in NaN values. The entry conditions are likely too restrictive or there are logic errors preventing trade execution."
 
     return "Strategy executed but took 0 trades, resulting in NaN values. Please adjust the strategy logic to actually generate trading signals and take trades."
@@ -1148,14 +1164,12 @@ def clean_model_output(output, content_type="text"):
     if "<think>" in output and "</think>" in output:
         clean_content = output.split("</think>")[-1].strip()
         if not clean_content:
-            import re
             clean_content = re.sub(r'<think>.*?</think>', '', output, flags=re.DOTALL).strip()
         if clean_content:
             cleaned_output = clean_content
 
     if content_type == "code" and "```" in cleaned_output:
         try:
-            import re
             # Try to extract code blocks with closing ```
             code_blocks = re.findall(r'```python\n(.*?)\n```', cleaned_output, re.DOTALL)
             if not code_blocks:
@@ -1349,8 +1363,6 @@ def process_trading_idea_parallel(idea: str, thread_id: int) -> dict:
         if not strategy:
             thread_print("❌ Research failed", thread_id, "red")
             return {"success": False, "error": "Research failed", "thread_id": thread_id}
-
-        log_processed_idea(idea, strategy_name, thread_id)
 
         # Phase 2: Backtest
         backtest = create_backtest(strategy, strategy_name, thread_id)
@@ -1590,7 +1602,7 @@ def process_trading_idea_parallel(idea: str, thread_id: int) -> dict:
                     thread_print(f"❌ Max debug iterations reached", thread_id, "red")
                     return {"success": False, "error": "Max debug iterations", "thread_id": thread_id}
 
-        return {"success": True, "thread_id": thread_id}
+        return {"success": True, "thread_id": thread_id, "strategy_name": strategy_name}
 
     except Exception as e:
         thread_print(f"❌ FATAL ERROR: {str(e)}", thread_id, "red", attrs=['bold'])
@@ -1619,11 +1631,11 @@ def get_strategies_from_files():
     return strategies
 
 
-def idea_monitor_thread(idea_queue: Queue, queued_ideas: set, queued_lock: Lock, stop_flag: dict):
+def idea_monitor_thread(idea_queue: Queue, queued_ideas: set, queued_lock: Lock, stop_event: Event):
     """🌙 Moon Dev: Producer thread - monitors ideas.txt OR strategy files and queues new ideas"""
     global IDEAS_FILE
 
-    while not stop_flag.get('stop', False):
+    while not stop_event.is_set():
         try:
             # 🌙 Moon Dev: Check which mode we're in
             if STRATEGIES_FROM_FILES:
@@ -1661,14 +1673,14 @@ def idea_monitor_thread(idea_queue: Queue, queued_ideas: set, queued_lock: Lock,
             time.sleep(1)
 
 
-def worker_thread(worker_id: int, idea_queue: Queue, queued_ideas: set, queued_lock: Lock, stats: dict, stop_flag: dict):
+def worker_thread(worker_id: int, idea_queue: Queue, queued_ideas: set, queued_lock: Lock, stats: dict, stop_event: Event):
     """🌙 Moon Dev: Consumer thread - processes ideas from queue"""
-    while not stop_flag.get('stop', False):
+    while not stop_event.is_set():
         try:
-            # Get idea from queue (timeout 1 second to check stop_flag periodically)
+            # Get idea from queue (timeout 1 second to check stop_event periodically)
             try:
                 idea = idea_queue.get(timeout=1)
-            except:
+            except Empty:
                 continue  # Queue empty, check again
 
             with console_lock:
@@ -1690,6 +1702,10 @@ def worker_thread(worker_id: int, idea_queue: Queue, queued_ideas: set, queued_l
             with console_lock:
                 stats['completed'] += 1
                 stats['active'] -= 1
+
+                # Log idea as processed only on full pipeline success
+                if result.get('success'):
+                    log_processed_idea(idea, result.get('strategy_name', 'Unknown'), worker_id)
 
                 cprint(f"\n{'='*60}", "green")
                 cprint(f"✅ Thread {worker_id:02d} COMPLETED ({stats['completed']} total) - {total_time:.1f}s", "green", attrs=['bold'])
@@ -1718,9 +1734,7 @@ def main(ideas_file_path=None, run_name=None):
     global IDEAS_FILE
     if ideas_file_path:
         IDEAS_FILE = Path(ideas_file_path)
-    else:
-        # 🌙 Moon Dev: Default to concatenated file with top 3 winners + new ideas
-        IDEAS_FILE = Path("/home/titus/moon-dev-ai-agents/IDEAS11_PLUS_TOP3.txt")
+    # else: use the module-level IDEAS_FILE default (DATA_DIR / "leverage_strategies.txt")
 
     cprint(f"\n{'='*60}", "cyan", attrs=['bold'])
     cprint(f"🌟 Moon Dev's RBI AI v3.0 PARALLEL PROCESSOR + MULTI-DATA 🚀", "cyan", attrs=['bold'])
@@ -1786,17 +1800,17 @@ def main(ideas_file_path=None, run_name=None):
         'targets_hit': 0,
         'active': 0
     }
-    stop_flag = {'stop': False}
+    stop_event = Event()
 
     # Start monitor thread (producer)
-    monitor = Thread(target=idea_monitor_thread, args=(idea_queue, queued_ideas, queued_lock, stop_flag), daemon=True)
+    monitor = Thread(target=idea_monitor_thread, args=(idea_queue, queued_ideas, queued_lock, stop_event), daemon=True)
     monitor.start()
     cprint("✅ Idea monitor thread started", "green")
 
     # Start worker threads (consumers)
     workers = []
     for worker_id in range(MAX_PARALLEL_THREADS):
-        worker = Thread(target=worker_thread, args=(worker_id, idea_queue, queued_ideas, queued_lock, stats, stop_flag), daemon=True)
+        worker = Thread(target=worker_thread, args=(worker_id, idea_queue, queued_ideas, queued_lock, stats, stop_event), daemon=True)
         worker.start()
         workers.append(worker)
     cprint(f"✅ {MAX_PARALLEL_THREADS} worker threads started (IDs 00-{MAX_PARALLEL_THREADS-1:02d})\n", "green")
@@ -1817,7 +1831,7 @@ def main(ideas_file_path=None, run_name=None):
 
     except KeyboardInterrupt:
         cprint(f"\n\n🛑 Shutting down gracefully...", "yellow", attrs=['bold'])
-        stop_flag['stop'] = True
+        stop_event.set()
 
         cprint(f"\n{'='*60}", "cyan", attrs=['bold'])
         cprint(f"📊 FINAL STATS", "cyan", attrs=['bold'])
