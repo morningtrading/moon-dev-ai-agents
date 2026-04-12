@@ -205,7 +205,13 @@ BTC_DATA_PATH = str(Path(__file__).parent.parent / "data/rbi/BTC-USDT-COMPLETE-1
 _default_tester_dir = Path(__file__).parent.parent.parent / "moon-dev-trading-bots/backtests"
 MULTI_DATA_TESTER_DIR = os.getenv("MULTI_DATA_TESTER_DIR", str(_default_tester_dir))
 if not Path(MULTI_DATA_TESTER_DIR).exists():
-    print(f"⚠️ MULTI_DATA_TESTER_DIR not found: {MULTI_DATA_TESTER_DIR} — set the env var to enable multi-data testing")
+    cprint(f"⚠️ MULTI_DATA_TESTER_DIR not found: {MULTI_DATA_TESTER_DIR} — set the env var to enable multi-data testing", "yellow")
+
+# 🌙 Moon Dev: Literal placeholder paths used inside BACKTEST_PROMPT template.
+# These constants are the *source* strings that .replace() swaps out below.
+# If you ever update the example paths in the prompt template, update these too.
+_TEMPLATE_BTC_PATH = '/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-COMPLETE-15m.csv'
+_TEMPLATE_TESTER_DIR = '/Users/md/Dropbox/dev/github/moon-dev-trading-bots/backtests'
 
 def update_date_folders():
     """
@@ -455,10 +461,10 @@ Remember: The name must be UNIQUE and SPECIFIC to this strategy's approach!
 """
 
 BACKTEST_PROMPT = """
-# ⚠️ NOTE: The two data paths in this template are replaced at module initialisation time
+# ⚠️ NOTE: The two data paths in this template are replaced at module initialization time
 # by BACKTEST_PROMPT = BACKTEST_PROMPT.replace(...) using BTC_DATA_PATH and
 # MULTI_DATA_TESTER_DIR constants. Do NOT change the literal paths here without also
-# updating those .replace() calls below.
+# updating _TEMPLATE_BTC_PATH and _TEMPLATE_TESTER_DIR below.
 You are Moon Dev's Backtest AI 🌙
 
 🚨 CRITICAL: Your code MUST have TWO parts:
@@ -599,12 +605,13 @@ ONLY SEND BACK CODE, NO OTHER TEXT.
 FOR THE PYTHON BACKTESTING LIBRARY USE BACKTESTING.PY AND SEND BACK ONLY THE CODE, NO OTHER TEXT.
 ONLY SEND BACK CODE, NO OTHER TEXT.
 """
-# 🌙 Moon Dev: Replace hardcoded machine-specific paths with portable constants
+# 🌙 Moon Dev: Replace hardcoded machine-specific paths with portable constants.
+# _TEMPLATE_BTC_PATH and _TEMPLATE_TESTER_DIR must match the literal strings in the template above.
 BACKTEST_PROMPT = BACKTEST_PROMPT.replace(
-    '/home/titus/moon-dev-ai-agents/src/data/rbi/BTC-USDT-COMPLETE-15m.csv',
+    _TEMPLATE_BTC_PATH,
     BTC_DATA_PATH
 ).replace(
-    '/Users/md/Dropbox/dev/github/moon-dev-trading-bots/backtests',
+    _TEMPLATE_TESTER_DIR,
     MULTI_DATA_TESTER_DIR
 )
 
