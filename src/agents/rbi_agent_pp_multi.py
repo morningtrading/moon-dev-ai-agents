@@ -199,11 +199,13 @@ IDEAS_FILE = DATA_DIR / "leverage_strategies.txt"  # Using leverage-optimized st
 
 # 🌙 Moon Dev: Portable data paths - derived from this file's location so they work on any machine
 BTC_DATA_PATH = str(Path(__file__).parent.parent / "data/rbi/BTC-USDT-COMPLETE-15m.csv")
-# Override with MULTI_DATA_TESTER_DIR env var if your multi_data_tester.py lives elsewhere
-MULTI_DATA_TESTER_DIR = os.getenv(
-    "MULTI_DATA_TESTER_DIR",
-    str(Path(__file__).parent.parent.parent / "moon-dev-trading-bots/backtests")
-)
+# Set MULTI_DATA_TESTER_DIR env var to the folder containing multi_data_tester.py.
+# The default assumes moon-dev-trading-bots/ is a sibling of this repo's root - set the
+# env var when using a different layout.
+_default_tester_dir = Path(__file__).parent.parent.parent / "moon-dev-trading-bots/backtests"
+MULTI_DATA_TESTER_DIR = os.getenv("MULTI_DATA_TESTER_DIR", str(_default_tester_dir))
+if not Path(MULTI_DATA_TESTER_DIR).exists():
+    print(f"⚠️ MULTI_DATA_TESTER_DIR not found: {MULTI_DATA_TESTER_DIR} — set the env var to enable multi-data testing")
 
 def update_date_folders():
     """
@@ -453,6 +455,10 @@ Remember: The name must be UNIQUE and SPECIFIC to this strategy's approach!
 """
 
 BACKTEST_PROMPT = """
+# ⚠️ NOTE: The two data paths in this template are replaced at module initialisation time
+# by BACKTEST_PROMPT = BACKTEST_PROMPT.replace(...) using BTC_DATA_PATH and
+# MULTI_DATA_TESTER_DIR constants. Do NOT change the literal paths here without also
+# updating those .replace() calls below.
 You are Moon Dev's Backtest AI 🌙
 
 🚨 CRITICAL: Your code MUST have TWO parts:
@@ -749,6 +755,16 @@ IMPORTANT RULES:
 Return the COMPLETE optimized code with Moon Dev themed comments explaining what you improved! 🌙 ✨
 ONLY SEND BACK CODE, NO OTHER TEXT.
 """
+
+# 🌙 Moon Dev: Pre-compiled regex patterns for zero-trade / NaN detection
+# Compiled once at module level for efficiency (reused across all threads)
+_RE_ZERO_TRADES = re.compile(r'#\s*Trades\s+0\b')
+_NAN_PATTERNS = [
+    _RE_ZERO_TRADES,
+    re.compile(r'Win Rate \[%\]\s+NaN'),
+    re.compile(r'Exposure Time \[%\]\s+0\.0\b'),
+    re.compile(r'Return \[%\]\s+0\.0\b'),
+]
 
 # ============================================
 # 🛠️ HELPER FUNCTIONS (with thread safety)
@@ -1103,24 +1119,17 @@ def has_nan_results(execution_result: dict) -> bool:
 
     stdout = execution_result.get('stdout', '')
 
-    nan_patterns = [
-        r'#\s*Trades\s+0\b',
-        r'Win Rate \[%\]\s+NaN',
-        r'Exposure Time \[%\]\s+0\.0\b',
-        r'Return \[%\]\s+0\.0\b',
-    ]
-
-    nan_count = sum(1 for pattern in nan_patterns if re.search(pattern, stdout))
+    nan_count = sum(1 for pattern in _NAN_PATTERNS if pattern.search(stdout))
     return nan_count >= 2
 
 def analyze_no_trades_issue(execution_result: dict) -> str:
     """Analyze why strategy shows signals but no trades"""
     stdout = execution_result.get('stdout', '')
 
-    if 'ENTRY SIGNAL' in stdout and re.search(r'#\s*Trades\s+0\b', stdout):
+    if 'ENTRY SIGNAL' in stdout and _RE_ZERO_TRADES.search(stdout):
         return "Strategy is generating entry signals but self.buy() calls are not executing. This usually means: 1) Position sizing issues (size parameter invalid), 2) Insufficient cash/equity, 3) Logic preventing buy execution, or 4) Missing actual self.buy() call in the code. The strategy prints signals but never calls self.buy()."
 
-    elif re.search(r'#\s*Trades\s+0\b', stdout):
+    elif _RE_ZERO_TRADES.search(stdout):
         return "Strategy executed but took 0 trades, resulting in NaN values. The entry conditions are likely too restrictive or there are logic errors preventing trade execution."
 
     return "Strategy executed but took 0 trades, resulting in NaN values. Please adjust the strategy logic to actually generate trading signals and take trades."
